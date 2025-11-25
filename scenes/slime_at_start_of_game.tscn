@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckluvo3hgi0ve"]
+
+[ext_resource type="Texture2D" uid="uid://dgy8hhmjl3t62" path="res://assets/all backround assets - - - - -MorningAdventuresV2/CAVE ASsets/slime/slime_f3.png" id="1_4iend"]
+[ext_resource type="Texture2D" uid="uid://d14s4rna3cx8v" path="res://assets/all backround assets - - - - -MorningAdventuresV2/CAVE ASsets/slime/slime_f4.png" id="2_oinyc"]
+[ext_resource type="Texture2D" uid="uid://t26ytxx4euo2" path="res://assets/all backround assets - - - - -MorningAdventuresV2/CAVE ASsets/slime/slime_f5.png" id="3_34qc6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ygbrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4iend")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oinyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_34qc6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="Slime at start of game" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ygbrp")
+frame_progress = 0.05136311

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://b40horegir4v2"]
+
+[ext_resource type="Script" uid="uid://dghlbqs685ud0" path="res://scripts/zuck_stage_1.gd" id="1_dyxwv"]
+[ext_resource type="Texture2D" uid="uid://cc4tam23oxd8h" path="res://assets/rando/done/sprite_sheet_pahse_1_idle-removebg-preview.png" id="1_mxh0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyxwv"]
+atlas = ExtResource("1_mxh0h")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knhmb"]
+atlas = ExtResource("1_mxh0h")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onfay"]
+atlas = ExtResource("1_mxh0h")
+region = Rect2(0, 250, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thiek"]
+atlas = ExtResource("1_mxh0h")
+region = Rect2(250, 250, 250, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l3m0j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyxwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knhmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onfay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thiek")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Zuck Stage 1" type="CharacterBody2D"]
+script = ExtResource("1_dyxwv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l3m0j")
+frame_progress = 0.058909636

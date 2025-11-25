@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="OnlyZuc"
+run/main_scene="uid://cejc3s5qfhawh"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
