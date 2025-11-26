@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1oa1qj73bw5u"]
+
+[ext_resource type="Texture2D" uid="uid://dvijtuv761hkc" path="res://assets/rando/done/edward sulivan.png" id="1_a20cx"]
+
+[node name="Eduardo Saverin static" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a20cx")

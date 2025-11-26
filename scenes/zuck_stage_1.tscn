@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b40horegir4v2"]
+[gd_scene load_steps=18 format=3 uid="uid://b40horegir4v2"]
 
 [ext_resource type="Script" uid="uid://dghlbqs685ud0" path="res://scripts/zuck_stage_1.gd" id="1_dyxwv"]
 [ext_resource type="Texture2D" uid="uid://cc4tam23oxd8h" path="res://assets/rando/done/sprite_sheet_pahse_1_idle-removebg-preview.png" id="1_mxh0h"]
+[ext_resource type="Texture2D" uid="uid://bpy76vjpqqslf" path="res://assets/rando/done/sprite_sheet_pahse_1_jumping-removebg-preview.png" id="3_onfay"]
+[ext_resource type="Texture2D" uid="uid://6uoirj4eexrn" path="res://assets/rando/done/sprite_sheet_pahse_1_walking-removebg-preview.png" id="4_thiek"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dyxwv"]
 atlas = ExtResource("1_mxh0h")
@@ -17,6 +19,38 @@ region = Rect2(0, 250, 250, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thiek"]
 atlas = ExtResource("1_mxh0h")
+region = Rect2(250, 250, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3m0j"]
+atlas = ExtResource("3_onfay")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lsjt"]
+atlas = ExtResource("3_onfay")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rr0j"]
+atlas = ExtResource("3_onfay")
+region = Rect2(0, 250, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br8in"]
+atlas = ExtResource("3_onfay")
+region = Rect2(250, 250, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp2oa"]
+atlas = ExtResource("4_thiek")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p0ec"]
+atlas = ExtResource("4_thiek")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kes7w"]
+atlas = ExtResource("4_thiek")
+region = Rect2(0, 250, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t32qn"]
+atlas = ExtResource("4_thiek")
 region = Rect2(250, 250, 250, 250)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l3m0j"]
@@ -37,6 +71,40 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3m0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lsjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rr0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br8in")
+}],
+"loop": true,
+"name": &"jumping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp2oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p0ec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kes7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t32qn")
+}],
+"loop": true,
+"name": &"running",
+"speed": 3.0
 }]
 
 [node name="Zuck Stage 1" type="CharacterBody2D"]
@@ -45,4 +113,5 @@ script = ExtResource("1_dyxwv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l3m0j")
-frame_progress = 0.058909636
+animation = &"running"
+frame_progress = 0.4578085

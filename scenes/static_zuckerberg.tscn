@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2mwa18m6kn6r"]
+
+[ext_resource type="Texture2D" uid="uid://v36o0ktocfnj" path="res://assets/rando/done/zuckerberg static.png" id="1_p71sk"]
+
+[node name="static zuckerberg" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p71sk")

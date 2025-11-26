@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3jaaqpvqy1lg"]
+
+[ext_resource type="Texture2D" uid="uid://b8smpyunor6sj" path="res://assets/all backround assets - - - - -MorningAdventuresV2/16 Bit School Asset Pack/classroom_door/Wooden Door Side View Opening 1.png" id="1_vgar2"]
+[ext_resource type="Texture2D" uid="uid://dne32mpoo1nv4" path="res://assets/all backround assets - - - - -MorningAdventuresV2/16 Bit School Asset Pack/classroom_door/Wooden Door Side View Opening 2.png" id="2_sj7qu"]
+[ext_resource type="Texture2D" uid="uid://cukdx0slulkbi" path="res://assets/all backround assets - - - - -MorningAdventuresV2/16 Bit School Asset Pack/classroom_door/Wooden Door Side View Opening 3.png" id="3_3vcfm"]
+[ext_resource type="Texture2D" uid="uid://bek3tcagqu1o4" path="res://assets/all backround assets - - - - -MorningAdventuresV2/16 Bit School Asset Pack/classroom_door/Wooden Door Side View Opening 4.png" id="4_c5fxq"]
+[ext_resource type="Texture2D" uid="uid://drp6lf0qgt73d" path="res://assets/all backround assets - - - - -MorningAdventuresV2/16 Bit School Asset Pack/classroom_door/Wooden Door Side View Opening 5.png" id="5_us5rk"]
+[ext_resource type="Texture2D" uid="uid://cawjs1yay8fvo" path="res://assets/all backround assets - - - - -MorningAdventuresV2/16 Bit School Asset Pack/classroom_door/Wooden Door Side View Opening 6.png" id="6_cpnxt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bom4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vgar2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sj7qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3vcfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c5fxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_us5rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpnxt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="classroom_door" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7bom4")
+frame = 5
+frame_progress = 0.2750509
