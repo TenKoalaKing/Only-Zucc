@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=48 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://dmns8cws1v72" path="res://scripts/game_manager.gd" id="25_pl11u"]
 [ext_resource type="Script" uid="uid://bhj0a2adviiwk" path="res://scenes/zuck_menu.gd" id="26_qnb83"]
 [ext_resource type="Texture2D" uid="uid://devrvnn5wg1vu" path="res://assets/rando/done/sprite_sheet_pahse_2_ideling-removebg-preview.png" id="27_sww3w"]
+[ext_resource type="Script" uid="uid://dl76oinputx4y" path="res://scenes/camera_2d.gd" id="28_sww3w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -1412,18 +1413,6 @@ position = Vector2(-1243, 909)
 position = Vector2(-4, 73)
 shape = SubResource("CircleShape2D_uwrxv")
 
-[node name="Camera2D" type="Camera2D" parent="Zuck Stage 1"]
-position = Vector2(0, 1)
-zoom = Vector2(0.62, 0.62)
-limit_left = -4400
-limit_right = 10876
-position_smoothing_enabled = true
-position_smoothing_speed = 2.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Zuck Stage 1/Camera2D"]
-position = Vector2(-4, 3)
-scale = Vector2(0.01, 0.01)
-
 [node name="Slime at start of game" parent="." instance=ExtResource("5_gee14")]
 position = Vector2(-1565, 894)
 
@@ -1556,3 +1545,18 @@ position = Vector2(-76, 27126)
 scale = Vector2(2.321839, 2.3263304)
 sprite_frames = SubResource("SpriteFrames_v2yb1")
 frame_progress = 0.4004757
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1243, 910)
+zoom = Vector2(0.62, 0.62)
+limit_left = -4431
+limit_top = -9999389
+limit_right = 10845
+limit_bottom = 10000611
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+script = ExtResource("28_sww3w")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
+position = Vector2(-4, 3)
+scale = Vector2(0.01, 0.01)
