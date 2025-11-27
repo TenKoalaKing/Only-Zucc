@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgp8bjvv3d6pf"]
+
+[ext_resource type="Texture2D" uid="uid://kfp3xw2bxk3v" path="res://assets/rando/done/Start.png" id="1_44qv3"]
+[ext_resource type="Script" uid="uid://cuo8ghyc1s8w8" path="res://scenes/title screen/start.gd" id="1_pfiq5"]
+
+[node name="start" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_pfiq5")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -616.0
+offset_top = -142.0
+offset_right = 592.0
+offset_bottom = 166.0
+icon = ExtResource("1_44qv3")

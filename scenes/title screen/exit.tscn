@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bun6hd5mfocdf"]
+
+[ext_resource type="Script" uid="uid://cp603knb0x5af" path="res://scenes/title screen/exit.gd" id="1_j5cul"]
+[ext_resource type="Texture2D" uid="uid://cwtcmhwf0aldg" path="res://assets/rando/done/Exit.png" id="1_omh5d"]
+
+[node name="exit" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j5cul")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("1_omh5d")

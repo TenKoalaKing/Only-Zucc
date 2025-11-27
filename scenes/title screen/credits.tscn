@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx1seal3040y6"]
+
+[ext_resource type="Script" uid="uid://b0jex2566yfh7" path="res://scenes/title screen/credits.gd" id="1_0oqm1"]
+[ext_resource type="Texture2D" uid="uid://48ennyitycr4" path="res://assets/rando/done/Credits.png" id="1_k5o6l"]
+
+[node name="credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0oqm1")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -583.0
+offset_top = -120.0
+offset_right = 625.0
+offset_bottom = 188.0
+icon = ExtResource("1_k5o6l")

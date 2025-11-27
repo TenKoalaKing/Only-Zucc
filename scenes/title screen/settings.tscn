@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjqmo4pjxj153"]
+
+[ext_resource type="Script" uid="uid://0w60n87n80at" path="res://scenes/title screen/settings.gd" id="1_giixc"]
+[ext_resource type="Texture2D" uid="uid://tx1jp3jotp4x" path="res://assets/rando/done/Settings.png" id="1_syy4e"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_giixc")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -632.0
+offset_top = -138.0
+offset_right = 576.0
+offset_bottom = 170.0
+icon = ExtResource("1_syy4e")
