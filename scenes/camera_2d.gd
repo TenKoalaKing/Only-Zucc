@@ -4,14 +4,14 @@ extends Camera2D
 @export var speed: float = 5.0
 var target: Node2D
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	target=get_node(target_path)
-	if target == null:
-		print("camera target not found")
 	if target_path:
-		target = get_node("../Zuck Stage 1")
+		target = get_node("Zuck Stage 1")
 	if target:
 		position = target.position
+	else:
+		print("Camera not tracking")
 
 
 

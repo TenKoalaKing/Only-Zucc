@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckluvo3hgi0ve"]
+[gd_scene load_steps=9 format=3 uid="uid://ckluvo3hgi0ve"]
 
 [ext_resource type="Texture2D" uid="uid://dgy8hhmjl3t62" path="res://assets/all backround assets - - - - -MorningAdventuresV2/CAVE ASsets/slime/slime_f3.png" id="1_4iend"]
+[ext_resource type="Script" uid="uid://c0jsyahdhex50" path="res://scripts/slime_at_start_of_game.gd" id="1_ygbrp"]
 [ext_resource type="Texture2D" uid="uid://d14s4rna3cx8v" path="res://assets/all backround assets - - - - -MorningAdventuresV2/CAVE ASsets/slime/slime_f4.png" id="2_oinyc"]
+[ext_resource type="PackedScene" uid="uid://dqjrvfsf38d53" path="res://scenes/Dialog.tscn" id="2_yljgh"]
 [ext_resource type="Texture2D" uid="uid://t26ytxx4euo2" path="res://assets/all backround assets - - - - -MorningAdventuresV2/CAVE ASsets/slime/slime_f5.png" id="3_34qc6"]
+[ext_resource type="Texture2D" uid="uid://cenlbej4o2815" path="res://assets/rando/done/speechbubble-removebg-preview.png" id="6_mcs31"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ygbrp"]
 animations = [{
@@ -21,9 +24,37 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ihwi"]
+size = Vector2(194, 84.200005)
+
 [node name="Slime at start of game" type="CharacterBody2D"]
 scale = Vector2(5, 5)
+script = ExtResource("1_ygbrp")
+
+[node name="Dialog" parent="." instance=ExtResource("2_yljgh")]
+unique_name_in_owner = true
+strings = Array[String](["Hola amigo", "mi tengo bueno", "ctrl+enter something"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ygbrp")
 frame_progress = 0.05136311
+
+[node name="DialogIndicator" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+offset_left = 11.0
+offset_top = -51.399998
+offset_right = 51.0
+offset_bottom = -11.399998
+texture = ExtResource("6_mcs31")
+expand_mode = 1
+
+[node name="TalkRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkRange"]
+position = Vector2(-20.999983, 7.8999944)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_1ihwi")
+
+[connection signal="body_entered" from="TalkRange" to="." method="_on_talk_range_body_entered"]
+[connection signal="body_exited" from="TalkRange" to="." method="_on_talk_range_body_exited"]
