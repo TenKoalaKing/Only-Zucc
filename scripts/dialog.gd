@@ -9,7 +9,7 @@ var dialogNumber = 0
 func _ready() -> void:
 	canvas_layer.hide()
 	add_to_group("player")
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if canvas_layer.visible:
 		_dialog_input()
 	else:
