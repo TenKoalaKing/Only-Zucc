@@ -32,3 +32,5 @@ func _ready():
 func _process(delta):
 	if target:
 		global_position = global_position.lerp(target.global_position, 1.0 - exp(-speed * delta))
+		
+		

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds1wwp011sabm"]
+
+[ext_resource type="Texture2D" uid="uid://b8smpyunor6sj" path="res://assets/all backround assets - - - - -MorningAdventuresV2/16 Bit School Asset Pack/classroom_door/Wooden Door Side View Opening 1.png" id="1_i7ac1"]
+[ext_resource type="Script" uid="uid://kxkituosn2ky" path="res://scenes/door_blocker.gd" id="1_ll8jk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll8jk"]
+atlas = ExtResource("1_i7ac1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27io0"]
+size = Vector2(5.4285717, 64.04445)
+
+[node name="door_blocker" type="CharacterBody2D"]
+script = ExtResource("1_ll8jk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(2.84375, 2.8125)
+texture = SubResource("AtlasTexture_ll8jk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(38.281254, 0.9375)
+scale = Vector2(2.84375, 2.8125)
+shape = SubResource("RectangleShape2D_27io0")

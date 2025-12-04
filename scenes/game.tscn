@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=49 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://bhj0a2adviiwk" path="res://scenes/zuck_menu.gd" id="26_qnb83"]
 [ext_resource type="Texture2D" uid="uid://devrvnn5wg1vu" path="res://assets/rando/done/sprite_sheet_pahse_2_ideling-removebg-preview.png" id="27_sww3w"]
 [ext_resource type="Script" uid="uid://dl76oinputx4y" path="res://scenes/camera_2d.gd" id="28_sww3w"]
+[ext_resource type="PackedScene" uid="uid://ds1wwp011sabm" path="res://scenes/door_blocker.tscn" id="29_suyxu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -1415,7 +1416,7 @@ position = Vector2(-4, 73)
 shape = SubResource("CircleShape2D_uwrxv")
 
 [node name="Slime at start of game" parent="." instance=ExtResource("5_gee14")]
-position = Vector2(-1565, 894)
+position = Vector2(-1575.0001, 927)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slime at start of game"]
 position = Vector2(-6.109476e-06, 3.400003)
@@ -1561,3 +1562,7 @@ script = ExtResource("28_sww3w")
 [node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
 position = Vector2(-4, 3)
 scale = Vector2(0.01, 0.01)
+
+[node name="door_blocker" parent="." instance=ExtResource("29_suyxu")]
+position = Vector2(107, -119)
+scale = Vector2(3, 3)
