@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ds1wwp011sabm"]
 
 [ext_resource type="Texture2D" uid="uid://b8smpyunor6sj" path="res://assets/all backround assets - - - - -MorningAdventuresV2/16 Bit School Asset Pack/classroom_door/Wooden Door Side View Opening 1.png" id="1_i7ac1"]
-[ext_resource type="Script" uid="uid://kxkituosn2ky" path="res://scenes/door_blocker.gd" id="1_ll8jk"]
+[ext_resource type="Script" uid="uid://kxkituosn2ky" path="res://scripts/door_blocker.gd" id="1_ll8jk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ll8jk"]
 atlas = ExtResource("1_i7ac1")

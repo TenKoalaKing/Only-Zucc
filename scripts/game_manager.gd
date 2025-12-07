@@ -12,13 +12,7 @@ var score = 0:
 func add_point():
 	score += 1
 var counter = 0
-func _ready():
-	while counter < 1:
-		await wait_time(2)
-		print("tick tock from game manager")
-		if score >= 1:
-			print("works on game_managers end")
-			counter = 5
+
 
 
 func wait_time(seconds: float) -> void:

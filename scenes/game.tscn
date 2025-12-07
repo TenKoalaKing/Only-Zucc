@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://dmns8cws1v72" path="res://scripts/game_manager.gd" id="25_pl11u"]
 [ext_resource type="Script" uid="uid://bhj0a2adviiwk" path="res://scenes/zuck_menu.gd" id="26_qnb83"]
 [ext_resource type="Texture2D" uid="uid://devrvnn5wg1vu" path="res://assets/rando/done/sprite_sheet_pahse_2_ideling-removebg-preview.png" id="27_sww3w"]
-[ext_resource type="Script" uid="uid://dl76oinputx4y" path="res://scenes/camera_2d.gd" id="28_sww3w"]
+[ext_resource type="Script" uid="uid://dl76oinputx4y" path="res://scripts/camera_2d.gd" id="28_sww3w"]
 [ext_resource type="PackedScene" uid="uid://ds1wwp011sabm" path="res://scenes/door_blocker.tscn" id="29_suyxu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]

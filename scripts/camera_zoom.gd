@@ -10,7 +10,7 @@ func _input(event):
 			zoom = zoomed_in
 		else:
 			zoom = default_zoom
-func _process(delta):
+#func _process(delta):
 	if Input.is_action_pressed("zoom_in"):
 		zoom = zoom.lerp(zoomed_in, zoom_speed)
 	elif Input.is_action_pressed("zoomed_in"):
