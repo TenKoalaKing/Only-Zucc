@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=51 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://dl76oinputx4y" path="res://scripts/camera_2d.gd" id="28_sww3w"]
 [ext_resource type="PackedScene" uid="uid://ds1wwp011sabm" path="res://scenes/door_blocker.tscn" id="29_suyxu"]
 [ext_resource type="PackedScene" uid="uid://g27vpcs7helt" path="res://scenes/invisible_tracker.tscn" id="30_sgl2t"]
+[ext_resource type="PackedScene" uid="uid://bn5ivi0g76yr7" path="res://scenes/invisible_tracker_menu.tscn" id="31_qouja"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -1411,6 +1412,7 @@ layer_0/tile_data = PackedInt32Array(11, 131072, 1, 65547, 65536, 2, 131083, 655
 unique_name_in_owner = true
 z_index = 5
 position = Vector2(-1243, 909)
+start_path = NodePath("../start_node")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zuck Stage 1"]
 position = Vector2(-4, 73)
@@ -1512,7 +1514,8 @@ position = Vector2(-647, 27270.002)
 scale = Vector2(1.1033334, 1.1608334)
 texture = ExtResource("20_5newe")
 
-[node name="start" parent="." instance=ExtResource("21_37s47")]
+[node name="start_node" parent="." instance=ExtResource("21_37s47")]
+unique_name_in_owner = true
 offset_left = 958.0
 offset_top = 26715.0
 offset_right = 958.0
@@ -1541,6 +1544,7 @@ unique_name_in_owner = true
 script = ExtResource("25_pl11u")
 
 [node name="zuck menu" type="CharacterBody2D" parent="."]
+position = Vector2(-21, -5)
 script = ExtResource("26_qnb83")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="zuck menu"]
@@ -1556,7 +1560,6 @@ limit_left = -4431
 limit_top = -9999389
 limit_right = 10845
 limit_bottom = 10000611
-position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("28_sww3w")
 
@@ -1570,3 +1573,6 @@ scale = Vector2(3, 3)
 
 [node name="invisible_tracker" parent="." instance=ExtResource("30_sgl2t")]
 position = Vector2(-1613, -1071)
+
+[node name="invisible_tracker_menu" parent="." instance=ExtResource("31_qouja")]
+position = Vector2(-39, 27225)
