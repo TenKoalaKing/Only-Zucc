@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bgcrh8ov7drn2"]
+
+[node name="edwardo health bar" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
