@@ -4,7 +4,8 @@ extends CharacterBody2D
 const SPEED = 720.0
 const JUMP_VELOCITY = -550.0
 @onready var animated_sprite = $AnimatedSprite2D
-
+func _ready() -> void:
+	add_to_group("player")
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

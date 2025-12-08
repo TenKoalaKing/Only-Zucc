@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bn5ivi0g76yr7"]
+
+[node name="invisible_tracker_menu" type="CharacterBody2D"]

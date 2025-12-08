@@ -33,7 +33,7 @@ script = ExtResource("1_ygbrp")
 
 [node name="Dialog" parent="." instance=ExtResource("2_yljgh")]
 unique_name_in_owner = true
-strings = Array[String](["Hola amigo", "mi tengo bueno", "ctrl+enter something"])
+strings = Array[String](["Hola amigoh hhhhhhh hhhhh", "mi tengo bueno", "ctrl+enter something"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ygbrp")
@@ -50,6 +50,7 @@ texture = ExtResource("6_mcs31")
 expand_mode = 1
 
 [node name="TalkRange" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TalkRange"]
 position = Vector2(-20.999983, 7.8999944)

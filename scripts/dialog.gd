@@ -15,7 +15,7 @@ var dialogNumber = 0  # Current dialogue index
 
 func _ready() -> void:
 	canvas_layer.hide()  # Hide dialogue UI at start
-	add_to_group("player")  # Add to player group
+	#add_to_group("player")  # Add to player group
 
 func _input(_event: InputEvent) -> void:
 	# Check if dialogue is visible and handle appropriate input

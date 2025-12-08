@@ -1,7 +1,6 @@
 extends Node
-
+@onready var camera_zoom = preload("res://scripts/camera_zoom.gd")
 signal score_changed(new_score)
-
 var score = 0:
 	set(value):
 		if score != value:  # Only emit if actually changed
