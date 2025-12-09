@@ -1,0 +1,48 @@
+extends CharacterBody2D
+
+@onready var zuck = %"Zuck Stage 1"
+@onready var animated_sprite = $AnimatedSprite2D
+
+const SPEED = 3.7
+const JUMP_VELOCITY = -400.0
+var random = 0
+var direction_random = 0
+var direction = 0
+var count = 0
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if is_on_floor() and random == 7:
+		velocity.y = JUMP_VELOCITY
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+	#flip sprite
+	if direction < 0: #flipped compared to zuck stage 1
+		animated_sprite.flip_h = true
+	elif direction > 0:
+		animated_sprite.flip_h = false
+	move_and_slide()
+
+func _ready() -> void:
+	while count == 0:
+		await wait_time(2)
+		random = randi() % 9 #
+		direction_random = randi() % 199 #
+		if direction_random <= 99:
+			direction = -1 * direction_random
+		else:
+			direction = direction_random - 100
+func wait_time(seconds: float) -> void:
+	var timer = Timer.new()
+	timer.wait_time = seconds
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	timer.queue_free()

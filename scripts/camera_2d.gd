@@ -3,11 +3,11 @@ extends Camera2D
 
 @export var start_path:NodePath
 @onready var start_script = get_node(start_path)
-var start = 1
-@export var target_path: NodePath
+var start = 2
+#@export var target_path: NodePath
 @export var speed: float = 5.0
 var target: Node2D
-var selected = 2 #0 is player, 1 is invisble node to shift camera prespective
+var selected = 2 #0 is player, 1 is invisble node to shift camera prespective (2 is menu)
 var previous_selected = null
 var target_menu_outro = 1
 
@@ -18,14 +18,15 @@ func _ready():
 	#await wait_time(2)
 	while 1 == 1:
 		await wait_time(.25)
-		if selected == previous_selected and start != 1:
+		start = start_script.play
+		if start == 1:
+			selected = 0
+		if start == 0:
+			selected = 2
+
+		if selected == previous_selected:
 			pass
 		else:
-			start = start_script.start
-			if start == 1:
-				selected = 2
-			if start == 0:
-				selected = 0
 			if selected == 0:
 				target = get_node_or_null("../Zuck Stage 1")
 				previous_selected = 0

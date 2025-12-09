@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://betunvmqdgxp4"]
+
+[ext_resource type="Script" uid="uid://b6e4fipvveh4l" path="res://scenes/microphone.gd" id="1_1tvei"]
+[ext_resource type="Texture2D" uid="uid://b4r38ov74y1yn" path="res://assets/rando/done/microphone.png" id="1_mq7fj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tvei"]
+size = Vector2(42.44379, 451.70032)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vcno1"]
+radius = 77.02597
+
+[node name="Microphone" type="CharacterBody2D"]
+script = ExtResource("1_1tvei")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_mq7fj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-17, 97)
+shape = SubResource("RectangleShape2D_1tvei")
+
+[node name="asd" type="CollisionShape2D" parent="."]
+position = Vector2(75.99999, -151)
+rotation = -2.1345375
+shape = SubResource("RectangleShape2D_1tvei")
+
+[node name="asd2" type="CollisionShape2D" parent="."]
+position = Vector2(106, -148)
+rotation = -2.1345375
+shape = SubResource("RectangleShape2D_1tvei")
+
+[node name="asd3" type="CollisionShape2D" parent="."]
+position = Vector2(-79, -49)
+rotation = -2.1345375
+shape = SubResource("RectangleShape2D_1tvei")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(245, -230)
+shape = SubResource("CircleShape2D_vcno1")

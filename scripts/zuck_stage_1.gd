@@ -3,15 +3,17 @@ extends CharacterBody2D
 @export var start_path:NodePath
 @onready var start_script = get_node(start_path)
 const SPEED = 720.0
-const JUMP_VELOCITY = -550.0
+const JUMP_VELOCITY = -627.0 #used to be -550.0
 var start_variable = 1
 @onready var animated_sprite = $AnimatedSprite2D
+var health = 100 
+var punch = 0
 func _ready() -> void:
 	add_to_group("player")
 func _physics_process(delta: float) -> void:
-	start_variable = start_script.start
+	start_variable = start_script.play
 	# Add the gravity.
-	if start_variable != 1:
+	if start_variable != 0:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
@@ -31,7 +33,9 @@ func _physics_process(delta: float) -> void:
 	
 	#play animations
 		if is_on_floor():
-			if direction == 0:
+			if punch == 1:
+				animated_sprite.play("fighting")
+			elif direction == 0:
 				animated_sprite.play("default")
 			else:
 				animated_sprite.play("running")
