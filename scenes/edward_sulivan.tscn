@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bt1u88qexhyqq"]
+[gd_scene load_steps=15 format=3 uid="uid://bt1u88qexhyqq"]
 
 [ext_resource type="Script" uid="uid://dtt3ufkmdwgf7" path="res://scenes/edward_sulivan.gd" id="1_2i0tx"]
 [ext_resource type="Texture2D" uid="uid://ce8ddbubb6i5" path="res://assets/rando/done/Eduardo Saverin.png" id="1_bw8g8"]
 [ext_resource type="Texture2D" uid="uid://dt7247auywo4" path="res://assets/rando/done/edward sulivan fighting.png" id="2_2i0tx"]
 [ext_resource type="Texture2D" uid="uid://bo3k2hypc3yof" path="res://assets/rando/done/edward sulivan fighting flipped.png" id="3_bqfuf"]
+[ext_resource type="PackedScene" uid="uid://dqjrvfsf38d53" path="res://scenes/Dialog.tscn" id="5_bqfuf"]
+[ext_resource type="Texture2D" uid="uid://cenlbej4o2815" path="res://assets/rando/done/speechbubble-removebg-preview.png" id="6_g4543"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4543"]
 atlas = ExtResource("2_2i0tx")
@@ -54,6 +56,9 @@ size = Vector2(74, 138)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p530"]
 size = Vector2(106.5, 138.75)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4543"]
+size = Vector2(194, 84.200005)
+
 [node name="Edward Sulivan" type="CharacterBody2D"]
 script = ExtResource("1_2i0tx")
 
@@ -84,3 +89,25 @@ shape = SubResource("RectangleShape2D_0p530")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_range_right"]
 position = Vector2(46, -5)
 shape = SubResource("RectangleShape2D_0p530")
+
+[node name="Dialog" parent="." instance=ExtResource("5_bqfuf")]
+unique_name_in_owner = true
+strings = Array[String](["Y u steal money foo?", "I'm goign to sue", "good luc fam"])
+
+[node name="TalkRange" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkRange"]
+position = Vector2(-20.999983, 7.8999944)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_g4543")
+
+[node name="DialogIndicator" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+offset_left = 11.0
+offset_top = -51.399998
+offset_right = 51.0
+offset_bottom = -11.399998
+texture = ExtResource("6_g4543")
+expand_mode = 1

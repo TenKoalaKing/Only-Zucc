@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwntmn5b6dram"]
+
+[ext_resource type="Script" uid="uid://dwe1of6yds43v" path="res://scenes/fight_area.gd" id="1_82e21"]
+[ext_resource type="AudioStream" uid="uid://147syb1x4f3a" path="res://music_and_sounds/fight music.wav" id="1_joo45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joo45"]
+size = Vector2(3350.5, 863)
+
+[node name="Fight Area" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_82e21")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_joo45")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1483.75, 324.5)
+shape = SubResource("RectangleShape2D_joo45")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

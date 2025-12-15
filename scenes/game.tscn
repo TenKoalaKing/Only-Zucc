@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=55 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://dmns8cws1v72" path="res://scripts/game_manager.gd" id="25_pl11u"]
 [ext_resource type="Script" uid="uid://bhj0a2adviiwk" path="res://scenes/zuck_menu.gd" id="26_qnb83"]
 [ext_resource type="Texture2D" uid="uid://devrvnn5wg1vu" path="res://assets/rando/done/sprite_sheet_pahse_2_ideling-removebg-preview.png" id="27_sww3w"]
+[ext_resource type="PackedScene" uid="uid://cwntmn5b6dram" path="res://scenes/fight_area.tscn" id="28_gxtfn"]
 [ext_resource type="Script" uid="uid://dl76oinputx4y" path="res://scripts/camera_2d.gd" id="28_sww3w"]
 [ext_resource type="PackedScene" uid="uid://ds1wwp011sabm" path="res://scenes/door_blocker.tscn" id="29_suyxu"]
 [ext_resource type="PackedScene" uid="uid://g27vpcs7helt" path="res://scenes/invisible_tracker.tscn" id="30_sgl2t"]
@@ -1556,8 +1557,11 @@ scale = Vector2(2.321839, 2.3263304)
 sprite_frames = SubResource("SpriteFrames_v2yb1")
 frame_progress = 0.4004757
 
+[node name="Fight Area" parent="." instance=ExtResource("28_gxtfn")]
+position = Vector2(7408, -525)
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(7361, 31)
+position = Vector2(7475, 5159)
 zoom = Vector2(0.62, 0.62)
 limit_left = -4431
 limit_top = -9999389
