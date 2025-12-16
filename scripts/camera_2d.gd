@@ -3,6 +3,8 @@ extends Camera2D
 
 @export var start_path:NodePath
 @onready var start_script = get_node(start_path)
+@onready var slime_node = %"Slime at start of game"
+@export var dialog_node: Node
 var start = 2
 #@export var target_path: NodePath
 @export var speed: float = 5.0
@@ -10,6 +12,10 @@ var target: Node2D
 var selected = 2 #0 is player, 1 is invisble node to shift camera prespective (2 is menu)
 var previous_selected = null
 var target_menu_outro = 1
+var first_start = 1
+var camera_focus_dialog = 0
+var slime_camera_focus = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,12 +24,35 @@ func _ready():
 	#await wait_time(2)
 	while 1 == 1:
 		await wait_time(.25)
+		#camera_focus_dialog = dialog_node.camera_focus
 		start = start_script.play
-		if start == 1:
-			selected = 0
+		slime_camera_focus = slime_node.camera_focus
+		if camera_focus_dialog == 1:
+			target = get_node_or_null("../invisible_tracker_door")
+		if camera_focus_dialog == 2:
+			target = get_node_or_null("../invisible_tracker_coin")
+		if start == 1 and first_start == 1:
+			target = get_node_or_null("../invisible_tracker_1")
+			#ADD sound here bell
+			#add backround noise for 11.5 seconds until end of script
+			await wait_time(2)
+			target = get_node_or_null("../invisible_tracker_2")
+			await wait_time(2)
+			target = get_node_or_null("../static zuckerberg")
+			await wait_time(1.5)
+			target = get_node_or_null("../BackOfClassroom")
+			await wait_time(3)
+			target = get_node_or_null("../Facebook_com")
+			await wait_time(3)
+			target = get_node_or_null("../BackOfClassroom")
+			await wait_time(1)
+			
+			previous_selected = 2
+			first_start = 0
+		if start == 1 and previous_selected == 2:
+			selected = 3
 		if start == 0:
 			selected = 2
-
 		if selected == previous_selected:
 			pass
 		else:
@@ -48,6 +77,15 @@ func _ready():
 					print("Camera tracking (fallback): ", target.name)
 				else:
 					print("Camera not tracking - target_path not set")
+			elif selected == 3: #runs through camera tracking first before setteling on character in selected equaling 0
+				target = get_node_or_null("../Zuck Stage 1")
+				if target:
+					print("Camera tracking (fallback): ", target.name)
+				else:
+					print("Camera not tracking - target_path not set")
+				await wait_time(3.5)
+				previous_selected = 3
+
 	
 	if target:
 		global_position = target.global_position

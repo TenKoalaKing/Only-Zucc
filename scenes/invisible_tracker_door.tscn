@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dlga3flewyea6"]
+
+[node name="invisible_tracker_door" type="CharacterBody2D"]

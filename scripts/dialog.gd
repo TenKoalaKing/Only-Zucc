@@ -6,6 +6,9 @@ extends Node
 # UI references
 @onready var canvas_layer: CanvasLayer = %CanvasLayer
 @onready var label: Label = %Label
+@onready var slime_script = get_parent()
+#var slime = 0
+#var camera_focus = 0
 
 # Dialogue state variables
 var inTalkRange := false  # Is player in range to talk?
@@ -16,6 +19,9 @@ var dialogNumber = 0  # Current dialogue index
 func _ready() -> void:
 	canvas_layer.hide()  # Hide dialogue UI at start
 	#add_to_group("player")  # Add to player group
+	while 1 == 1:
+		await wait_time(.25)
+		#slime = slime_script.slime_in_dialog
 
 func _input(_event: InputEvent) -> void:
 	# Check if dialogue is visible and handle appropriate input
@@ -82,3 +88,14 @@ func _dialog_animation():
 	character_speaking.tween_property(label, "visible_ratio", 1.0, 1.0)  # Fixed: correct method and property
 	await character_speaking.finished
 	textLoaded = true
+
+
+
+func wait_time(seconds: float) -> void:
+	var timer = Timer.new()
+	timer.wait_time = seconds
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	timer.queue_free()

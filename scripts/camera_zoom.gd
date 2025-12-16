@@ -10,10 +10,14 @@ var zoom_speed = 0.1                   # Speed of smooth zoom transition (0.0 to
 var zoom_out = 0
 var zoom_in = 0
 var start = 0
-func ready():
-	while 1 == 1:
+func _ready():
+	await get_tree().process_frame
+	print("hello")
+	while 2 > 1:
+		print("HEELLLOOO")
 		await wait_time(.5)
 		start = start_script.play
+		print(start)
 		if start == 1: #and zoom_out == 1 or zoom_in == 1:
 			# Toggle between default and zoomed in states
 			print("works")
