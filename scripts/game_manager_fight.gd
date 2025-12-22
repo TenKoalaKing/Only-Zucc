@@ -1,0 +1,38 @@
+extends Node2D
+@export var fight_path:NodePath
+@onready var fight_area_script = get_node(fight_path)
+
+@export var edward_sulivan_path:NodePath
+@onready var edward_sulivan_script = get_node(edward_sulivan_path)
+var fight = 0
+var hud_scene = preload("res://scenes/health_bar.tscn")
+var battle_status = 0
+var previous_bt = 0
+
+func _ready() -> void:
+	var canvas_layer = CanvasLayer.new()
+	add_child(canvas_layer)
+	var hud_instance = hud_scene.instantiate()
+	while 1 == 1:
+		await wait_time(.25)
+		fight = edward_sulivan_script.fight
+		battle_status = fight_area_script.in_fight_area
+		print(battle_status)
+		if battle_status == 1 and previous_bt == 0 and fight == 1:
+			canvas_layer.add_child(hud_instance)
+			previous_bt = 1
+		if battle_status == 0 and previous_bt == 1 and fight == 0:
+			canvas_layer.remove_child(hud_instance)
+			previous_bt = 0
+		else:
+			pass
+
+
+func wait_time(seconds: float) -> void:
+	var timer = Timer.new()
+	timer.wait_time = seconds
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	timer.queue_free()

@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @export var start_path:NodePath
 @onready var start_script = get_node(start_path)
+
+@export var edward_path:NodePath
+@onready var edward_script = get_node(edward_path)
+
 const SPEED = 720.0
 const JUMP_VELOCITY = -627.0 #used to be -550.0
 var start_variable = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=60 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://betunvmqdgxp4" path="res://scenes/microphone.tscn" id="33_js0lu"]
 [ext_resource type="PackedScene" uid="uid://bt1u88qexhyqq" path="res://scenes/edward_sulivan.tscn" id="34_js0lu"]
 [ext_resource type="PackedScene" uid="uid://cncrxrcmg4a0c" path="res://scenes/invisible_tracker_coin.tscn" id="34_nepv3"]
+[ext_resource type="PackedScene" uid="uid://ceqs2n1owqet7" path="res://scenes/game_manager_fight.tscn" id="40_m4url"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -1421,6 +1422,7 @@ unique_name_in_owner = true
 z_index = 5
 position = Vector2(-1263, 916)
 start_path = NodePath("../start_node")
+edward_path = NodePath("../Edward Sulivan")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zuck Stage 1"]
 position = Vector2(-4, 73)
@@ -1776,3 +1778,9 @@ scale = Vector2(0.8, 0.8)
 
 [node name="Edward Sulivan" parent="." instance=ExtResource("34_js0lu")]
 position = Vector2(9068, -66)
+collision_mask = 3
+
+[node name="game_manager_fight" parent="." instance=ExtResource("40_m4url")]
+position = Vector2(837.5496, 95.3963)
+fight_path = NodePath("../Fight Area")
+edward_sulivan_path = NodePath("../Edward Sulivan")

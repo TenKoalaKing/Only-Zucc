@@ -6,18 +6,8 @@ extends CharacterBody2D
 @onready var dia = %Dialog
 @onready var dialog_indicator: TextureRect = %DialogIndicator
 var dialog_inTalkRange
-
-	
-func _on_talk_range_body_entered(body: Node2D) -> void:
-	if body.name.contains("Zuck") or body.is_in_group("player"):
-		dialog_indicator.show()
-		dialog.inTalkRange = true
-func _on_talk_range_body_exited(body: Node2D) -> void:
-	if body.name.contains("Zuck") or body.is_in_group("player"):
-		dialog_indicator.hide()
-		dialog.inTalkRange = false
-		animated_sprite.play("default")
-
+var dialogNumber = 0
+var edward_in_dialog = 0
 const SPEED = 3.7
 const JUMP_VELOCITY = -400.0
 var random = 0
@@ -26,8 +16,48 @@ var direction = 0
 var count = 0
 var fight = 0
 
+
+
+#testing script that is in slime script:
+
+#func _on_talk_range_body_entered(body: Node2D) -> void:
+#	if body.name.contains("Zuck") or body.is_in_group("player"):
+#		print("entered works")
+#		dialog_indicator.show()
+#		dialog.inTalkRange = true
+#func _on_talk_range_body_exited(body: Node2D) -> void:
+#	if body.name.contains("Zuck") or body.is_in_group("player"):
+#		print("exited works")
+#		dialog_indicator.hide()
+#		dialog.inTalkRange = false
+#		animated_sprite.play("default")
+
+func _ready() -> void:	
+	dialog_indicator.hide()
+func _on_talk_range_body_entered(body: Node2D) -> void:
+	if body.name.contains("Zuck") or body.is_in_group("player"):
+		dialog_indicator.show()
+		edward_in_dialog = 1
+		dialog.inTalkRange = true
+		while body.name.contains("Zuck") or body.is_in_group("player"):
+			dialogNumber = dialog.dialogNumber
+			await wait_time(.1)
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		dialogNumber = dialogNumber + 1
+		#print("dialog number")
+		#print(dialogNumber)
+func _on_talk_range_body_exited(body: Node2D) -> void:
+	if body.name.contains("Zuck") or body.is_in_group("player"):
+		dialog_indicator.hide()
+		dialog.inTalkRange = false
+
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	fight = dialog.finished
 	if fight == 1:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -48,8 +78,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite.play("default")
 
-func _ready() -> void:
-	dialog_indicator.hide()
 	
 	while count == 0 and fight == 1:
 		await wait_time(1.1)

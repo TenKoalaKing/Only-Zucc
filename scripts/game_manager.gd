@@ -4,7 +4,6 @@ var score = 0:
 	set(value):
 		if score != value:  # Only emit if actually changed
 			score = value
-			print("Score changed to: ", score)
 			score_changed.emit(score)
 
 func add_point():

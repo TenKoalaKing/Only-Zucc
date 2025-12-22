@@ -22,7 +22,12 @@ func _on_talk_range_body_entered(body: Node2D) -> void:
 				camera_focus = 1
 			if dialogNumber == 3:
 				camera_focus = 2
-			print(dialogNumber)
+			#print(dialogNumber)
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		dialogNumber = dialogNumber + 1
+		#print("dialog number")
+		#print(dialogNumber)
 func _on_talk_range_body_exited(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
 		dialog_indicator.hide()

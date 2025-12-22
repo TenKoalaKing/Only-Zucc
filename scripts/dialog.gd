@@ -15,6 +15,7 @@ var inTalkRange := false  # Is player in range to talk?
 var character_speaking: Tween  # Tween for text animation
 var textLoaded = true  # Has current text finished loading?
 var dialogNumber = 0  # Current dialogue index
+var finished = 0 # for parent functions
 
 func _ready() -> void:
 	canvas_layer.hide()  # Hide dialogue UI at start
@@ -43,6 +44,7 @@ func _next_dialog():
 	dialogNumber += 1
 	if dialogNumber >= strings.size():  # Fixed: Added >= for safety
 		_quit_dialog()
+		finished = 1
 	else:
 		_start_dialog()
 
