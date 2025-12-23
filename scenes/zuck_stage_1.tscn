@@ -154,7 +154,6 @@ script = ExtResource("1_dyxwv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l3m0j")
 animation = &"fighting"
-frame_progress = 0.19106154
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -173,3 +172,8 @@ shape = SubResource("RectangleShape2D_l3m0j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_range_right"]
 position = Vector2(73.375, -5)
 shape = SubResource("RectangleShape2D_l3m0j")
+
+[connection signal="body_entered" from="hit_range_left" to="." method="_on_hit_range_left_body_entered"]
+[connection signal="body_exited" from="hit_range_left" to="." method="_on_hit_range_left_body_exited"]
+[connection signal="body_entered" from="hit_range_right" to="." method="_on_hit_range_right_body_entered"]
+[connection signal="body_exited" from="hit_range_right" to="." method="_on_hit_range_right_body_exited"]

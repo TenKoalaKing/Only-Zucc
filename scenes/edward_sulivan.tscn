@@ -111,5 +111,9 @@ offset_bottom = -11.399998
 texture = ExtResource("6_g4543")
 expand_mode = 1
 
+[connection signal="body_entered" from="hit_range_left" to="." method="_on_hit_range_left_body_entered"]
+[connection signal="body_exited" from="hit_range_left" to="." method="_on_hit_range_left_body_exited"]
+[connection signal="body_entered" from="hit_range_right" to="." method="_on_hit_range_right_body_entered"]
+[connection signal="body_exited" from="hit_range_right" to="." method="_on_hit_range_right_body_exited"]
 [connection signal="body_entered" from="TalkRange" to="." method="_on_talk_range_body_entered"]
 [connection signal="body_exited" from="TalkRange" to="." method="_on_talk_range_body_exited"]

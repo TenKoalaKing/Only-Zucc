@@ -9,6 +9,7 @@ var previous_health = 3
 #func _process(delta: float) -> void:
 #	pass
 func _ready() -> void:
+	animated_sprite.play("3")
 	while 1 == 1:
 		await wait_time(.25)
 		if health != previous_health:
