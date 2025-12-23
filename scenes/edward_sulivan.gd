@@ -15,6 +15,7 @@ var direction_random = 0
 var direction = 0
 var count = 0
 var fight = 0
+var finished_dialog = 0
 
 
 
@@ -32,26 +33,42 @@ var fight = 0
 #		dialog.inTalkRange = false
 #		animated_sprite.play("default")
 
+
+#Problems to fix: health bar initially setting to zero and dying, and fighting animation going to fast
 func _ready() -> void:	
 	dialog_indicator.hide()
+	while 1 == 1:
+		await wait_time(.25)
+		dialogNumber = dialog.dialogNumber
+		finished_dialog = dialog.finished
+		#if dialogNumber == 3: #number to equal dialog array number (now testing for fight variable instead
+			#fight = 1
+		if finished_dialog == 1:
+			fight = 1
+		if fight == 1:
+			animated_sprite.play("fighting")
 func _on_talk_range_body_entered(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
-		dialog_indicator.show()
-		edward_in_dialog = 1
-		dialog.inTalkRange = true
-		while body.name.contains("Zuck") or body.is_in_group("player"):
-			dialogNumber = dialog.dialogNumber
-			await wait_time(.1)
+		if fight == 0:
+			dialog_indicator.show()
+			edward_in_dialog = 1
+			dialog.inTalkRange = true
+			print("Player entered range")
+			
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		dialogNumber = dialogNumber + 1
+#func _input(_event: InputEvent) -> void:
+	#if Input.is_action_just_pressed("ui_accept"):
+		#dialogNumber = dialogNumber + 1
 		#print("dialog number")
 		#print(dialogNumber)
+# This runs once when the player leaves
 func _on_talk_range_body_exited(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
 		dialog_indicator.hide()
+		edward_in_dialog = 0
 		dialog.inTalkRange = false
+		print("Player left range")
+
 
 
 
@@ -65,8 +82,9 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 		if is_on_floor() and random == 7:
 			velocity.y = JUMP_VELOCITY
-		if direction:
-			velocity.x = direction * SPEED
+			random = 0
+		if direction != 0:
+			velocity.x = (direction / abs(direction)) * SPEED #change for steady speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		#flip sprite
@@ -75,18 +93,20 @@ func _physics_process(delta: float) -> void:
 		elif direction > 0:
 			animated_sprite.flip_h = false
 		move_and_slide()
+		if count == 0:
+			count = 1 #prevents reruning frames
 	else:
 		animated_sprite.play("default")
 
 	
-	while count == 0 and fight == 1:
-		await wait_time(1.1)
-		random = randi() % 9 #
-		direction_random = randi() % 199 #
-		if direction_random <= 99:
-			direction = -1 * direction_random
-		else:
-			direction = direction_random - 100
+func _change_direction():
+	random = randi() % 9 #random integer 1 - 10
+	direction_random = randi() % 199 #
+	if direction_random <= 99:
+		direction = -1 * direction_random
+	else:
+		direction = direction_random - 100
+	await get_tree().create_timer(3.0).timeout
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()
 	timer.wait_time = seconds

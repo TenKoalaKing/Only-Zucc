@@ -91,7 +91,7 @@ shape = SubResource("RectangleShape2D_0p530")
 
 [node name="Dialog" parent="." instance=ExtResource("5_bqfuf")]
 unique_name_in_owner = true
-strings = Array[String](["Y u steal money foo?", "I'm goign to sue", "good luc fam"])
+strings = Array[String](["Y u steal money foo", "I'm goign to sue", "good luc fam"])
 
 [node name="TalkRange" type="Area2D" parent="."]
 collision_mask = 3
@@ -110,3 +110,6 @@ offset_right = 51.0
 offset_bottom = -11.399998
 texture = ExtResource("6_g4543")
 expand_mode = 1
+
+[connection signal="body_entered" from="TalkRange" to="." method="_on_talk_range_body_entered"]
+[connection signal="body_exited" from="TalkRange" to="." method="_on_talk_range_body_exited"]
