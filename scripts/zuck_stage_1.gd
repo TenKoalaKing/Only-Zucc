@@ -25,7 +25,8 @@ var facing_range = 0
 func _ready() -> void:
 	add_to_group("player")
 func _physics_process(delta: float) -> void:
-	health = edward_script.zuck_health
+	health = edward_script.zuck_health #health not updating
+	#print(health)
 	start_variable = start_script.play
 	# Add the gravity.
 	if start_variable != 0:
@@ -49,12 +50,16 @@ func _physics_process(delta: float) -> void:
 		var direction := Input.get_axis("move_left", "move_right")
 		#flip sprite
 		theoretical_direction = direction
-		if punch == 1 and direction == 0:
+		if punch == 1 and direction != 1:
 			theoretical_direction = -1 * direction
+			#print("switched for punch")
+			#print(direction)
+			#print("theoretical")
+			#print(theoretical_direction)
 		if theoretical_direction > 0:
 			animated_sprite.flip_h = true
 			facing = 1
-		elif theoretical_direction < 0:
+		elif theoretical_direction <= 0:
 			animated_sprite.flip_h = false
 			facing = -1
 		if punch == 1:

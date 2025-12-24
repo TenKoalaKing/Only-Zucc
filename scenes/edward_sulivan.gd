@@ -85,6 +85,7 @@ func _physics_process(delta: float) -> void:
 	health = zuck.health
 	if fight == 1:
 		if punch == 1:
+			punch = 0
 			animated_sprite.play("fighting")
 			if zuck_in_hitbox == 1 and facing == facing_range:
 				edward_health -= 1
@@ -105,10 +106,10 @@ func _physics_process(delta: float) -> void:
 		
 		if direction < 0: #flipped compared to zuck stage 1
 			animated_sprite.flip_h = true
-			facing = -1 #test for opposites
+			facing = 1
 		elif direction > 0:
 			animated_sprite.flip_h = false
-			facing = 1
+			facing = -1
 		move_and_slide()
 		if count == 0:
 			count = 1 #prevents reruning frames

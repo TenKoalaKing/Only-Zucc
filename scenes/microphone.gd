@@ -1,9 +1,11 @@
 extends CharacterBody2D
 @onready var zuck = %"Zuck Stage 1"
+@onready var edward_script = %"Edward Sulivan"
 			#self.visible = false
 			#$CollisionShape2D.disabled = true
-var health = 100
+var health = 3
 var count = 0
+var edward_health = 3
 func _ready() -> void:
 	self.visible = false
 	$CollisionShape2D.disabled = true
@@ -14,7 +16,8 @@ func _ready() -> void:
 	while count == 0:
 		await wait_time(.25)
 		health = zuck.health
-		if health <= 0:
+		edward_health = edward_script.health
+		if health <= 0 or edward_health <= 0:
 			self.visible = true
 			$CollisionShape2D.disabled = false
 			$asd.disabled = false

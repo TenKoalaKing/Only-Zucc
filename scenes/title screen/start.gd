@@ -10,7 +10,7 @@ func _on_exit_to_menu():
 	play = 0
 
 func _on_button_pressed() -> void:
-	print("button works")
+	#print("button works")
 	play = 1
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()

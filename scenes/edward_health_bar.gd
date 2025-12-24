@@ -1,7 +1,6 @@
 extends Node2D #script to attach to camera 2d and fetch health status from player and have the variable for when dead
 @onready var animated_sprite = $AnimatedSprite2D
-
-#var zuck_script = get_tree().get_first_node_in_group("player")
+@onready var edward_script = %"Edward Sulivan"
 var health = 3
 var previous_health = 3
 	
@@ -10,18 +9,11 @@ var previous_health = 3
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
-
 func _ready() -> void:
 	animated_sprite.play("3")
-	var zuck_script = get_tree().get_first_node_in_group("player")
-	if zuck_script:
-		print("found zucccy")
-	else:
-		print("zuck is not found in canvas layer")
 	while 1 == 1:
 		await wait_time(.25)
-		health = zuck_script.health
-		#print(health)
+		health = edward_script.health
 		if health != previous_health:
 			if health == 3:
 				previous_health = 3

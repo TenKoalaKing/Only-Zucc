@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bduk4jjvdtf8s"]
+
+[ext_resource type="Script" uid="uid://dp21mipys7djh" path="res://scripts/lose_message.gd" id="1_84opg"]
+[ext_resource type="FontFile" uid="uid://bkrf6fmtnwhe1" path="res://fonts/PixelOperator8-Bold.ttf" id="2_a5irn"]
+
+[node name="lose_message" type="Node2D"]
+script = ExtResource("1_84opg")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_a5irn")
+text = "You Lose );"

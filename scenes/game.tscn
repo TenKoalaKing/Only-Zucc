@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=62 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -40,6 +40,8 @@
 [ext_resource type="PackedScene" uid="uid://bt1u88qexhyqq" path="res://scenes/edward_sulivan.tscn" id="34_js0lu"]
 [ext_resource type="PackedScene" uid="uid://cncrxrcmg4a0c" path="res://scenes/invisible_tracker_coin.tscn" id="34_nepv3"]
 [ext_resource type="PackedScene" uid="uid://ceqs2n1owqet7" path="res://scenes/game_manager_fight.tscn" id="40_m4url"]
+[ext_resource type="PackedScene" uid="uid://ghg3uecnq28n" path="res://scenes/win_message.tscn" id="41_pr1ej"]
+[ext_resource type="PackedScene" uid="uid://bduk4jjvdtf8s" path="res://scenes/lose_message.tscn" id="42_05nbr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -1777,6 +1779,7 @@ rotation = 4.8816857
 scale = Vector2(0.8, 0.8)
 
 [node name="Edward Sulivan" parent="." instance=ExtResource("34_js0lu")]
+unique_name_in_owner = true
 position = Vector2(9068, -66)
 collision_mask = 3
 
@@ -1784,3 +1787,11 @@ collision_mask = 3
 position = Vector2(837.5496, 95.3963)
 fight_path = NodePath("../Fight Area")
 edward_sulivan_path = NodePath("../Edward Sulivan")
+
+[node name="win_message" parent="." instance=ExtResource("41_pr1ej")]
+position = Vector2(8172, -531)
+scale = Vector2(10, 10)
+
+[node name="lose_message" parent="." instance=ExtResource("42_05nbr")]
+position = Vector2(8169, -529)
+scale = Vector2(10, 10)

@@ -1,7 +1,8 @@
 extends Node2D
 @export var fight_path:NodePath
 @onready var fight_area_script = get_node(fight_path)
-
+@export var zuck_path:NodePath
+@onready var zuck_script = get_node(zuck_path)
 @export var edward_sulivan_path:NodePath
 @onready var edward_sulivan_script = get_node(edward_sulivan_path)
 var fight = 0
@@ -13,6 +14,8 @@ func _ready() -> void:
 	var canvas_layer = CanvasLayer.new()
 	add_child(canvas_layer)
 	var hud_instance = hud_scene.instantiate()
+
+	
 	while 1 == 1:
 		await wait_time(.25)
 		fight = edward_sulivan_script.fight

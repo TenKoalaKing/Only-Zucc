@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ghg3uecnq28n"]
+
+[ext_resource type="Script" uid="uid://bb0asup10mtgi" path="res://scripts/win_message.gd" id="1_wo3bk"]
+[ext_resource type="FontFile" uid="uid://bkrf6fmtnwhe1" path="res://fonts/PixelOperator8-Bold.ttf" id="2_pd6qy"]
+
+[node name="win_message" type="Node2D"]
+script = ExtResource("1_wo3bk")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_pd6qy")
+text = "You Win!!!"
