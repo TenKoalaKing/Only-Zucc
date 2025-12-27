@@ -27,65 +27,74 @@ func _ready():
 		#camera_focus_dialog = dialog_node.camera_focus
 		start = start_script.play
 		slime_camera_focus = slime_node.camera_focus
-		if camera_focus_dialog == 1:
-			target = get_node_or_null("../invisible_tracker_door")
-		if camera_focus_dialog == 2:
-			target = get_node_or_null("../invisible_tracker_coin")
-		if start == 1 and first_start == 1:
-			target = get_node_or_null("../invisible_tracker_1")
-			#ADD sound here bell
-			#add backround noise for 11.5 seconds until end of script
-			await wait_time(2)
-			target = get_node_or_null("../invisible_tracker_2")
-			await wait_time(2)
-			target = get_node_or_null("../static zuckerberg")
-			await wait_time(1.5)
-			target = get_node_or_null("../BackOfClassroom")
-			await wait_time(3)
-			target = get_node_or_null("../Facebook_com")
-			await wait_time(3)
-			target = get_node_or_null("../BackOfClassroom")
-			await wait_time(1)
-			
-			previous_selected = 2
-			first_start = 0
-		if start == 1 and previous_selected == 2:
-			selected = 3
-		if start == 0:
-			selected = 2
-		if selected == previous_selected:
-			pass
+		
+		if 1 == 2:
+			print("logic has betrayed me")
 		else:
-			if selected == 0:
-				target = get_node_or_null("../Zuck Stage 1")
-				previous_selected = 0
-				if target:
-					print("Camera tracking (fallback): ", target.name)
-				else:
-					print("Camera not tracking - target_path not set")
-			elif selected == 1:
-				previous_selected = 1
-				target = get_node_or_null("../invisible_tracker")
-				if target:
-					print("Camera tracking (fallback): ", target.name)
-				else:
-					print("Camera not tracking - target_path not set")
-			elif selected == 2:
+			if camera_focus_dialog == 2:
+				target = get_node_or_null("../invisible_tracker_coin")
+			if start == 1 and first_start == 1:
+				target = get_node_or_null("../invisible_tracker_1")
+				#ADD sound here bell
+				#add backround noise for 11.5 seconds until end of script
+				await wait_time(2)
+				target = get_node_or_null("../invisible_tracker_2")
+				await wait_time(2)
+				target = get_node_or_null("../static zuckerberg")
+				await wait_time(1.5)
+				target = get_node_or_null("../BackOfClassroom")
+				await wait_time(3)
+				target = get_node_or_null("../Facebook_com")
+				await wait_time(3)
+				target = get_node_or_null("../BackOfClassroom")
+				await wait_time(1)
+			
 				previous_selected = 2
-				target = get_node_or_null("../invisible_tracker_menu")
-				if target:
-					print("Camera tracking (fallback): ", target.name)
-				else:
-					print("Camera not tracking - target_path not set")
-			elif selected == 3: #runs through camera tracking first before setteling on character in selected equaling 0
-				target = get_node_or_null("../Zuck Stage 1")
-				if target:
-					print("Camera tracking (fallback): ", target.name)
-				else:
-					print("Camera not tracking - target_path not set")
-				await wait_time(3.5)
-				previous_selected = 3
-
+				first_start = 0
+			if start == 1 and previous_selected == 2:
+				selected = 3
+			if start == 0:
+				selected = 2
+			if slime_camera_focus == 1:
+				selected = 7
+			if selected == previous_selected:
+				pass
+			else:
+				if selected == 0:
+					target = get_node_or_null("../Zuck Stage 1")
+					previous_selected = 0
+					if target:
+						print("Camera tracking (fallback): ", target.name)
+					else:
+						print("Camera not tracking - target_path not set")
+				elif selected == 1:
+					previous_selected = 1
+					target = get_node_or_null("../invisible_tracker")
+					if target:
+						print("Camera tracking (fallback): ", target.name)
+					else:
+						print("Camera not tracking - target_path not set")
+				elif selected == 2:
+					previous_selected = 2
+					target = get_node_or_null("../invisible_tracker_menu")
+					if target:
+						print("Camera tracking (fallback): ", target.name)
+					else:
+						print("Camera not tracking - target_path not set")
+				elif selected == 3: #runs through camera tracking first before setteling on character in selected equaling 0
+					target = get_node_or_null("../Zuck Stage 1")
+					if target:
+						print("Camera tracking (fallback): ", target.name)
+					else:
+						print("Camera not tracking - target_path not set")
+					await wait_time(3.5)
+					previous_selected = 3
+				elif selected == 7:
+					target = get_node_or_null("../invisible_tracker_door")
+					if target:
+						print("Camera tracking (fallback): ", target.name)
+					else:
+						print("Camera not tracking - target_path not set")
 	
 	if target:
 		global_position = target.global_position

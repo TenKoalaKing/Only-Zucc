@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://betunvmqdgxp4"]
 
-[ext_resource type="Script" uid="uid://b6e4fipvveh4l" path="res://scenes/microphone.gd" id="1_1tvei"]
+[ext_resource type="Script" uid="uid://b6e4fipvveh4l" path="res://scripts/microphone.gd" id="1_1tvei"]
 [ext_resource type="Texture2D" uid="uid://b4r38ov74y1yn" path="res://assets/rando/done/microphone.png" id="1_mq7fj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tvei"]

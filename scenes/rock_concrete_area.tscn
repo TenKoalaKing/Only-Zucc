@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b76n17audukey"]
+
+[ext_resource type="Script" uid="uid://bn0jww4vv1ku" path="res://scripts/rock_concrete_area.gd" id="1_71mca"]
+[ext_resource type="AudioStream" uid="uid://wlfbbnlqb5jh" path="res://music_and_sounds/walking-on-concrete-39119.mp3" id="2_udtch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlodo"]
+size = Vector2(207.75, 117)
+
+[node name="rock-concrete_area" type="Area2D"]
+script = ExtResource("1_71mca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_jlodo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_udtch")

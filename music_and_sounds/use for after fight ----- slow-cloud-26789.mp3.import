@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cy4mf8tuich67"
+path="res://.godot/imported/use for after fight ----- slow-cloud-26789.mp3-9ec385f788292beaa8e0f476e5f7a6db.mp3str"
+
+[deps]
+
+source_file="res://music_and_sounds/use for after fight ----- slow-cloud-26789.mp3"
+dest_files=["res://.godot/imported/use for after fight ----- slow-cloud-26789.mp3-9ec385f788292beaa8e0f476e5f7a6db.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

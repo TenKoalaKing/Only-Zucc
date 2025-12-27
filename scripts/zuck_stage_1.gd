@@ -21,13 +21,25 @@ var theoretical_direction = 0
 var edward_in_hitbox = 0
 var facing = 0
 var facing_range = 0
+var moving = 0
+var first_init = 0
+var reset = 0
 
 func _ready() -> void:
 	add_to_group("player")
 func _physics_process(delta: float) -> void:
 	health = edward_script.zuck_health #health not updating
 	#print(health)
+	if health <= 0:
+		$boo.play()
+	if edward_health <= 0:
+		$yay.play()
 	start_variable = start_script.play
+	if reset == 1:
+		_reset()
+	if start_variable == 1 and first_init == 0:
+		$backround_music.play()
+		first_init = 1 #end of init
 	# Add the gravity.
 	if start_variable != 0:
 		if not is_on_floor():
@@ -37,12 +49,14 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		fight = edward_script.fight
+		if fight == 1:
+			$backround_music.stop()
 		if Input.is_action_just_pressed("punch") and fight == 1:
 			punch = 1
 			animated_sprite.play("fighting")
 			if edward_in_hitbox == 1 and facing == facing_range:
 				edward_health -= 1
-				#play a successful hit sound***
+				$ding.play()
 				print ("edwardo hit")
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
@@ -72,10 +86,13 @@ func _physics_process(delta: float) -> void:
 				#animated_sprite.play("fighting")
 			if direction == 0:
 				animated_sprite.play("default")
+				moving = 0
 			else:
 				animated_sprite.play("running")
+				moving = 1
 		else:
 			animated_sprite.play("jumping")
+			moving = 0
 	
 	
 		if direction:
@@ -86,7 +103,8 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	else:
 		pass
-
+func _reset():
+	pass
 
 
 func wait_time(seconds: float) -> void:

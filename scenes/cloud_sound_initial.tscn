@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw2cwwc3hk8ra"]
+
+[ext_resource type="Script" uid="uid://b3ps8qv4yru7m" path="res://scripts/cloud_sound_initial.gd" id="1_s7e4c"]
+[ext_resource type="AudioStream" uid="uid://cy4mf8tuich67" path="res://music_and_sounds/use for after fight ----- slow-cloud-26789.mp3" id="2_w4116"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlodo"]
+size = Vector2(207.75, 117)
+
+[node name="cloud_sound_initial" type="Area2D"]
+script = ExtResource("1_s7e4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -4.5)
+shape = SubResource("RectangleShape2D_jlodo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_w4116")

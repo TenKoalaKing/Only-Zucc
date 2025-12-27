@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwntmn5b6dram"]
 
-[ext_resource type="Script" uid="uid://dwe1of6yds43v" path="res://scenes/fight_area.gd" id="1_82e21"]
+[ext_resource type="Script" uid="uid://dwe1of6yds43v" path="res://scripts/fight_area.gd" id="1_82e21"]
 [ext_resource type="AudioStream" uid="uid://147syb1x4f3a" path="res://music_and_sounds/fight music.wav" id="1_joo45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joo45"]

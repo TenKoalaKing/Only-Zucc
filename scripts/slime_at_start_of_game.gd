@@ -10,18 +10,22 @@ var dialogNumber = 0
 var camera_focus = 0
 func _ready() -> void:	
 	dialog_indicator.hide()
+	while 1 == 1:#body.name.contains("Zuck") or body.is_in_group("player"):
+		dialogNumber = dia.dialogNumber
+		await wait_time(.1)
+		print("heartbeat")
+		print(dialogNumber)
+		print(camera_focus)
+		if dialogNumber == 2:
+			camera_focus = 1
+		if dialogNumber == 3:
+			camera_focus = 2
 func _on_talk_range_body_entered(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
 		dialog_indicator.show()
 		slime_in_dialog = 1
 		dialog.inTalkRange = true
-		while body.name.contains("Zuck") or body.is_in_group("player"):
-			dialogNumber = dialog.dialogNumber
-			await wait_time(.1)
-			if dialogNumber == 2:
-				camera_focus = 1
-			if dialogNumber == 3:
-				camera_focus = 2
+
 			#print(dialogNumber)
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept"):

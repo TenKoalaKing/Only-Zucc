@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=66 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://cjqmo4pjxj153" path="res://scenes/title screen/settings.tscn" id="22_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://cx1seal3040y6" path="res://scenes/title screen/credits.tscn" id="23_pl11u"]
 [ext_resource type="Script" uid="uid://dmns8cws1v72" path="res://scripts/game_manager.gd" id="25_pl11u"]
-[ext_resource type="Script" uid="uid://bhj0a2adviiwk" path="res://scenes/zuck_menu.gd" id="26_qnb83"]
+[ext_resource type="Script" uid="uid://bhj0a2adviiwk" path="res://scripts/zuck_menu.gd" id="26_qnb83"]
 [ext_resource type="Texture2D" uid="uid://devrvnn5wg1vu" path="res://assets/rando/done/sprite_sheet_pahse_2_ideling-removebg-preview.png" id="27_sww3w"]
 [ext_resource type="PackedScene" uid="uid://cwntmn5b6dram" path="res://scenes/fight_area.tscn" id="28_gxtfn"]
 [ext_resource type="Script" uid="uid://dl76oinputx4y" path="res://scripts/camera_2d.gd" id="28_sww3w"]
@@ -42,6 +42,10 @@
 [ext_resource type="PackedScene" uid="uid://ceqs2n1owqet7" path="res://scenes/game_manager_fight.tscn" id="40_m4url"]
 [ext_resource type="PackedScene" uid="uid://ghg3uecnq28n" path="res://scenes/win_message.tscn" id="41_pr1ej"]
 [ext_resource type="PackedScene" uid="uid://bduk4jjvdtf8s" path="res://scenes/lose_message.tscn" id="42_05nbr"]
+[ext_resource type="Script" uid="uid://cgydtwoellbs8" path="res://scripts/grass_area.gd" id="43_0sl42"]
+[ext_resource type="PackedScene" uid="uid://bupb05j7lu888" path="res://scenes/grass_area.tscn" id="44_oaba0"]
+[ext_resource type="PackedScene" uid="uid://b76n17audukey" path="res://scenes/rock_concrete_area.tscn" id="45_oaba0"]
+[ext_resource type="PackedScene" uid="uid://cw2cwwc3hk8ra" path="res://scenes/cloud_sound_initial.tscn" id="46_458eo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -1786,6 +1790,7 @@ collision_mask = 3
 [node name="game_manager_fight" parent="." instance=ExtResource("40_m4url")]
 position = Vector2(837.5496, 95.3963)
 fight_path = NodePath("../Fight Area")
+zuck_path = NodePath("../Zuck Stage 1")
 edward_sulivan_path = NodePath("../Edward Sulivan")
 
 [node name="win_message" parent="." instance=ExtResource("41_pr1ej")]
@@ -1795,3 +1800,43 @@ scale = Vector2(10, 10)
 [node name="lose_message" parent="." instance=ExtResource("42_05nbr")]
 position = Vector2(8169, -529)
 scale = Vector2(10, 10)
+
+[node name="sound_areas_folder" type="Node" parent="."]
+script = ExtResource("43_0sl42")
+
+[node name="grass_area" parent="sound_areas_folder" instance=ExtResource("44_oaba0")]
+position = Vector2(-3159, -138.00018)
+scale = Vector2(50, 5)
+skew = 0.008726646
+
+[node name="grass_area4" parent="sound_areas_folder" instance=ExtResource("44_oaba0")]
+position = Vector2(6467, -219)
+scale = Vector2(25, 5)
+skew = 0.008726646
+
+[node name="grass_area5" parent="sound_areas_folder" instance=ExtResource("44_oaba0")]
+position = Vector2(10165, -215)
+scale = Vector2(8, 5)
+skew = 0.008726646
+
+[node name="grass_area3" parent="sound_areas_folder" instance=ExtResource("44_oaba0")]
+position = Vector2(2499, -68.000046)
+scale = Vector2(29.5, 5)
+skew = 0.008726646
+
+[node name="grass_area2" parent="sound_areas_folder" instance=ExtResource("44_oaba0")]
+position = Vector2(-4033, -657.99994)
+scale = Vector2(50, 5)
+skew = 0.008726646
+
+[node name="rock-concrete_area" parent="sound_areas_folder" instance=ExtResource("45_oaba0")]
+position = Vector2(-2616, 1205)
+scale = Vector2(150, 20)
+
+[node name="rock-concrete_area2" parent="sound_areas_folder" instance=ExtResource("45_oaba0")]
+position = Vector2(8793.001, -220)
+scale = Vector2(16.5, 5)
+
+[node name="cloud_sound_initial" parent="sound_areas_folder" instance=ExtResource("46_458eo")]
+position = Vector2(5449.0005, -980)
+scale = Vector2(3.7, 3.7)
