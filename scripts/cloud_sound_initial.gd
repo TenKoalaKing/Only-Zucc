@@ -20,6 +20,7 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _ready() -> void:
 	while 1 == 1:
+		await get_tree().process_frame
 		if in_area == 1:
 			$AudioStreamPlayer.play()
 			await wait_time(30)

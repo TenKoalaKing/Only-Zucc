@@ -82,7 +82,7 @@ func _on_talk_range_body_exited(body: Node2D) -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	fight = dialog.finished
-	health = zuck.health
+	health = zuck.edward_health
 	if fight == 1:
 		if punch == 1:
 			punch = 0
@@ -143,14 +143,14 @@ func wait_time(seconds: float) -> void:
 	timer.queue_free()
 
 
-
-func _on_hit_range_left_body_entered(body: Node2D) -> void:
+#used _body to avoid errors: used to be "body"
+func _on_hit_range_left_body_entered(_body: Node2D) -> void:
 	facing_range =  -1
 	zuck_in_hitbox = 1
-func _on_hit_range_left_body_exited(body: Node2D) -> void:
+func _on_hit_range_left_body_exited(_body: Node2D) -> void:
 	zuck_in_hitbox = 0
-func _on_hit_range_right_body_entered(body: Node2D) -> void:
+func _on_hit_range_right_body_entered(_body: Node2D) -> void:
 	facing_range = 1
 	zuck_in_hitbox = 1
-func _on_hit_range_right_body_exited(body: Node2D) -> void:
+func _on_hit_range_right_body_exited(_body: Node2D) -> void:
 	zuck_in_hitbox = 0

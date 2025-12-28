@@ -19,7 +19,7 @@ func _ready() -> void:
 	else:
 		print("zuck is not found in canvas layer")
 	while 1 == 1:
-		await wait_time(.25)
+		await get_tree().process_frame
 		health = zuck_script.health
 		#print(health)
 		if health != previous_health:

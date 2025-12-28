@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c08pfsiwabsbn"
+path="res://.godot/imported/menu music - Elektronomia, Carpe - Sky High (Carpe Remix) [NCS Release].mp3-3674af8e738b65355f828f0da7706297.mp3str"
+
+[deps]
+
+source_file="res://music_and_sounds/menu music - Elektronomia, Carpe - Sky High (Carpe Remix) [NCS Release].mp3"
+dest_files=["res://.godot/imported/menu music - Elektronomia, Carpe - Sky High (Carpe Remix) [NCS Release].mp3-3674af8e738b65355f828f0da7706297.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

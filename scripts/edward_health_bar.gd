@@ -11,6 +11,7 @@ var previous_health = 3
 #	pass
 func _ready() -> void:
 	animated_sprite.play("3")
+	self.visible = false
 	while 1 == 1:
 		await wait_time(.25)
 		health = edward_script.health

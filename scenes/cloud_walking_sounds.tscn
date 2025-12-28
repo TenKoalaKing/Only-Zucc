@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ah8batrb4ck"]
+
+[ext_resource type="Script" uid="uid://cljo4146yb2ci" path="res://scripts/cloud_walking_sounds.gd" id="1_6iomc"]
+[ext_resource type="AudioStream" uid="uid://wlfbbnlqb5jh" path="res://music_and_sounds/walking-on-concrete-39119.mp3" id="2_32vf8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlodo"]
+size = Vector2(1467.4375, 1111.5)
+
+[node name="cloud_walking_sounds" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_6iomc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 1)
+shape = SubResource("RectangleShape2D_jlodo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_32vf8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

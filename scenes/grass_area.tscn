@@ -7,6 +7,7 @@
 size = Vector2(207.75, 117)
 
 [node name="grass_area" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_7v1v2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -15,3 +16,6 @@ shape = SubResource("RectangleShape2D_jlodo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ilcuw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

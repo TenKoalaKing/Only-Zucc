@@ -6,6 +6,9 @@ extends CharacterBody2D
 @export var edward_path:NodePath
 @onready var edward_script = get_node(edward_path)
 
+@export var main_camera:NodePath
+@onready var camera1 = get_node(main_camera)
+
 #@export var health_bar_path:NodePath
 #@onready var health_bar_script = get_node(health_bar_path)
 
@@ -24,6 +27,7 @@ var facing_range = 0
 var moving = 0
 var first_init = 0
 var reset = 0
+var start_sequence_done = 0
 
 func _ready() -> void:
 	add_to_group("player")
@@ -35,9 +39,10 @@ func _physics_process(delta: float) -> void:
 	if edward_health <= 0:
 		$yay.play()
 	start_variable = start_script.play
+	start_sequence_done = camera1.start_sequence_done
 	if reset == 1:
 		_reset()
-	if start_variable == 1 and first_init == 0:
+	if start_variable == 1 and first_init == 0 and start_sequence_done == 1:
 		$backround_music.play()
 		first_init = 1 #end of init
 	# Add the gravity.
@@ -116,14 +121,14 @@ func wait_time(seconds: float) -> void:
 	await timer.timeout
 	timer.queue_free()
 
-
-func _on_hit_range_left_body_entered(body: Node2D) -> void:
+#used _body to avoid errors: used to be "body"
+func _on_hit_range_left_body_entered(_body: Node2D) -> void:
 	facing_range =  -1
 	edward_in_hitbox = 1
-func _on_hit_range_left_body_exited(body: Node2D) -> void:
+func _on_hit_range_left_body_exited(_body: Node2D) -> void:
 	edward_in_hitbox = 0
-func _on_hit_range_right_body_entered(body: Node2D) -> void:
+func _on_hit_range_right_body_entered(_body: Node2D) -> void:
 	facing_range = 1
 	edward_in_hitbox = 1
-func _on_hit_range_right_body_exited(body: Node2D) -> void:
+func _on_hit_range_right_body_exited(_body: Node2D) -> void:
 	edward_in_hitbox = 0

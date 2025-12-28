@@ -15,7 +15,7 @@ func _ready():
 	print("hello")
 	while 2 > 1:
 		print("HEELLLOOO")
-		await wait_time(.5)
+		await get_tree().process_frame
 		start = start_script.play
 		print(start)
 		if start == 1: #and zoom_out == 1 or zoom_in == 1:

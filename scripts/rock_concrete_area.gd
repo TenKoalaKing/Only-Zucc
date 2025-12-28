@@ -29,3 +29,5 @@ func _ready() -> void:
 				previous_zuck_walking = 1			
 			elif zuck_walking == 0 and previous_zuck_walking == 1:
 				$AudioStreamPlayer.stop()
+			await get_tree().process_frame
+		await get_tree().process_frame

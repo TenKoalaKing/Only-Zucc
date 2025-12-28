@@ -20,8 +20,8 @@ var finished = 0 # for parent functions
 func _ready() -> void:
 	canvas_layer.hide()  # Hide dialogue UI at start
 	#add_to_group("player")  # Add to player group
-	while 1 == 1:
-		await wait_time(.25)
+	#while 1 == 1:
+		#await wait_time(.25)
 		#slime = slime_script.slime_in_dialog
 
 func _input(_event: InputEvent) -> void:
