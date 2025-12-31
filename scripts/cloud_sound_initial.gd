@@ -24,6 +24,7 @@ func _ready() -> void:
 		if in_area == 1:
 			$AudioStreamPlayer.play()
 			await wait_time(30)
+			$AudioStreamPlayer.stop()
 
 
 func wait_time(seconds: float) -> void:

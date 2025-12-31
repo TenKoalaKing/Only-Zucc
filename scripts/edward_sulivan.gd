@@ -88,9 +88,13 @@ func _physics_process(delta: float) -> void:
 			punch = 0
 			animated_sprite.play("fighting")
 			if zuck_in_hitbox == 1 and facing == facing_range:
-				edward_health -= 1
+				zuck_health -= 1
 				$error.play()
 				print ("zuck hit")
+		health = zuck.edward_health
+		if health <= 0 or zuck_health <= 0:
+			self.visible = false
+			fight = 0
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 

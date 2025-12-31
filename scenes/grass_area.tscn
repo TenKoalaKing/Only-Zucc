@@ -16,6 +16,7 @@ shape = SubResource("RectangleShape2D_jlodo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ilcuw")
+volume_db = 3.164
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

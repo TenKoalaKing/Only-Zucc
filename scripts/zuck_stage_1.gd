@@ -9,11 +9,14 @@ extends CharacterBody2D
 @export var main_camera:NodePath
 @onready var camera1 = get_node(main_camera)
 
+@export var cloud_area_initial_path:NodePath
+@onready var cloud_area_initial = get_node(cloud_area_initial_path)
+
 #@export var health_bar_path:NodePath
 #@onready var health_bar_script = get_node(health_bar_path)
 
 const SPEED = 720.0
-const JUMP_VELOCITY = -627.0 #used to be -550.0
+const JUMP_VELOCITY = -767.0 #used to be -550.0 676767
 var start_variable = 1
 @onready var animated_sprite = $AnimatedSprite2D
 var health = 3
@@ -28,7 +31,8 @@ var moving = 0
 var first_init = 0
 var reset = 0
 var start_sequence_done = 0
-
+var prev_fight_var = 0
+var cloud_area_initial_in_area = 0
 func _ready() -> void:
 	add_to_group("player")
 func _physics_process(delta: float) -> void:
@@ -54,8 +58,18 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		fight = edward_script.fight
-		if fight == 1:
+		if fight == 1 and prev_fight_var == 0:
 			$backround_music.stop()
+			$fight_music.play()
+			prev_fight_var = 1
+		if fight == 0 and prev_fight_var == 1:
+			$fight_music.stop()
+			$backround_music.play(30)
+			prev_fight_var = 0.5
+		if prev_fight_var == 0.5:
+			cloud_area_initial_in_area = cloud_area_initial.in_area
+			if cloud_area_initial_in_area == 1:
+				$backround_music.stop()
 		if Input.is_action_just_pressed("punch") and fight == 1:
 			punch = 1
 			animated_sprite.play("fighting")
@@ -111,7 +125,7 @@ func _physics_process(delta: float) -> void:
 func _reset():
 	pass
 
-
+#eventually get rid of wait_time in main script
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()
 	timer.wait_time = seconds

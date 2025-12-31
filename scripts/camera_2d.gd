@@ -40,17 +40,18 @@ func _process(delta):
 			target = get_node_or_null("../invisible_tracker_1")
 			#ADD sound here bell
 			#add backround noise for 11.5 seconds until end of script
+			#FIX: start button doesn't work when clicked
 			#await wait_time(1.5)
 			target = get_node_or_null("../invisible_tracker_2")
-			await wait_time(1.5)
+			#await wait_time(1.5)
 			target = get_node_or_null("../static zuckerberg")
-			await wait_time(1.5)
+			#await wait_time(1.5)
 			target = get_node_or_null("../BackOfClassroom")
-			await wait_time(1.5)
+			#await wait_time(1.5)
 			target = get_node_or_null("../Facebook_com")
-			await wait_time(1.5)
+			#await wait_time(1.5)
 			target = get_node_or_null("../BackOfClassroom")
-			await wait_time(1.5)
+			#await wait_time(1.5)
 			start_sequence_done = 1
 			previous_selected = 2
 			first_start = 0

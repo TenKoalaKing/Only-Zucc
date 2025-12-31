@@ -23,11 +23,29 @@ func _ready() -> void:
 	while 1 == 1:
 		while in_area == 1:
 			zuck_walking = zuck.moving
-			if zuck_walking == 1:
+			if zuck_walking == 1 and previous_zuck_walking == 0:
+				_await_sound_stop()
+				$AudioStreamPlayer.pitch_scale = randf_range(0.8, 1.2)
 				$AudioStreamPlayer.play()
 				in_area = 1
-				previous_zuck_walking = 1			
+				previous_zuck_walking = 1
+
 			elif zuck_walking == 0 and previous_zuck_walking == 1:
 				$AudioStreamPlayer.stop()
+				previous_zuck_walking = 0
 			await get_tree().process_frame
+		if in_area == 0:
+			previous_zuck_walking = 0
 		await get_tree().process_frame
+func _await_sound_stop():
+	await wait_time(1.54)
+	if in_area == 1:
+		previous_zuck_walking = 0
+func wait_time(seconds: float) -> void:
+	var timer = Timer.new()
+	timer.wait_time = seconds
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	timer.queue_free()

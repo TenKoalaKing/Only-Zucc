@@ -8,7 +8,7 @@ func _on_body_entered(body: Node2D) -> void:
 	print("Body entered: ", body.name) 
 	
 	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-		$AudioStreamPlayer.play()
+		#$AudioStreamPlayer.play()
 		in_fight_area = 1
 
 	else:
@@ -17,5 +17,5 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-		$AudioStreamPlayer.stop()
+		#$AudioStreamPlayer.stop()
 		in_fight_area = 0
