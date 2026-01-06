@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=68 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dyxx6ddjpe5ta" path="res://assets/all backround assets - - - - -MorningAdventuresV2/CAVE ASsets/vegetation.png" id="4_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://ckluvo3hgi0ve" path="res://scenes/slime_at_start_of_game.tscn" id="5_gee14"]
 [ext_resource type="Texture2D" uid="uid://c7m17rsab2ce2" path="res://assets/all backround assets - - - - -MorningAdventuresV2/16 Bit School Asset Pack/school sprite sheetmain.png" id="5_kvuet"]
+[ext_resource type="PackedScene" uid="uid://b1tm114ng3o3t" path="res://scenes/pause_menu.tscn" id="6_fedci"]
 [ext_resource type="PackedScene" uid="uid://dbvn10rj341a1" path="res://scenes/coin.tscn" id="6_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://uvwp5fx01taf" path="res://scenes/platform_cloud_1.tscn" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://d3jaaqpvqy1lg" path="res://scenes/classroom_door.tscn" id="10_trtic"]
@@ -19,11 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://cj61nm67mwido" path="res://assets/rando/done/chairs.jpg" id="17_5newe"]
 [ext_resource type="Texture2D" uid="uid://bvjt2ks0fyqb1" path="res://assets/rando/done/facebook.cp.jpg" id="18_37s47"]
 [ext_resource type="PackedScene" uid="uid://dd4shhf5fbqgp" path="res://scenes/invisible_tracker_1.tscn" id="18_7025r"]
-[ext_resource type="Texture2D" uid="uid://bj3ecgv1mupo" path="res://assets/rando/done/mma ring.png" id="19_264po"]
 [ext_resource type="PackedScene" uid="uid://bpp8o0d2m5h8e" path="res://scenes/invisible_tracker_2.tscn" id="19_m4url"]
 [ext_resource type="Texture2D" uid="uid://c7qwrrrakkrpq" path="res://assets/rando/done/title screen.png" id="20_5newe"]
 [ext_resource type="PackedScene" uid="uid://bun6hd5mfocdf" path="res://scenes/title screen/exit.tscn" id="21_5newe"]
 [ext_resource type="PackedScene" uid="uid://bgp8bjvv3d6pf" path="res://scenes/title screen/start.tscn" id="21_37s47"]
+[ext_resource type="Texture2D" uid="uid://l11pxfee8t" path="res://assets/rando/drew_and_imported/base of finished drawi.png" id="21_h3rex"]
 [ext_resource type="PackedScene" uid="uid://cjqmo4pjxj153" path="res://scenes/title screen/settings.tscn" id="22_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://cx1seal3040y6" path="res://scenes/title screen/credits.tscn" id="23_pl11u"]
 [ext_resource type="Script" uid="uid://dmns8cws1v72" path="res://scripts/game_manager.gd" id="25_pl11u"]
@@ -45,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://bupb05j7lu888" path="res://scenes/grass_area.tscn" id="44_oaba0"]
 [ext_resource type="PackedScene" uid="uid://b76n17audukey" path="res://scenes/rock_concrete_area.tscn" id="45_oaba0"]
 [ext_resource type="PackedScene" uid="uid://cw2cwwc3hk8ra" path="res://scenes/cloud_sound_initial.tscn" id="46_458eo"]
+[ext_resource type="Texture2D" uid="uid://cbcugpcdfb3y6" path="res://assets/rando/drew_and_imported/top offight.png" id="47_8qswn"]
 [ext_resource type="PackedScene" uid="uid://c7ah8batrb4ck" path="res://scenes/cloud_walking_sounds.tscn" id="47_fedci"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
@@ -1516,7 +1518,7 @@ texture = ExtResource("18_37s47")
 [node name="MmaRing" type="Sprite2D" parent="."]
 position = Vector2(8888.001, -91)
 scale = Vector2(2.8046532, 2.534553)
-texture = ExtResource("19_264po")
+texture = ExtResource("21_h3rex")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MmaRing"]
 
@@ -1544,6 +1546,7 @@ offset_left = 958.0
 offset_top = 26715.0
 offset_right = 958.0
 offset_bottom = 26715.0
+pause_menu_path = NodePath("../pause_menu")
 
 [node name="Settings" parent="." instance=ExtResource("22_e1j6l")]
 offset_left = 978.0
@@ -1579,6 +1582,11 @@ frame_progress = 0.4004757
 
 [node name="Fight Area" parent="." instance=ExtResource("28_gxtfn")]
 position = Vector2(7408, -525)
+
+[node name="pause_menu" parent="." instance=ExtResource("6_fedci")]
+z_index = 10
+scale = Vector2(2.5, 2.5)
+camera_2d_path = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("dialog_node")]
 position = Vector2(7475, 5159)
@@ -1849,3 +1857,13 @@ scale = Vector2(3, 3)
 position = Vector2(5385, -841)
 rotation = -0.40491638
 scale = Vector2(0.7, 0.7)
+
+[node name="topofmmaring" type="CharacterBody2D" parent="."]
+
+[node name="StaticBody2D" type="CanvasLayer" parent="topofmmaring"]
+layer = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="topofmmaring/StaticBody2D"]
+position = Vector2(8815.502, -257.00003)
+scale = Vector2(2.8463798, 2.666667)
+texture = ExtResource("47_8qswn")

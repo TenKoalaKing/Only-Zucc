@@ -1,30 +1,37 @@
-[gd_scene load_steps=16 format=3 uid="uid://bt1u88qexhyqq"]
+[gd_scene load_steps=17 format=3 uid="uid://bt1u88qexhyqq"]
 
 [ext_resource type="Script" uid="uid://dtt3ufkmdwgf7" path="res://scripts/edward_sulivan.gd" id="1_2i0tx"]
-[ext_resource type="Texture2D" uid="uid://ce8ddbubb6i5" path="res://assets/rando/done/Eduardo Saverin.png" id="1_bw8g8"]
-[ext_resource type="Texture2D" uid="uid://dt7247auywo4" path="res://assets/rando/done/edward sulivan fighting.png" id="2_2i0tx"]
-[ext_resource type="Texture2D" uid="uid://bo3k2hypc3yof" path="res://assets/rando/done/edward sulivan fighting flipped.png" id="3_bqfuf"]
+[ext_resource type="Texture2D" uid="uid://dsgjvyvcr5k70" path="res://assets/rando/drew_and_imported/Edward sulivan (1).png" id="2_g4543"]
+[ext_resource type="Texture2D" uid="uid://chruwy3gko88v" path="res://assets/rando/drew_and_imported/Edward fighting.png" id="3_upvqk"]
 [ext_resource type="PackedScene" uid="uid://dqjrvfsf38d53" path="res://scenes/Dialog.tscn" id="5_bqfuf"]
 [ext_resource type="Texture2D" uid="uid://cenlbej4o2815" path="res://assets/rando/done/speechbubble-removebg-preview.png" id="6_g4543"]
 [ext_resource type="AudioStream" uid="uid://dq5uy3bicu1pg" path="res://music_and_sounds/error-126627.mp3" id="7_upvqk"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g4543"]
-atlas = ExtResource("2_2i0tx")
-region = Rect2(2, 359, 172, 359)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_upvqk"]
-atlas = ExtResource("2_2i0tx")
-region = Rect2(174, 359, 172, 359)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2f6b"]
-atlas = ExtResource("2_2i0tx")
-region = Rect2(2, 0, 172, 359)
+atlas = ExtResource("2_g4543")
+region = Rect2(0, 0, 347, 718)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b57vs"]
+atlas = ExtResource("3_upvqk")
+region = Rect2(0, 0, 173, 359)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13jx4"]
+atlas = ExtResource("3_upvqk")
+region = Rect2(173, 0, 173, 359)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiy4k"]
+atlas = ExtResource("3_upvqk")
+region = Rect2(0, 359, 173, 359)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p530"]
+atlas = ExtResource("3_upvqk")
+region = Rect2(173, 359, 173, 359)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b57vs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_bw8g8")
+"texture": SubResource("AtlasTexture_a2f6b")
 }],
 "loop": true,
 "name": &"default",
@@ -32,16 +39,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4543")
+"texture": SubResource("AtlasTexture_b57vs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_upvqk")
+"texture": SubResource("AtlasTexture_13jx4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_bqfuf")
+"texture": SubResource("AtlasTexture_qiy4k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2f6b")
+"texture": SubResource("AtlasTexture_0p530")
 }],
 "loop": true,
 "name": &"fighting",
@@ -66,7 +73,6 @@ script = ExtResource("1_2i0tx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_b57vs")
-animation = &"fighting"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3.5, -6.5)

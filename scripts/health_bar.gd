@@ -4,8 +4,8 @@ extends Node2D #script to attach to camera 2d and fetch health status from playe
 #var zuck_script = get_tree().get_first_node_in_group("player")
 var health = 3
 var previous_health = 3
-	
-
+var fight = 0
+var prev_fight = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
@@ -22,6 +22,10 @@ func _ready() -> void:
 		await get_tree().process_frame
 		health = zuck_script.health
 		#print(health)
+		fight = zuck_script.fight
+		if fight == 0 and prev_fight == 0:
+			self.visible = false
+		prev_fight = zuck_script.fight
 		if health != previous_health:
 			if health == 3:
 				previous_health = 3

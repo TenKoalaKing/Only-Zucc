@@ -3,12 +3,14 @@ extends Node2D
 var health = 3
 var count = 0
 var edward_health = 3
+var fight
 func _ready() -> void:
 	self.visible = false
 	while count == 0:
 		await wait_time(.25)
+		fight = zuck.fight
 		health = zuck.health
-		if health <= 0:
+		if fight == 1 and health <= 0:
 			self.visible = true
 			count = 2
 

@@ -24,7 +24,7 @@ func _ready() -> void:
 			$asd2.disabled = false
 			$asd3.disabled = false
 			$CollisionShape2D2.disabled = false
-			count = 2
+			count = 2 #can use count == 2 for cloud appearing.
 
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()

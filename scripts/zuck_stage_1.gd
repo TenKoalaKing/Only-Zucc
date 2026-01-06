@@ -38,12 +38,18 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	health = edward_script.zuck_health #health not updating
 	#print(health)
-	if health <= 0:
-		$boo.play()
-	if edward_health <= 0:
-		$yay.play()
+	if fight == 1:
+		if health <= 0:
+			$boo.play()
+			await wait_time(.05)
+			fight = 0
+		if edward_health <= 0:
+			$yay.play()
+			await wait_time(.05)
+			fight = 0
 	start_variable = start_script.play
 	start_sequence_done = camera1.start_sequence_done
+	reset = (start_variable/67)
 	if reset == 1:
 		_reset()
 	if start_variable == 1 and first_init == 0 and start_sequence_done == 1:
@@ -77,6 +83,7 @@ func _physics_process(delta: float) -> void:
 				edward_health -= 1
 				$ding.play()
 				print ("edwardo hit")
+		#put fight cond in here
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		#gets input direction -1,0,1
@@ -123,7 +130,21 @@ func _physics_process(delta: float) -> void:
 	else:
 		pass
 func _reset():
-	pass
+	start_variable = 1
+	health = 3
+	edward_health = 3
+	punch = 0
+	fight = 0
+	theoretical_direction = 0
+	edward_in_hitbox = 0
+	facing = 0
+	facing_range = 0
+	moving = 0
+	first_init = 0
+	reset = 0
+	start_sequence_done = 0
+	prev_fight_var = 0
+	cloud_area_initial_in_area = 0
 
 #eventually get rid of wait_time in main script
 func wait_time(seconds: float) -> void:

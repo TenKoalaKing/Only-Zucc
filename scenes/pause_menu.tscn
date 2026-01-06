@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1tm114ng3o3t"]
+
+[ext_resource type="Script" uid="uid://p5qi7mq0isay" path="res://scripts/pause_menu.gd" id="1_myx47"]
+[ext_resource type="FontFile" uid="uid://bkrf6fmtnwhe1" path="res://fonts/PixelOperator8-Bold.ttf" id="2_kukqi"]
+
+[node name="pause_menu" type="Node2D"]
+position = Vector2(-632, -123)
+script = ExtResource("1_myx47")
+
+[node name="Top" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_kukqi")
+text = "Are You Sure You Want to Go to the Menu?"
+metadata/_edit_use_anchors_ = true
+
+[node name="Bottom" type="Label" parent="."]
+offset_left = 113.0
+offset_top = 34.0
+offset_right = 508.0
+offset_bottom = 57.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_kukqi")
+theme_override_font_sizes/font_size = 18
+text = "No - Esc           Yes - Enter"
+metadata/_edit_use_anchors_ = true

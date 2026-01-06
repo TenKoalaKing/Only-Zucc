@@ -1,32 +1,33 @@
-[gd_scene load_steps=31 format=3 uid="uid://b40horegir4v2"]
+[gd_scene load_steps=32 format=3 uid="uid://b40horegir4v2"]
 
 [ext_resource type="Script" uid="uid://dghlbqs685ud0" path="res://scripts/zuck_stage_1.gd" id="1_dyxwv"]
-[ext_resource type="Texture2D" uid="uid://cc4tam23oxd8h" path="res://assets/rando/done/sprite_sheet_pahse_1_idle-removebg-preview.png" id="1_mxh0h"]
-[ext_resource type="Texture2D" uid="uid://bpy76vjpqqslf" path="res://assets/rando/done/sprite_sheet_pahse_1_jumping-removebg-preview.png" id="3_onfay"]
+[ext_resource type="Texture2D" uid="uid://d34glyy1sast8" path="res://assets/rando/drew_and_imported/idle sick state1 .png" id="2_6p0ec"]
 [ext_resource type="Texture2D" uid="uid://dppky7tsh01du" path="res://assets/rando/done/zuck_fighting-removebg-preview.png" id="3_thiek"]
-[ext_resource type="Texture2D" uid="uid://6uoirj4eexrn" path="res://assets/rando/done/sprite_sheet_pahse_1_walking-removebg-preview.png" id="4_thiek"]
+[ext_resource type="Texture2D" uid="uid://b36g4olhutiy1" path="res://assets/rando/drew_and_imported/zuck jump no bkrg.png" id="4_6p0ec"]
+[ext_resource type="Texture2D" uid="uid://da6s37wjcl4iy" path="res://assets/rando/drew_and_imported/zuck walking stage 1.png" id="5_t32qn"]
 [ext_resource type="AudioStream" uid="uid://0s0sfm43vudk" path="res://music_and_sounds/ding-126626.mp3" id="6_6rr0j"]
+[ext_resource type="Script" uid="uid://cxisojavsvuws" path="res://scenes/animated_sprite_2d_for_zuck.gd" id="6_kes7w"]
 [ext_resource type="AudioStream" uid="uid://cc66d2mfqjx47" path="res://music_and_sounds/yay-6326.mp3" id="7_br8in"]
 [ext_resource type="AudioStream" uid="uid://dxta6j4akg5cg" path="res://music_and_sounds/boo-6377.mp3" id="8_pp2oa"]
 [ext_resource type="AudioStream" uid="uid://bmyo1inq0p1nj" path="res://music_and_sounds/soft-background-music-409193.mp3" id="9_br8in"]
 [ext_resource type="AudioStream" uid="uid://147syb1x4f3a" path="res://music_and_sounds/fight music.wav" id="10_6p0ec"]
 [ext_resource type="AudioStream" uid="uid://cy4mf8tuich67" path="res://music_and_sounds/use for after fight ----- slow-cloud-26789.mp3" id="11_kes7w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dyxwv"]
-atlas = ExtResource("1_mxh0h")
-region = Rect2(0, 0, 250, 250)
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6gli"]
+atlas = ExtResource("2_6p0ec")
+region = Rect2(0, 0, 1250, 1250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_knhmb"]
-atlas = ExtResource("1_mxh0h")
-region = Rect2(250, 0, 250, 250)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruv5h"]
+atlas = ExtResource("2_6p0ec")
+region = Rect2(1250, 0, 1250, 1250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_onfay"]
-atlas = ExtResource("1_mxh0h")
-region = Rect2(0, 250, 250, 250)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqaqb"]
+atlas = ExtResource("2_6p0ec")
+region = Rect2(0, 1250, 1250, 1250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_thiek"]
-atlas = ExtResource("1_mxh0h")
-region = Rect2(250, 250, 250, 250)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qffl2"]
+atlas = ExtResource("2_6p0ec")
+region = Rect2(1250, 1250, 1250, 1250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pwfu"]
 atlas = ExtResource("3_thiek")
@@ -44,52 +45,52 @@ region = Rect2(250, 250, 250, 250)
 atlas = ExtResource("3_thiek")
 region = Rect2(250, 0, 250, 250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3m0j"]
-atlas = ExtResource("3_onfay")
-region = Rect2(0, 0, 250, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7lsjt"]
-atlas = ExtResource("3_onfay")
-region = Rect2(250, 0, 250, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rr0j"]
-atlas = ExtResource("3_onfay")
-region = Rect2(0, 250, 250, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_br8in"]
-atlas = ExtResource("3_onfay")
-region = Rect2(250, 250, 250, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pp2oa"]
-atlas = ExtResource("4_thiek")
-region = Rect2(0, 0, 250, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6p0ec"]
-atlas = ExtResource("4_thiek")
-region = Rect2(250, 0, 250, 250)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kes7w"]
-atlas = ExtResource("4_thiek")
-region = Rect2(0, 250, 250, 250)
+atlas = ExtResource("4_6p0ec")
+region = Rect2(0, 0, 1250, 1250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t32qn"]
-atlas = ExtResource("4_thiek")
-region = Rect2(250, 250, 250, 250)
+atlas = ExtResource("4_6p0ec")
+region = Rect2(1250, 0, 1250, 1250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj1mt"]
+atlas = ExtResource("4_6p0ec")
+region = Rect2(0, 1250, 1250, 1250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hveao"]
+atlas = ExtResource("4_6p0ec")
+region = Rect2(1250, 1250, 1250, 1250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vmf6"]
+atlas = ExtResource("5_t32qn")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysebd"]
+atlas = ExtResource("5_t32qn")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy1og"]
+atlas = ExtResource("5_t32qn")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxgyp"]
+atlas = ExtResource("5_t32qn")
+region = Rect2(512, 512, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l3m0j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dyxwv")
+"texture": SubResource("AtlasTexture_c6gli")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_knhmb")
+"texture": SubResource("AtlasTexture_ruv5h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_onfay")
+"texture": SubResource("AtlasTexture_wqaqb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_thiek")
+"texture": SubResource("AtlasTexture_qffl2")
 }],
 "loop": true,
 "name": &"default",
@@ -114,16 +115,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l3m0j")
+"texture": SubResource("AtlasTexture_kes7w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7lsjt")
+"texture": SubResource("AtlasTexture_t32qn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6rr0j")
+"texture": SubResource("AtlasTexture_rj1mt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_br8in")
+"texture": SubResource("AtlasTexture_hveao")
 }],
 "loop": true,
 "name": &"jumping",
@@ -131,16 +132,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pp2oa")
+"texture": SubResource("AtlasTexture_8vmf6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6p0ec")
+"texture": SubResource("AtlasTexture_ysebd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kes7w")
+"texture": SubResource("AtlasTexture_fy1og")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t32qn")
+"texture": SubResource("AtlasTexture_hxgyp")
 }],
 "loop": true,
 "name": &"running",
@@ -151,7 +152,7 @@ animations = [{
 size = Vector2(91, 210)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3m0j"]
-size = Vector2(161.25, 138.75)
+size = Vector2(392.125, 357.6875)
 
 [node name="Zuck Stage 1" type="CharacterBody2D"]
 collision_layer = 2
@@ -159,7 +160,8 @@ script = ExtResource("1_dyxwv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l3m0j")
-animation = &"fighting"
+animation = &"jumping"
+script = ExtResource("6_kes7w")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -170,13 +172,13 @@ shape = SubResource("RectangleShape2D_thiek")
 [node name="hit_range_left" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_range_left"]
-position = Vector2(-44, -4.375)
+position = Vector2(-100, -6)
 shape = SubResource("RectangleShape2D_l3m0j")
 
 [node name="hit_range_right" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_range_right"]
-position = Vector2(73.375, -5)
+position = Vector2(75, 0)
 shape = SubResource("RectangleShape2D_l3m0j")
 
 [node name="ding" type="AudioStreamPlayer" parent="."]
@@ -197,6 +199,7 @@ stream = ExtResource("10_6p0ec")
 [node name="after_fight_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_kes7w")
 
+[connection signal="animation_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_changed"]
 [connection signal="body_entered" from="hit_range_left" to="." method="_on_hit_range_left_body_entered"]
 [connection signal="body_exited" from="hit_range_left" to="." method="_on_hit_range_left_body_exited"]
 [connection signal="body_entered" from="hit_range_right" to="." method="_on_hit_range_right_body_entered"]

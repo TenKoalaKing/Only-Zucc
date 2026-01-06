@@ -25,7 +25,6 @@ func _on_talk_range_body_entered(body: Node2D) -> void:
 		dialog_indicator.show()
 		slime_in_dialog = 1
 		dialog.inTalkRange = true
-
 			#print(dialogNumber)
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
