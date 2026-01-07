@@ -12,6 +12,9 @@ extends CharacterBody2D
 @export var cloud_area_initial_path:NodePath
 @onready var cloud_area_initial = get_node(cloud_area_initial_path)
 
+@export var gym_path:NodePath
+@onready var gym_script = get_node(gym_path)
+
 #@export var health_bar_path:NodePath
 #@onready var health_bar_script = get_node(health_bar_path)
 
@@ -34,9 +37,11 @@ var start_sequence_done = 0
 var prev_fight_var = 0
 var cloud_area_initial_in_area = 0
 var zuck_win = 0
+var changed = 0
 func _ready() -> void:
 	add_to_group("player")
 func _physics_process(delta: float) -> void:
+	changed = gym_script.changed
 	if is_instance_valid(edward_script):
 		health = edward_script.zuck_health #health not updating
 	else:
@@ -118,28 +123,44 @@ func _physics_process(delta: float) -> void:
 			punch = 0
 	
 	#play animations
-		if is_on_floor():
+		if changed == 1:
+			if is_on_floor():
 			#if punch == 1:
 				#animated_sprite.play("fighting")
-			if direction == 0:
-				if animated_sprite.animation != "default":
-					animated_sprite.play("default")
-				moving = 0
+				if direction == 0:
+					if animated_sprite.animation != "default2":
+						animated_sprite.play("default2")
+					moving = 0
+				else:
+					if animated_sprite.animation != "running2":
+						animated_sprite.play("running2")
+					moving = 1
 			else:
-				if animated_sprite.animation != "running":
-					animated_sprite.play("running")
-				moving = 1
-		else:
-			if animated_sprite.animation != "jumping":
-				animated_sprite.play("jumping")
-			moving = 0
-	
+				if animated_sprite.animation != "jumping2":
+					animated_sprite.play("jumping2")
+				moving = 0
+		if changed != 1:
+			if is_on_floor():
+				#if punch == 1:
+					#animated_sprite.play("fighting")
+				if direction == 0:
+					if animated_sprite.animation != "default":
+						animated_sprite.play("default")
+					moving = 0
+				else:
+					if animated_sprite.animation != "running":
+						animated_sprite.play("running")
+					moving = 1
+			else:
+				if animated_sprite.animation != "jumping":
+					animated_sprite.play("jumping")
+				moving = 0
+		
 	
 		if direction:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-
 		move_and_slide()
 	else:
 		pass

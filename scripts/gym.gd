@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 		print("Reseted from gym")
 
 
-func _on_body_entered(body: Node2D) -> void: #problem here
+func _on_body_entered(body: Node2D) -> void:
 	print("area_barb Body entered: ", body.name) 
 	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
 		print("entered zuck gym")
