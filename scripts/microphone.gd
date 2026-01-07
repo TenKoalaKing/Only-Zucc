@@ -1,8 +1,13 @@
 extends CharacterBody2D
 @onready var zuck = %"Zuck Stage 1"
 @onready var edward_script = %"Edward Sulivan"
+
+@export var start_path:NodePath
+@onready var start_script = get_node(start_path)
+
 			#self.visible = false
 			#$CollisionShape2D.disabled = true
+var start = 0
 var health = 3
 var count = 0
 var edward_health = 3
@@ -25,7 +30,19 @@ func _ready() -> void:
 			$asd3.disabled = false
 			$CollisionShape2D2.disabled = false
 			count = 2 #can use count == 2 for cloud appearing.
-
+func _process(_delta: float) -> void:
+	start = start_script.play
+	if start == 67:
+		self.visible = false
+		$CollisionShape2D.disabled = true
+		$asd.disabled = true
+		$asd2.disabled = true
+		$asd3.disabled = true
+		$CollisionShape2D2.disabled = true
+		start = 0
+		health = 3
+		count = 0
+		edward_health = 3
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()
 	timer.wait_time = seconds

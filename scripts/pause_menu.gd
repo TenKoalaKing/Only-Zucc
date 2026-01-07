@@ -40,7 +40,7 @@ func _main_func():
 			bottom.hide()
 			top.hide()
 			reset = 1
-			await wait_time(5)
+			await wait_time(1.3)
 			current_func = 0
 			reset = 0
 		await wait_time(.1)

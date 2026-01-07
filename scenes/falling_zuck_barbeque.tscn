@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://djyc1m7q0bvrj"]
+
+[ext_resource type="Script" uid="uid://da7f3nkfviuf5" path="res://scripts/falling_zuck_barbeque.gd" id="1_x0loj"]
+[ext_resource type="Texture2D" uid="uid://b4kwxir627pth" path="res://assets/rando/done/zuck brisket.png" id="2_i2tat"]
+
+[node name="falling_zuck_barbeque" type="RigidBody2D"]
+script = ExtResource("1_x0loj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-14, -0.99993896)
+scale = Vector2(0.2375, 0.24739583)
+texture = ExtResource("2_i2tat")

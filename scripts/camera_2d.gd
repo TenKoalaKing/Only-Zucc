@@ -16,6 +16,7 @@ var first_start = 1
 var camera_focus_dialog = 0
 var slime_camera_focus = 0
 var start_sequence_done = 0
+var reset = 0
 
 func _ready():
 	# Wait a frame to ensure all nodes are ready
@@ -26,7 +27,7 @@ func _process(delta):
 	#camera_focus_dialog = dialog_node.camera_focus
 	start = start_script.play
 	slime_camera_focus = slime_node.camera_focus
-	
+	camera_focus_dialog = slime_camera_focus
 	# --- LOGIC SELECTION ---
 	if 1 == 2:
 		print("logic has betrayed me")
@@ -58,6 +59,11 @@ func _process(delta):
 		if start == 1 and previous_selected == 2:
 			selected = 3
 		if start == 0:
+			selected = 2
+		reset = start_script.reset
+		if reset == 1:
+			first_start = 1
+		if start == 67:
 			selected = 2
 		if slime_camera_focus == 1:
 			selected = 7

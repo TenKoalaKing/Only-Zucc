@@ -10,10 +10,12 @@ func _ready() -> void:
 	
 func _on_exit_to_menu():
 	play = 0
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	reset = pause_menu.reset
 	if reset == 1:
 		play = 67
+		await wait_time(.5)
+		reset = 0
 func _on_button_pressed() -> void:
 	#print("button works")
 	play = 1

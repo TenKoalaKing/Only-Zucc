@@ -30,7 +30,7 @@ func _ready():
 
 # Will add movement for achievements...
 # Process function runs every frame
-func _process(delta):
+func _process(_delta):
 	# Check if zoom_in action is being held down
 	if Input.is_action_pressed("zoom_in"):
 		# Smoothly interpolate (lerp) current zoom towards zoomed_in state

@@ -130,6 +130,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		pass
 func _reset():
+	position = Vector2(-1263, 916)
 	start_variable = 1
 	health = 3
 	edward_health = 3

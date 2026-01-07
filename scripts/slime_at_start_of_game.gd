@@ -13,9 +13,9 @@ func _ready() -> void:
 	while 1 == 1:#body.name.contains("Zuck") or body.is_in_group("player"):
 		dialogNumber = dia.dialogNumber
 		await wait_time(.1)
-		print("heartbeat")
-		print(dialogNumber)
-		print(camera_focus)
+		#print("heartbeat")    fix later if time for camera shifts during dialog
+		#print(dialogNumber)
+		#print(camera_focus)
 		if dialogNumber == 2:
 			camera_focus = 1
 		if dialogNumber == 3:

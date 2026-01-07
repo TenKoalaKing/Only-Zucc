@@ -5,6 +5,9 @@ extends CharacterBody2D
 @onready var dialog: Node = %Dialog
 @onready var dia = %Dialog
 @onready var dialog_indicator: TextureRect = %DialogIndicator
+@export var start_path:NodePath
+@onready var start_script = get_node(start_path)
+var start = 0
 #@export var zuck_path:NodePath
 #@onready var zuck_script = get_node(zuck_path)
 var dialog_inTalkRange
@@ -54,6 +57,26 @@ func _ready() -> void:
 			fight = 1
 		if fight == 1:
 			animated_sprite.play("fighting")
+		#for reset function
+		start = start_script.play
+		if start == 67:
+			dialog_inTalkRange = 0
+			dialogNumber = 0
+			edward_in_dialog = 0
+			random = 0
+			direction_random = 0
+			direction = 0
+			count = 0
+			fight = 0
+			finished_dialog = 0
+			health = 3
+			zuck_health = 3
+			punch_random = 0
+			punch = 0
+			zuck_in_hitbox = 0
+			edward_health = 3
+			facing = 0
+			facing_range = 0
 func _on_talk_range_body_entered(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
 		if fight == 0:

@@ -5,11 +5,13 @@ extends Node2D
 @onready var zuck_script = get_node(zuck_path)
 @export var edward_sulivan_path:NodePath
 @onready var edward_sulivan_script = get_node(edward_sulivan_path)
+@export var start_path:NodePath
+@onready var start_script = get_node(start_path)
 var fight = 0
 var hud_scene = preload("res://scenes/health_bar.tscn")
 var battle_status = 0
 var previous_bt = 0
-
+var start = 0
 func _ready() -> void:
 	var canvas_layer = CanvasLayer.new()
 	add_child(canvas_layer)
@@ -25,6 +27,11 @@ func _ready() -> void:
 			previous_bt = 1
 		if battle_status == 0 and previous_bt == 1 and fight == 0:
 			canvas_layer.remove_child(hud_instance)
+			previous_bt = 0
+		start = start_script.play
+		if start == 67:
+			fight = 0
+			battle_status = 0
 			previous_bt = 0
 		else:
 			pass
