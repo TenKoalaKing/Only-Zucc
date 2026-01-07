@@ -12,22 +12,14 @@ var previous_health = 3
 func _ready() -> void:
 	animated_sprite.play("3")
 	self.visible = false
-	while 1 == 1:
-		await wait_time(.25)
-		health = edward_script.health
-		if health != previous_health:
-			if health == 3:
-				previous_health = 3
-				animated_sprite.play("3")
-			if health == 2:
-				previous_health	 = 2
-				animated_sprite.play("2")
-			if health == 1:
-				previous_health = 1
-				animated_sprite.play("1")
-			if health == 0:
-				previous_health = 0 #for replay
-				animated_sprite.play ("0")
+func _process(_delta: float) -> void:
+	health = edward_script.health
+	if health != previous_health:
+		update_health_ui(health)
+		previous_health = health
+func update_health_ui(current_health: int) -> void:
+	var anim_name = str(clamp(current_health, 0 ,3))
+	$AnimatedSprite2D.play(anim_name)
 
 
 

@@ -26,8 +26,8 @@ func _process(delta):
 	# --- INPUT UPDATE (Formerly in the while loop) ---
 	#camera_focus_dialog = dialog_node.camera_focus
 	start = start_script.play
-	slime_camera_focus = slime_node.camera_focus
-	camera_focus_dialog = slime_camera_focus
+	#slime_camera_focus = slime_node.camera_focus
+	#camera_focus_dialog = slime_camera_focus
 	# --- LOGIC SELECTION ---
 	if 1 == 2:
 		print("logic has betrayed me")

@@ -1515,9 +1515,60 @@ position = Vector2(491, 15126)
 position = Vector2(475, 15845)
 
 [node name="falling_zuck_barbeque" parent="." instance=ExtResource("20_rm0al")]
-position = Vector2(5561, -4249)
+position = Vector2(5711, -4306)
 start_path = NodePath("../start_node")
 area_b_path = NodePath("../area_for_barbeque")
+
+[node name="falling_zuck_barbeque2" parent="." instance=ExtResource("20_rm0al")]
+position = Vector2(5174, -4354)
+start_path = NodePath("../start_node")
+area_b_path = NodePath("../area_for_barbeque")
+nums = 1
+
+[node name="falling_zuck_barbeque3" parent="." instance=ExtResource("20_rm0al")]
+position = Vector2(4741, -4378)
+start_path = NodePath("../start_node")
+area_b_path = NodePath("../area_for_barbeque")
+nums = 2
+
+[node name="falling_zuck_barbeque4" parent="." instance=ExtResource("20_rm0al")]
+position = Vector2(4668, -4803)
+start_path = NodePath("../start_node")
+area_b_path = NodePath("../area_for_barbeque")
+nums = 5
+
+[node name="falling_zuck_barbeque5" parent="." instance=ExtResource("20_rm0al")]
+position = Vector2(5167, -4884)
+start_path = NodePath("../start_node")
+area_b_path = NodePath("../area_for_barbeque")
+nums = 4
+
+[node name="falling_zuck_barbeque6" parent="." instance=ExtResource("20_rm0al")]
+position = Vector2(5701, -4846)
+start_path = NodePath("../start_node")
+area_b_path = NodePath("../area_for_barbeque")
+nums = 3
+
+[node name="falling_zuck_barbeque7" parent="." instance=ExtResource("20_rm0al")]
+position = Vector2(5312.9995, -5174.9995)
+rotation = -2.6754625
+start_path = NodePath("../start_node")
+area_b_path = NodePath("../area_for_barbeque")
+nums = 6
+
+[node name="falling_zuck_barbeque8" parent="." instance=ExtResource("20_rm0al")]
+position = Vector2(4685, -5395)
+rotation = -2.6754625
+start_path = NodePath("../start_node")
+area_b_path = NodePath("../area_for_barbeque")
+nums = 8
+
+[node name="falling_zuck_barbeque9" parent="." instance=ExtResource("20_rm0al")]
+position = Vector2(5219, -5545)
+rotation = -2.6754625
+start_path = NodePath("../start_node")
+area_b_path = NodePath("../area_for_barbeque")
+nums = 7
 
 [node name="Facebook_com" type="Sprite2D" parent="."]
 position = Vector2(8376, 23518)
@@ -1823,6 +1874,8 @@ start_path = NodePath("../start_node")
 [node name="win_message" parent="." instance=ExtResource("41_pr1ej")]
 position = Vector2(8172, -531)
 scale = Vector2(10, 10)
+edward_path = NodePath("../Edward Sulivan")
+start_path = NodePath("../start_node")
 
 [node name="lose_message" parent="." instance=ExtResource("42_05nbr")]
 position = Vector2(8169, -529)

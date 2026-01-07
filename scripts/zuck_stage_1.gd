@@ -59,10 +59,6 @@ func _physics_process(delta: float) -> void:
 	if start_variable != 0:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-
-		# Handle jump.
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
 		fight = edward_script.fight
 		if fight == 1 and prev_fight_var == 0:
 			$backround_music.stop()
@@ -72,17 +68,24 @@ func _physics_process(delta: float) -> void:
 			$fight_music.stop()
 			$backround_music.play(30)
 			prev_fight_var = 0.5
+		else:
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				velocity.y = JUMP_VELOCITY
 		if prev_fight_var == 0.5:
 			cloud_area_initial_in_area = cloud_area_initial.in_area
 			if cloud_area_initial_in_area == 1:
 				$backround_music.stop()
+			prev_fight_var = 0
 		if Input.is_action_just_pressed("punch") and fight == 1:
 			punch = 1
-			animated_sprite.play("fighting")
+			if animated_sprite.animation != "running":
+				animated_sprite.play("fighting")
 			if edward_in_hitbox == 1 and facing == facing_range:
 				edward_health -= 1
 				$ding.play()
 				print ("edwardo hit")
+			await get_tree().create_timer(0.5).timeout
+			punch = 0
 		#put fight cond in here
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
@@ -111,13 +114,16 @@ func _physics_process(delta: float) -> void:
 			#if punch == 1:
 				#animated_sprite.play("fighting")
 			if direction == 0:
-				animated_sprite.play("default")
+				if animated_sprite.animation != "default":
+					animated_sprite.play("default")
 				moving = 0
 			else:
-				animated_sprite.play("running")
+				if animated_sprite.animation != "running":
+					animated_sprite.play("running")
 				moving = 1
 		else:
-			animated_sprite.play("jumping")
+			if animated_sprite.animation != "jumping":
+				animated_sprite.play("jumping")
 			moving = 0
 	
 	

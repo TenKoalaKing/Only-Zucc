@@ -47,36 +47,36 @@ var facing_range = 0
 
 func _ready() -> void:	
 	dialog_indicator.hide()
-	while 1 == 1:
-		await wait_time(.25)
-		dialogNumber = dialog.dialogNumber
-		finished_dialog = dialog.finished
-		#if dialogNumber == 3: #number to equal dialog array number (now testing for fight variable instead
-			#fight = 1
-		if finished_dialog == 1:
-			fight = 1
-		if fight == 1:
-			animated_sprite.play("fighting")
-		#for reset function
-		start = start_script.play
-		if start == 67:
-			dialog_inTalkRange = 0
-			dialogNumber = 0
-			edward_in_dialog = 0
-			random = 0
-			direction_random = 0
-			direction = 0
-			count = 0
-			fight = 0
-			finished_dialog = 0
-			health = 3
-			zuck_health = 3
-			punch_random = 0
-			punch = 0
-			zuck_in_hitbox = 0
-			edward_health = 3
-			facing = 0
-			facing_range = 0
+func _process(_delta: float) -> void:
+	dialogNumber = dialog.dialogNumber
+	finished_dialog = dialog.finished
+	#if dialogNumber == 3: #number to equal dialog array number (now testing for fight variable instead
+		#fight = 1
+	if finished_dialog == 1:
+		fight = 1
+	if fight == 1:
+		animated_sprite.play("fighting")
+	#for reset function
+	start = start_script.play
+	if start == 67:
+		position = Vector2(9068, -66)
+		dialog_inTalkRange = 0
+		dialogNumber = 0
+		edward_in_dialog = 0
+		random = 0
+		direction_random = 0
+		direction = 0
+		count = 0
+		fight = 0
+		finished_dialog = 0
+		health = 3
+		zuck_health = 3
+		punch_random = 0
+		punch = 0
+		zuck_in_hitbox = 0
+		edward_health = 3
+		facing = 0
+		facing_range = 0
 func _on_talk_range_body_entered(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
 		if fight == 0:
@@ -115,12 +115,12 @@ func _physics_process(delta: float) -> void:
 				$error.play()
 				print ("zuck hit")
 		health = zuck.edward_health
+		if not is_on_floor():
+			velocity += get_gravity() * delta
 		if health <= 0 or zuck_health <= 0:
 			self.visible = false
 			fight = 0
-		if not is_on_floor():
-			velocity += get_gravity() * delta
-
+			queue_free()
 	# Handle jump.
 		if is_on_floor() and random == 7:
 			velocity.y = JUMP_VELOCITY
@@ -138,7 +138,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.flip_h = false
 			facing = -1
 		move_and_slide()
-		if count == 0:
+		if count == 0 and fight == 1:
 			count = 1 #prevents reruning frames
 			_change_direction() #originally indented
 	else:

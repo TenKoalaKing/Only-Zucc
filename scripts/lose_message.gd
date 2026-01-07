@@ -9,17 +9,15 @@ var fight
 var start = 0
 func _ready() -> void:
 	self.visible = false
-	while count == 0:
-		await wait_time(.25)
-		fight = zuck.fight
-		health = zuck.health
-		if fight == 1 and health <= 0:
-			self.visible = true
-			count = 2
-		start = start_script.play
-		if start == 67:
-			self.visible = false
-			count = 0
+func _process(_delta: float) -> void:
+	fight = zuck.fight
+	health = zuck.health
+	if fight == 1 and health <= 0:
+		self.visible = true
+	start = start_script.play
+	if start == 67:
+		self.visible = false
+		count = 0
 
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()

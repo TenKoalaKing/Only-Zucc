@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhwgcynq3lolx"
+path="res://.godot/imported/Zuckerberg smoking meat.mp3-6923d4d926682a70fdcac5e1184076ac.mp3str"
+
+[deps]
+
+source_file="res://music_and_sounds/Zuckerberg smoking meat.mp3"
+dest_files=["res://.godot/imported/Zuckerberg smoking meat.mp3-6923d4d926682a70fdcac5e1184076ac.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
