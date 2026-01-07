@@ -33,10 +33,14 @@ var reset = 0
 var start_sequence_done = 0
 var prev_fight_var = 0
 var cloud_area_initial_in_area = 0
+var zuck_win = 0
 func _ready() -> void:
 	add_to_group("player")
 func _physics_process(delta: float) -> void:
-	health = edward_script.zuck_health #health not updating
+	if is_instance_valid(edward_script):
+		health = edward_script.zuck_health #health not updating
+	else:
+		health = 3
 	#print(health)
 	if fight == 1:
 		if health <= 0:
@@ -47,6 +51,7 @@ func _physics_process(delta: float) -> void:
 			$yay.play()
 			await wait_time(.05)
 			fight = 0
+			zuck_win = 1
 	start_variable = start_script.play
 	start_sequence_done = camera1.start_sequence_done
 	reset = (start_variable/67)
@@ -59,7 +64,10 @@ func _physics_process(delta: float) -> void:
 	if start_variable != 0:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-		fight = edward_script.fight
+		if is_instance_valid(edward_script):
+			fight = edward_script.fight
+		else:
+			fight = 0
 		if fight == 1 and prev_fight_var == 0:
 			$backround_music.stop()
 			$fight_music.play()

@@ -2,7 +2,7 @@ extends Area2D
 @export var start_path:NodePath
 @onready var start_script = get_node(start_path)
 var start = 0
-var start_b = 0
+var changed = 0
 # Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
 #	pass # Replace with function body.
@@ -12,12 +12,12 @@ var start_b = 0
 func _process(_delta: float) -> void:
 	start = start_script.play
 	if start == 67:
-		start_b = 0
-		print("Reseted from barb")
+		changed = 0
+		print("Reseted from gym")
 
 
 func _on_body_entered(body: Node2D) -> void: #problem here
 	print("area_barb Body entered: ", body.name) 
 	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-		print("entered zuck barbeque")
-		start_b = 1
+		print("entered zuck gym")
+		changed = 1

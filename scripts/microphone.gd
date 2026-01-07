@@ -21,7 +21,10 @@ func _ready() -> void:
 	while count == 0:
 		await wait_time(.25)
 		health = zuck.health
-		edward_health = edward_script.health
+		if is_instance_valid(edward_script):
+			edward_health = edward_script.health
+		else:
+			edward_health = 0
 		if health <= 0 or edward_health <= 0:
 			self.visible = true
 			$CollisionShape2D.disabled = false

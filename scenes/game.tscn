@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=69 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -48,7 +48,6 @@
 [ext_resource type="PackedScene" uid="uid://bupb05j7lu888" path="res://scenes/grass_area.tscn" id="44_oaba0"]
 [ext_resource type="PackedScene" uid="uid://b76n17audukey" path="res://scenes/rock_concrete_area.tscn" id="45_oaba0"]
 [ext_resource type="PackedScene" uid="uid://cw2cwwc3hk8ra" path="res://scenes/cloud_sound_initial.tscn" id="46_458eo"]
-[ext_resource type="Texture2D" uid="uid://cbcugpcdfb3y6" path="res://assets/rando/drew_and_imported/top offight.png" id="47_8qswn"]
 [ext_resource type="PackedScene" uid="uid://c7ah8batrb4ck" path="res://scenes/cloud_walking_sounds.tscn" id="47_fedci"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
@@ -1930,12 +1929,10 @@ position = Vector2(5385, -841)
 rotation = -0.40491638
 scale = Vector2(0.7, 0.7)
 
-[node name="topofmmaring" type="CharacterBody2D" parent="."]
+[node name="Above Player" type="CanvasLayer" parent="."]
+layer = 13
 
-[node name="StaticBody2D" type="CanvasLayer" parent="topofmmaring"]
-layer = 5
-
-[node name="Sprite2D" type="Sprite2D" parent="topofmmaring/StaticBody2D"]
-position = Vector2(8815.502, -257.00003)
-scale = Vector2(2.8463798, 2.666667)
-texture = ExtResource("47_8qswn")
+[node name="MmaRingTop" type="Sprite2D" parent="Above Player"]
+position = Vector2(8816.001, -234)
+scale = Vector2(2.8046532, 2.534553)
+texture = ExtResource("21_h3rex")

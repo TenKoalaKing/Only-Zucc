@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbvn10rj341a1"]
+[gd_scene load_steps=12 format=3 uid="uid://dbvn10rj341a1"]
 
 [ext_resource type="Script" uid="uid://b41l82cn1hbff" path="res://scripts/coin.gd" id="1_i64fm"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="1_rwqht"]
+[ext_resource type="AudioStream" uid="uid://cv7srxfojkwuv" path="res://music_and_sounds/drop-coin-384921.mp3" id="3_11l1o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i64fm"]
 atlas = ExtResource("1_rwqht")
@@ -71,5 +72,8 @@ frame_progress = 0.7622299
 position = Vector2(-1, -1)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_kfxoj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_11l1o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

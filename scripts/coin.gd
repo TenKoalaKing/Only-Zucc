@@ -9,7 +9,9 @@ func _on_body_entered(_body: Node2D) -> void:
 		game_manager.add_point()
 		self.visible = false
 		count = 1
+		$AudioStreamPlayer.play()
 func _process(_delta: float) -> void:
 	start = start_script.play
 	if start == 67:
 		count = 0
+	$AnimatedSprite2D.play("default")

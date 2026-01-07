@@ -37,7 +37,7 @@ func _ready() -> void:
 			previous_zuck_walking = 0
 		await get_tree().process_frame
 func _await_sound_stop():
-	await wait_time(1.54)
+	await wait_time(2.04)
 	if in_area == 1:
 		previous_zuck_walking = 0
 func wait_time(seconds: float) -> void:

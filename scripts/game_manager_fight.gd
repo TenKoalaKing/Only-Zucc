@@ -20,7 +20,10 @@ func _ready() -> void:
 	
 	while 1 == 1:
 		await wait_time(.25)
-		fight = edward_sulivan_script.fight
+		if is_instance_valid(edward_sulivan_script):
+			fight = edward_sulivan_script.fight
+		else:
+			fight = 0
 		battle_status = fight_area_script.in_fight_area
 		if battle_status == 1 and previous_bt == 0 and fight == 1:
 			canvas_layer.add_child(hud_instance)

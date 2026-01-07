@@ -9,20 +9,20 @@ var count = 0
 var edward_health = 3
 var fight = 0
 var start = 0
-
+var zuck_win = 0
 func _ready() -> void:
 	self.visible = false
 func _process(_delta: float) -> void:
-	await wait_time(.25)
 	fight = zuck.fight
-	edward_health = edward_script.health
-	if fight == 1 and edward_health <= 0:
+	zuck_win = zuck.zuck_win
+	if fight == 1 and zuck_win == 1:
 		self.visible = true
 		count = 2
 	start = start_script.play
 	if start == 67:
 		self.visible = false
 		count = 0
+		zuck_win = 0
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()
 	timer.wait_time = seconds

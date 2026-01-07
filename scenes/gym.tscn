@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlvctnkpkqb3q"]
+
+[ext_resource type="Script" uid="uid://bi7k6ridrdq12" path="res://scripts/gym.gd" id="1_4duur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0md2f"]
+size = Vector2(102, 153)
+
+[node name="gym" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_4duur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_0md2f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

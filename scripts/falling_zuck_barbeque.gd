@@ -10,7 +10,8 @@ var start_b = 0
 var x_var = 0
 var play_var = 0
 var random_audio_pitch = 1
-
+var first_run = 0
+var start = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	freeze = true
@@ -29,10 +30,30 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	start_b = area_b.start_b
-	if start_b == 1 and freeze == true:
-		#print("not working")
-		freeze = false
+	start = start_script.play
+	if start == 67:
+		print("PANIC")
+		start_b = 0
+		x_var = 0
+		play_var = 0
+		random_audio_pitch = 1
+		first_run = 0
+		# Called when the node enters the scene tree for the first time.
+		freeze = true
+		x_var = 5661 - (500 * nums)
+		position = Vector2(x_var, -4306.0)
+		var physics_material = PhysicsMaterial.new()
+		physics_material.bounce = bounce_strength
+		physics_material.friction = 0.5
+		physics_material_override = physics_material
+		play_var = 9 * (nums - 1)
+		contact_monitor = true
+		max_contacts_reported = 1
+		body_entered.connect(_on_body_entered)
+		rotation = randf_range(0, TAU) #tau is essentiall 2pi or 360degrees for future reference
+		angular_velocity = randf_range(-10.0, 10.0)
+		start_b = area_b.start_b
+
 
 
 func _on_body_entered(_body: Node) -> void:
