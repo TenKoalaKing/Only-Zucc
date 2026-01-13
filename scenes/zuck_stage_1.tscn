@@ -254,7 +254,7 @@ animations = [{
 size = Vector2(91, 210)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3m0j"]
-size = Vector2(392.125, 357.6875)
+size = Vector2(476.0625, 357.6875)
 
 [node name="Zuck Stage 1" type="CharacterBody2D"]
 collision_layer = 2
@@ -280,7 +280,7 @@ shape = SubResource("RectangleShape2D_l3m0j")
 [node name="hit_range_right" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_range_right"]
-position = Vector2(75, 0)
+position = Vector2(116.96875, 0)
 shape = SubResource("RectangleShape2D_l3m0j")
 
 [node name="ding" type="AudioStreamPlayer" parent="."]

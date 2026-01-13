@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=70 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -51,6 +51,8 @@
 [ext_resource type="PackedScene" uid="uid://cw2cwwc3hk8ra" path="res://scenes/cloud_sound_initial.tscn" id="46_458eo"]
 [ext_resource type="Texture2D" uid="uid://cbcugpcdfb3y6" path="res://assets/rando/drew_and_imported/top offight.png" id="47_8qswn"]
 [ext_resource type="PackedScene" uid="uid://c7ah8batrb4ck" path="res://scenes/cloud_walking_sounds.tscn" id="47_fedci"]
+[ext_resource type="PackedScene" uid="uid://bip6ch01aciqi" path="res://scenes/fight_instructions.tscn" id="52_o8ni1"]
+[ext_resource type="FontFile" uid="uid://1ksiqvmnjdd" path="res://fonts/PixelOperator8.ttf" id="52_pf7vy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -1628,6 +1630,8 @@ position_smoothing_speed = 2.0
 script = ExtResource("28_sww3w")
 start_path = NodePath("../start_node")
 dialog_node = NodePath("../Slime at start of game")
+speed = 7.0
+slime_path = NodePath("../Slime at start of game")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
 position = Vector2(-4, 3)
@@ -1794,6 +1798,9 @@ position = Vector2(8150, -2739)
 [node name="vr_headset_cloud34" parent="headset_clouds" instance=ExtResource("32_v2yb1")]
 position = Vector2(8150, -2739)
 
+[node name="ddd" parent="headset_clouds" instance=ExtResource("32_v2yb1")]
+position = Vector2(8811.001, -2734.0002)
+
 [node name="vr_headset_cloud35" parent="headset_clouds" instance=ExtResource("32_v2yb1")]
 position = Vector2(8150, -2739)
 
@@ -1901,3 +1908,19 @@ z_index = 17
 position = Vector2(8888.001, -91)
 scale = Vector2(2.8046532, 2.534553)
 texture = ExtResource("47_8qswn")
+
+[node name="fight_instructions" parent="." instance=ExtResource("52_o8ni1")]
+position = Vector2(8444, -471)
+scale = Vector2(2, 2)
+start_path = NodePath("../start_node")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1212.0
+offset_top = 563.0
+offset_right = -704.0
+offset_bottom = 674.0
+theme_override_fonts/font = ExtResource("52_pf7vy")
+theme_override_font_sizes/font_size = 33
+text = "Interact with \"e\""
+horizontal_alignment = 1
+vertical_alignment = 1

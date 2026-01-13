@@ -40,6 +40,7 @@ var zuck_win = 0
 var changed = 0
 func _ready() -> void:
 	add_to_group("player")
+	$AnimatedSprite2D.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 func _physics_process(delta: float) -> void:
 	changed = gym_script.changed
 	if is_instance_valid(edward_script):

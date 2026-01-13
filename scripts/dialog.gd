@@ -4,7 +4,7 @@ extends Node
 @export_multiline var strings: Array[String] = []
 
 # UI references
-@onready var canvas_layer: CanvasLayer = %CanvasLayer
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var label: Label = %Label
 @onready var slime_script = get_parent()
 #var slime = 0
@@ -18,6 +18,7 @@ var dialogNumber = 0  # Current dialogue index
 var finished = 0 # for parent functions
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	canvas_layer.hide()  # Hide dialogue UI at start
 	#add_to_group("player")  # Add to player group
 	#while 1 == 1:
@@ -42,6 +43,7 @@ func _dialog_input():
 func _next_dialog():
 	# Move to next dialogue or quit if at end
 	dialogNumber += 1
+	#print(dialogNumber)
 	if dialogNumber >= strings.size():  # Fixed: Added >= for safety
 		_quit_dialog()
 		finished = 1
@@ -50,8 +52,8 @@ func _next_dialog():
 
 func _quit_dialog():
 	# Exit dialogue system
-	get_tree().paused = false
 	dialogNumber = 0
+	get_tree().paused = false
 	canvas_layer.hide()
 
 func _fast_show():
@@ -70,7 +72,6 @@ func _start_dialog():
 	# Initialize and start dialogue display
 	if dialogNumber >= strings.size():  # Fixed: Safety check
 		return
-		
 	canvas_layer.show()  # Show dialogue UI
 	label.visible_ratio = 0.0  # Reset text visibility
 	label.text = strings[dialogNumber]  # Set current dialogue text

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var dialog: Node = %Dialog
-@onready var dia = %Dialog
+@onready var dia = $Dialog
 @onready var dialog_indicator: TextureRect = %DialogIndicator
 
 var dialog_inTalkRange
@@ -10,27 +10,25 @@ var dialogNumber = 0
 var camera_focus = 0
 func _ready() -> void:	
 	dialog_indicator.hide()
-	while 1 == 1:#body.name.contains("Zuck") or body.is_in_group("player"):
-		dialogNumber = dia.dialogNumber
-		await wait_time(.1)
-		#print("heartbeat")    fix later if time for camera shifts during dialog
-		#print(dialogNumber)
-		#print(camera_focus)
-		if dialogNumber == 2:
-			camera_focus = 1
-		if dialogNumber == 3:
-			camera_focus = 2
+	process_mode = Node.PROCESS_MODE_ALWAYS
+func _process(_delta: float) -> void:
+	dialogNumber = dia.dialogNumber
+	#print("heartbeat")    fix later if time for camera shifts during dialog
+	print(dialogNumber)
+	#print(camera_focus)
+	if dialogNumber == 2:
+		camera_focus = 1
+	if dialogNumber == 3:
+		camera_focus = 2
+	if dialogNumber == 0:
+		camera_focus = 0
 func _on_talk_range_body_entered(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
 		dialog_indicator.show()
 		slime_in_dialog = 1
 		dialog.inTalkRange = true
 			#print(dialogNumber)
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		dialogNumber = dialogNumber + 1
-		#print("dialog number")
-		#print(dialogNumber)
+
 func _on_talk_range_body_exited(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
 		dialog_indicator.hide()

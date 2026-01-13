@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bip6ch01aciqi"]
+
+[ext_resource type="Script" uid="uid://hm48mtruioak" path="res://scripts/fight_instructions.gd" id="1_t005y"]
+[ext_resource type="FontFile" uid="uid://1ksiqvmnjdd" path="res://fonts/PixelOperator8.ttf" id="2_ucaom"]
+
+[node name="fight_instructions" type="Node2D"]
+script = ExtResource("1_t005y")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_ucaom")
+theme_override_font_sizes/font_size = 30
+text = "Press \"f\" to Fight!"

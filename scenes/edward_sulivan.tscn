@@ -62,7 +62,7 @@ size = Vector2(37, 115)
 size = Vector2(74, 138)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p530"]
-size = Vector2(106.5, 138.75)
+size = Vector2(159.25, 138.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4543"]
 size = Vector2(546.0001, 179.10004)
@@ -93,7 +93,7 @@ shape = SubResource("RectangleShape2D_0p530")
 [node name="hit_range_right" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_range_right"]
-position = Vector2(46, -5)
+position = Vector2(72.375, -5)
 shape = SubResource("RectangleShape2D_0p530")
 
 [node name="Dialog" parent="." instance=ExtResource("5_bqfuf")]
