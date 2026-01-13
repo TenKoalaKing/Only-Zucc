@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://cui3g5l44v6qq"]
+
+[ext_resource type="Script" uid="uid://dcnvqgxd2sln8" path="res://scripts/volume.gd" id="1_wvjlw"]
+[ext_resource type="Texture2D" uid="uid://b8mfcdnl0m5gu" path="res://assets/second_batch_drawing/brownbkgr.png" id="2_xvi8a"]
+[ext_resource type="FontFile" uid="uid://bkrf6fmtnwhe1" path="res://fonts/PixelOperator8-Bold.ttf" id="3_w60lv"]
+[ext_resource type="Texture2D" uid="uid://b8jp66tb4o5js" path="res://assets/rando/done/close.png" id="4_xvi8a"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ty1d"]
+
+[node name="volume" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1242.0
+offset_top = 489.0
+offset_right = 1282.0
+offset_bottom = 529.0
+script = ExtResource("1_wvjlw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_8ty1d")
+position = Vector2(-679.5435, -168.52176)
+scale = Vector2(0.29327172, 0.32452172)
+texture = ExtResource("2_xvi8a")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1262.0
+offset_top = -441.00003
+offset_right = -95.0
+offset_bottom = -294.91312
+theme_override_fonts/font = ExtResource("3_w60lv")
+theme_override_font_sizes/font_size = 90
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -995.0
+offset_top = -8.0
+offset_right = -371.0
+offset_bottom = 159.0
+icon = ExtResource("4_xvi8a")
+expand_icon = true
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -17.262001
+anchor_top = -4.4620004
+anchor_right = -17.262001
+anchor_bottom = -4.4620004
+offset_left = -372.51996
+offset_top = -122.51999
+offset_right = 392.48004
+offset_bottom = 137.48001
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
