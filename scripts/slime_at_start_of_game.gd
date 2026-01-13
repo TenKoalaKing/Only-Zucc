@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	dialogNumber = dia.dialogNumber
 	#print("heartbeat")    fix later if time for camera shifts during dialog
-	print(dialogNumber)
+	#print(dialogNumber)
 	#print(camera_focus)
 	if dialogNumber == 2:
 		camera_focus = 1

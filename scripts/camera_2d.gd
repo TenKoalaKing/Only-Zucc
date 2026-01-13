@@ -3,33 +3,34 @@ extends Camera2D
 @export var start_path: NodePath
 @export var dialog_node: Node
 @export var speed: float = 5.0
+@export var slime_path: NodePath
 
 @onready var start_script = get_node(start_path)
-@onready var slime_node = %"Slime at start of game"
-
-@export var slime_path:NodePath
 @onready var slime_script = get_node(slime_path)
 
-var start: int = 2
-var target: Node2D
-var selected: int = 2
-var previous_selected: int = -1
-var target_menu_outro := 1
-var first_start := 1
-var camera_focus_dialog := 0
-var slime_camera_focus := 0
-var start_sequence_done := 0
+var start := 2
 var reset := 0
-var intro_running := false
-var default_zoom = Vector2(.5, .5)      # Normal zoom level (100%)
-var zoomed_in = Vector2(0.25, 0.25)     # Zoomed in level (50% magnification)
-var zoom_speed = 0.1                   # Speed of smooth zoom transition (0.0 to 1.0)
-var zoom_out = 0
-var zoom_in = 0
-var dialog_zoom = 0
-var sharp_camera := true
-var slime_focus = 0
 
+var target: Node2D
+var selected := 2
+var previous_selected := -1
+
+var first_start := 1
+var intro_running := false
+var start_sequence_done := 0
+var sharp_camera := true
+var target_menu_outro := 1
+
+var slime_focus := 0
+var previous_slime_focus := -1
+
+var default_zoom := Vector2(0.5, 0.5)
+var zoomed_in := Vector2(0.8, 0.8)
+var dialog_zoom := false
+var previous_dialog_number := 0
+var rand_selected = 0
+var contingency = 0
+var start_sequence_start = 0
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	await get_tree().process_frame
@@ -38,33 +39,47 @@ func _process(delta: float) -> void:
 	start = start_script.play
 	reset = start_script.reset
 	slime_focus = slime_script.camera_focus
+
 	if reset == 1:
 		first_start = 1
 		start_sequence_done = 0
+		start_sequence_start = 0
 		intro_running = false
-		sharp_camera = true   # snap again if restarting
+		sharp_camera = true
 
 	if start == 1 and first_start == 1 and not intro_running:
 		intro_running = true
 		first_start = 0
 		run_intro_sequence()
 		return
+	rand_selected = selected
+	if slime_script.dialogNumber != previous_dialog_number:
+		previous_dialog_number = slime_script.dialogNumber
+		if slime_script.dialogNumber != 0:
+			match slime_script.dialogNumber:
+				3:
+					selected = 8
+				4:
+					selected = 7
+				0:
+					selected = rand_selected
+		else:
+			selected = rand_selected
 
-	if start == 1 and previous_selected == 2:
-		selected = 3
-	elif start == 0:
-		selected = 2
-	if slime_focus == 2:
-		selected = 8
-	if slime_focus == 3:
-		selected = 7
+	if selected == 7 and contingency == 0:
+		_contingency()
+		contingency = 1
+	if not intro_running and slime_focus == 0:
+		if start == 1 and previous_selected == 2:
+			selected = 3
+		elif start == 0:
+			selected = 2
+
 	if selected != previous_selected:
 		update_target()
 
-	# --- CAMERA MOVEMENT ---
 	if target:
 		if sharp_camera:
-			# 🔹 NO SMOOTHING — instant snap
 			global_position = target.global_position
 		else:
 			if selected == 2:
@@ -78,45 +93,22 @@ func _process(delta: float) -> void:
 					target.global_position,
 					1.0 - exp(-speed * delta)
 				)
- #and zoom_out == 1 or zoom_in == 1:
-		# Toggle between default and zoomed in states
-	if slime_focus == 2:
-		dialog_zoom = 1
-	if slime_focus != 1:
-		dialog_zoom = 0
-	if dialog_zoom == 0:
-		zoom = default_zoom
-		# If currently at default zoom, switch to zoomed in
-	if dialog_zoom == 1:
-		zoom = zoomed_in
-			# If currently zoomed in, switch back to default
-#extra code made for manual control of zoom
-	#if Input.is_action_pressed("zoom_in"):
-		# Smoothly interpolate (lerp) current zoom towards zoomed_in state
-	#	zoom = zoom.lerp(zoomed_in, zoom_speed)
-	
-	# Check if zoomed_in action is being held down
-	# Note: This should probably be "zoom_out" instead of "zoomed_in"
-	#elif Input.is_action_pressed("zoomed_in"):
-		# Smoothly interpolate current zoom back to default state
-	#	zoom = zoom.lerp(default_zoom, zoom_speed)
 
-
-
+	dialog_zoom = slime_focus == 2
+	zoom = zoomed_in if dialog_zoom else default_zoom
 
 func run_intro_sequence() -> void:
-	await move_camera("../invisible_tracker_1", 3)
-	await move_camera("../invisible_tracker_2", 3)
-	await move_camera("../static zuckerberg", 3)
-	await move_camera("../BackOfClassroom", 3)
-	await move_camera("../Facebook_com", 3)
-	await move_camera("../BackOfClassroom", 3)
-
+	start_sequence_start = 1
+	#should last 13.84 seconds
+	await move_camera("../invisible_tracker_1", 2.33333333333)
+	await move_camera("../invisible_tracker_2", 2.33333333333)
+	await move_camera("../static zuckerberg", 2.33333333333)
+	await move_camera("../BackOfClassroom", 2.33333333333)
+	await move_camera("../Facebook_com", 2.33333333333)
+	await move_camera("../BackOfClassroom", 2.34)
 	start_sequence_done = 1
 	previous_selected = 2
 	intro_running = false
-
-	# 🔹 Enable smoothing AFTER intro
 	sharp_camera = false
 
 func move_camera(path: String, delay: float) -> void:
@@ -138,11 +130,13 @@ func update_target() -> void:
 			target = get_node_or_null("../invisible_tracker_door")
 		8:
 			target = get_node_or_null("../invisible_tracker_coin")
-	if target:
-		print("Camera tracking:", target.name)
-	else:
-		print("Camera target missing")
-
+func _contingency():
+	await wait_time(6.3)
+	target = get_node_or_null("../Zuck Stage 1")
+	selected = 3
+	await wait_time(.1)
+	selected = 3
+	contingency = 0
 func wait_time(seconds: float) -> void:
 	var timer := Timer.new()
 	timer.wait_time = seconds

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://da2ydeagt2vl3"]
+
+[ext_resource type="Texture2D" uid="uid://dgftyliscbtro" path="res://assets/second_batch_drawing/Joe roganbmain.png" id="1_mkxtk"]
+
+[node name="joe_rogan_main" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(12, 81)
+scale = Vector2(0.64625, 0.686)
+texture = ExtResource("1_mkxtk")

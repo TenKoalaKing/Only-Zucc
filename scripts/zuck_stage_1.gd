@@ -38,9 +38,18 @@ var prev_fight_var = 0
 var cloud_area_initial_in_area = 0
 var zuck_win = 0
 var changed = 0
+var camera_start_sequence = 0
+var no_repeats = 0
 func _ready() -> void:
 	add_to_group("player")
 	$AnimatedSprite2D.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+func _process(_delta: float) -> void:
+	camera_start_sequence = camera1.start_sequence_start
+	if camera_start_sequence == 1 and no_repeats == 0:
+		no_repeats = 1
+	if camera_start_sequence == 0:
+		no_repeats = 0
+		$begin_music.play()
 func _physics_process(delta: float) -> void:
 	changed = gym_script.changed
 	if is_instance_valid(edward_script):
