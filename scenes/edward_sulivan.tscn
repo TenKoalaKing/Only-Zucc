@@ -111,10 +111,10 @@ shape = SubResource("RectangleShape2D_g4543")
 [node name="DialogIndicator" type="TextureRect" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 24)
-offset_left = 11.0
-offset_top = -51.399998
-offset_right = 51.0
-offset_bottom = -11.399998
+offset_left = 34.0
+offset_top = -168.0
+offset_right = 166.0
+offset_bottom = -48.0
 texture = ExtResource("6_g4543")
 expand_mode = 1
 

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://3m1eos1n11iq"]
+
+[ext_resource type="Script" uid="uid://cfjc0fm7uuyq" path="res://scripts/mic_main.gd" id="1_gt8ib"]
+[ext_resource type="Texture2D" uid="uid://ba7viclhuncb5" path="res://assets/second_batch_drawing/topmic.png" id="1_rw5ti"]
+[ext_resource type="Texture2D" uid="uid://cenlbej4o2815" path="res://assets/rando/done/speechbubble-removebg-preview.png" id="3_p2jv0"]
+[ext_resource type="PackedScene" uid="uid://dqjrvfsf38d53" path="res://scenes/Dialog.tscn" id="4_p2jv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw5ti"]
+size = Vector2(124.5, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjf3f"]
+size = Vector2(528, 431)
+
+[node name="mic_main" type="Node2D"]
+position = Vector2(158, 65)
+script = ExtResource("1_gt8ib")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-10, 17)
+texture = ExtResource("1_rw5ti")
+
+[node name="DialogIndicator" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+offset_left = -2.0
+offset_top = -111.399994
+offset_right = 128.0
+offset_bottom = 17.0
+texture = ExtResource("3_p2jv0")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-78.75, 50)
+shape = SubResource("RectangleShape2D_rw5ti")
+
+[node name="Dialog" parent="." instance=ExtResource("4_p2jv0")]
+unique_name_in_owner = true
+strings = Array[String](["Welcome to the JRE!", "Wait, so your saying the FBI came for a vibe check and not for any evidence?", "So you don't use social media because your too busy running the platform where everyone wastes their time?", "Are you blinking or are your eyes just recalibrating to the light of the room?", "Uhhhh.... Well good luck!!!"])
+
+[node name="talk_range" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="talk_range"]
+position = Vector2(104, 70)
+shape = SubResource("RectangleShape2D_mjf3f")
+
+[connection signal="body_entered" from="talk_range" to="." method="_on_talk_range_body_entered"]
+[connection signal="body_exited" from="talk_range" to="." method="_on_talk_range_body_exited"]

@@ -263,7 +263,7 @@ script = ExtResource("1_dyxwv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l3m0j")
-animation = &"running2"
+animation = &"jumping"
 script = ExtResource("6_kes7w")
 
 [node name="Hitbox" type="Area2D" parent="."]

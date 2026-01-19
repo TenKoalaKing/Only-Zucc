@@ -50,6 +50,13 @@ func _process(_delta: float) -> void:
 	if camera_start_sequence == 0:
 		no_repeats = 0
 		$begin_music.play()
+	if animated_sprite.animation == "jumping2" or animated_sprite.animation == "default2":
+		if animated_sprite.animation == "running2":
+			animated_sprite.scale = Vector2(0.5, 0.5)
+		else:
+			animated_sprite.scale = Vector2(0.3, 0.3)
+	else:
+		animated_sprite.scale = Vector2(1,1)
 func _physics_process(delta: float) -> void:
 	changed = gym_script.changed
 	if is_instance_valid(edward_script):
