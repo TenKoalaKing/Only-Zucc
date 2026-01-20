@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://dqq7tyt8ecr2b"]
+
+[ext_resource type="Script" uid="uid://l5vnbd71udad" path="res://scripts/senate_part_1.gd" id="1_ldvfy"]
+[ext_resource type="Texture2D" uid="uid://ostowmqjc7cf" path="res://assets/third_drawings/1.png" id="2_4ugec"]
+[ext_resource type="Texture2D" uid="uid://cn6x2qo6gbg2c" path="res://assets/third_drawings/2.png" id="3_qvamw"]
+[ext_resource type="Texture2D" uid="uid://dh5loy2wyabp5" path="res://assets/third_drawings/3.png" id="4_yuet0"]
+[ext_resource type="Texture2D" uid="uid://dbaixpv6i1mw" path="res://assets/third_drawings/4.png" id="5_qar51"]
+[ext_resource type="Texture2D" uid="uid://cqyd6iudq6roa" path="res://assets/third_drawings/5.png" id="6_bbtb0"]
+[ext_resource type="Texture2D" uid="uid://bysmlguscxu7b" path="res://assets/third_drawings/y6.png" id="7_bnn6m"]
+[ext_resource type="Texture2D" uid="uid://bw0eb13oa01jx" path="res://assets/third_drawings/7.png" id="8_xmaa5"]
+[ext_resource type="Texture2D" uid="uid://0prgrnyxtdq7" path="res://assets/third_drawings/8.png" id="9_b0x35"]
+[ext_resource type="Texture2D" uid="uid://cwvs66wtebiii" path="res://assets/third_drawings/9.png" id="10_pyeph"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u21d0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4ugec")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qvamw")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yuet0")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qar51")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bbtb0")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_bnn6m")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xmaa5")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_b0x35")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_pyeph")
+}],
+"loop": true,
+"name": &"9",
+"speed": 5.0
+}]
+
+[node name="senate_part_1" type="RigidBody2D"]
+script = ExtResource("1_ldvfy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u21d0")
+animation = &"9"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

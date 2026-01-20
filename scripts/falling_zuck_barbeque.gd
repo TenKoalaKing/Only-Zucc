@@ -59,7 +59,7 @@ func _process(_delta: float) -> void:
 		start_b = area_b.start_b
 
 func _stop_physics_func():
-	await wait_time(7.67)
+	await wait_time(4.67)
 	while $AudioStreamPlayer.playing == true:
 		$CollisionShape2D.disabled = false
 	$CollisionShape2D.disabled = true

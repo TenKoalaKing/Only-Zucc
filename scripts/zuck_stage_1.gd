@@ -15,6 +15,24 @@ extends CharacterBody2D
 @export var gym_path:NodePath
 @onready var gym_script = get_node(gym_path)
 
+@export var onep:NodePath
+@onready var one = get_node(onep)
+@export var twop:NodePath
+@onready var two = get_node(twop)
+@export var threep:NodePath
+@onready var three = get_node(threep)
+@export var fourp:NodePath
+@onready var four = get_node(fourp)
+@export var fivep:NodePath
+@onready var five = get_node(fivep)
+@export var sixp:NodePath
+@onready var six = get_node(sixp)
+@export var sevenp:NodePath
+@onready var seven = get_node(sevenp)
+@export var eightp:NodePath
+@onready var eight = get_node(eightp)
+@export var ninep:NodePath
+@onready var nine = get_node(ninep)
 #@export var health_bar_path:NodePath
 #@onready var health_bar_script = get_node(health_bar_path)
 
@@ -44,6 +62,7 @@ func _ready() -> void:
 	add_to_group("player")
 	$AnimatedSprite2D.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 func _process(_delta: float) -> void:
+	_in_contact_with_senate()
 	camera_start_sequence = camera1.start_sequence_start
 	if camera_start_sequence == 1 and no_repeats == 0:
 		no_repeats = 1
@@ -220,3 +239,8 @@ func _on_hit_range_right_body_entered(_body: Node2D) -> void:
 	edward_in_hitbox = 1
 func _on_hit_range_right_body_exited(_body: Node2D) -> void:
 	edward_in_hitbox = 0
+
+func _in_contact_with_senate():
+	if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1:
+		#death so go back to respawn point will figure out later!
+		print("will fufil")
