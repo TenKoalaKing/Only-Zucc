@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b40horegir4v2"]
+[gd_scene load_steps=50 format=3 uid="uid://b40horegir4v2"]
 
 [ext_resource type="Script" uid="uid://dghlbqs685ud0" path="res://scripts/zuck_stage_1.gd" id="1_dyxwv"]
 [ext_resource type="Texture2D" uid="uid://d34glyy1sast8" path="res://assets/rando/drew_and_imported/idle sick state1 .png" id="2_6p0ec"]
@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://26tt5v5aqik3" path="res://assets/rando/drew_and_imported/zuck2walking.png" id="8_mjdqp"]
 [ext_resource type="AudioStream" uid="uid://dxta6j4akg5cg" path="res://music_and_sounds/boo-6377.mp3" id="8_pp2oa"]
 [ext_resource type="AudioStream" uid="uid://bmyo1inq0p1nj" path="res://music_and_sounds/soft-background-music-409193.mp3" id="9_br8in"]
+[ext_resource type="Texture2D" uid="uid://blgwwwsjdhrfu" path="res://assets/third_drawings/zuckskinormal.png" id="9_mjdqp"]
 [ext_resource type="AudioStream" uid="uid://147syb1x4f3a" path="res://music_and_sounds/fight music.wav" id="10_6p0ec"]
+[ext_resource type="Texture2D" uid="uid://cw3ciqij063gh" path="res://assets/third_drawings/zuckskijump.png" id="10_c6gli"]
 [ext_resource type="AudioStream" uid="uid://cy4mf8tuich67" path="res://music_and_sounds/use for after fight ----- slow-cloud-26789.mp3" id="11_kes7w"]
 [ext_resource type="AudioStream" uid="uid://xrpibrf5uwis" path="res://music_and_sounds/Bloom 12-01-2026 08-06 start music.wav" id="16_poyrr"]
 
@@ -249,6 +251,22 @@ animations = [{
 "loop": true,
 "name": &"running2",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_mjdqp")
+}],
+"loop": true,
+"name": &"ski",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_c6gli")
+}],
+"loop": true,
+"name": &"ski_jump",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thiek"]
@@ -263,7 +281,7 @@ script = ExtResource("1_dyxwv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l3m0j")
-animation = &"jumping"
+animation = &"ski_jump"
 script = ExtResource("6_kes7w")
 
 [node name="Hitbox" type="Area2D" parent="."]

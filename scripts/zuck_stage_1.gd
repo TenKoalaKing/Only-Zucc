@@ -33,6 +33,12 @@ extends CharacterBody2D
 @onready var eight = get_node(eightp)
 @export var ninep:NodePath
 @onready var nine = get_node(ninep)
+@export var lazer1p:NodePath
+@onready var lazer1 = get_node(lazer1p)
+@export var lazer2p:NodePath
+@onready var lazer2 = get_node(lazer2p)
+@export var skiing_area_2d_p:NodePath
+@onready var skiing_area_2d = get_node(skiing_area_2d_p)
 #@export var health_bar_path:NodePath
 #@onready var health_bar_script = get_node(health_bar_path)
 
@@ -58,11 +64,15 @@ var zuck_win = 0
 var changed = 0
 var camera_start_sequence = 0
 var no_repeats = 0
+var skiing := 0
+var jump_sense_for_skiing := 0
 func _ready() -> void:
 	add_to_group("player")
 	$AnimatedSprite2D.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 func _process(_delta: float) -> void:
 	_in_contact_with_senate()
+	if skiing_area_2d.entered == 1:
+		skiing = 1
 	camera_start_sequence = camera1.start_sequence_start
 	if camera_start_sequence == 1 and no_repeats == 0:
 		no_repeats = 1
@@ -119,7 +129,10 @@ func _physics_process(delta: float) -> void:
 			prev_fight_var = 0.5
 		else:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
+				jump_sense_for_skiing = 1
 				velocity.y = JUMP_VELOCITY
+			else:
+				jump_sense_for_skiing = 0
 		if prev_fight_var == 0.5:
 			cloud_area_initial_in_area = cloud_area_initial.in_area
 			if cloud_area_initial_in_area == 1:
@@ -191,7 +204,11 @@ func _physics_process(delta: float) -> void:
 				if animated_sprite.animation != "jumping":
 					animated_sprite.play("jumping")
 				moving = 0
-		
+		if skiing == 1:
+			if animated_sprite.animation != "ski_jump" and jump_sense_for_skiing == 1:
+				animated_sprite.play("ski_jump")
+			if animated_sprite.animation != "ski":
+				animated_sprite.play("ski")
 	
 		if direction:
 			velocity.x = direction * SPEED
@@ -241,6 +258,6 @@ func _on_hit_range_right_body_exited(_body: Node2D) -> void:
 	edward_in_hitbox = 0
 
 func _in_contact_with_senate():
-	if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1:
+	if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1 or lazer1.hit == 1 or lazer2.hit == 1:
 		#death so go back to respawn point will figure out later!
 		print("will fufil")

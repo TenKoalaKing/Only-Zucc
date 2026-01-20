@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmdoqw8brlglo"]
+
+[ext_resource type="Script" uid="uid://dp6t64o7r2ica" path="res://scripts/skiing.gd" id="1_q4otu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x810"]
+size = Vector2(96, 231)
+
+[node name="skiing" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_q4otu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(49, 113)
+shape = SubResource("RectangleShape2D_4x810")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://o7kvqgyoxixy"]
+
+[ext_resource type="Script" uid="uid://di3h5ooa8ljpr" path="res://scripts/lazer_2.gd" id="1_uk3ko"]
+[ext_resource type="Texture2D" uid="uid://dbai43c4fjiv4" path="res://assets/third_drawings/lazer2.png" id="2_uk3ko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cq8u"]
+size = Vector2(380, 441)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5qpvg"]
+radius = 11.0
+height = 1901.1714
+
+[node name="lazer2" type="Node2D"]
+script = ExtResource("1_uk3ko")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uk3ko")
+
+[node name="sense_senate" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sense_senate"]
+position = Vector2(-49, -815.5)
+shape = SubResource("RectangleShape2D_7cq8u")
+
+[node name="sense_zuck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sense_zuck"]
+position = Vector2(713.00006, -229.99998)
+rotation = 2.5028021
+shape = SubResource("CapsuleShape2D_5qpvg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="sense_zuck"]
+position = Vector2(440, -656)
+rotation = 2.5028021
+shape = SubResource("CapsuleShape2D_5qpvg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="sense_zuck"]
+position = Vector2(422, -739)
+rotation = 2.5028021
+shape = SubResource("CapsuleShape2D_5qpvg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="sense_zuck"]
+position = Vector2(-845.9999, -93.00001)
+rotation = -2.4678955
+shape = SubResource("CapsuleShape2D_5qpvg")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="sense_zuck"]
+position = Vector2(-486.99985, -490.00006)
+rotation = -2.4678955
+shape = SubResource("CapsuleShape2D_5qpvg")
+
+[connection signal="body_entered" from="sense_senate" to="." method="_on_sense_senate_body_entered"]
+[connection signal="body_exited" from="sense_senate" to="." method="_on_sense_senate_body_exited"]
+[connection signal="body_entered" from="sense_zuck" to="." method="_on_sense_zuck_body_entered"]
+[connection signal="body_exited" from="sense_zuck" to="." method="_on_sense_zuck_body_exited"]

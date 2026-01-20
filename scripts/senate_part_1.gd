@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends RigidBody2D #if death dosn't trigger in zuck, make script in process to create a var that stays changed for wait_time(.25)
 @export var start_path:NodePath
 @onready var start_script = get_node(start_path)
 @export var area_c_path:NodePath
@@ -118,7 +118,7 @@ func _process(_delta: float) -> void:
 		rotation = randf_range(0, TAU) #tau is essentiall 2pi or 360degrees for future reference
 		angular_velocity = randf_range(-10.0, 10.0)
 		start_c = area_c.start_c
-		if reset_position_active == 0:
+		if reset_position_active == 0 and start_c == 1:
 			_reset_position()
 
 

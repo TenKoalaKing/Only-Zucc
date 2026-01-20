@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlrui5m8s3sxq"]
+
+[ext_resource type="Texture2D" uid="uid://b4r38ov74y1yn" path="res://assets/rando/done/microphone.png" id="1_7jjgs"]
+[ext_resource type="Script" uid="uid://bkkpqnbtotw0y" path="res://scripts/mic_for_senate.gd" id="1_jyk00"]
+[ext_resource type="Texture2D" uid="uid://cenlbej4o2815" path="res://assets/rando/done/speechbubble-removebg-preview.png" id="2_jyk00"]
+[ext_resource type="PackedScene" uid="uid://dqjrvfsf38d53" path="res://scenes/Dialog.tscn" id="3_kyqa7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ue0p8"]
+size = Vector2(395, 1023)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jqll"]
+size = Vector2(1083, 1067.75)
+
+[node name="mic_for_senate" type="Node2D"]
+script = ExtResource("1_jyk00")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(215, 200.00005)
+scale = Vector2(0.321875, 0.33306122)
+texture = ExtResource("1_7jjgs")
+
+[node name="DialogIndicator" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+offset_left = -2.0
+offset_top = -111.399994
+offset_right = 128.0
+offset_bottom = 17.0
+texture = ExtResource("2_jyk00")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(210.5, -86.5)
+shape = SubResource("RectangleShape2D_ue0p8")
+
+[node name="Dialog" parent="." instance=ExtResource("3_kyqa7")]
+unique_name_in_owner = true
+strings = Array[String](["AHHHHHH!", "Welcome to the hearing.", "Do your best to avoid us...", "and from seeing eye to eye.", "Adios!"])
+
+[node name="talk_range" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="talk_range"]
+position = Vector2(527.5, 33.875)
+shape = SubResource("RectangleShape2D_5jqll")
+
+[connection signal="body_entered" from="talk_range" to="." method="_on_talk_range_body_entered"]
+[connection signal="body_exited" from="talk_range" to="." method="_on_talk_range_body_exited"]
