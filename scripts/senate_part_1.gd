@@ -3,7 +3,6 @@ extends RigidBody2D #if death dosn't trigger in zuck, make script in process to 
 @onready var start_script = get_node(start_path)
 @export var area_c_path:NodePath
 @onready var area_c = get_node(area_c_path)
-@onready var impact_audio = $AudioStreamPlayer
 @export var nums:int #numbers 1 - 9
 @export var bounce_strength: float = 0.8
 var start_c = 0
@@ -16,7 +15,8 @@ var first_run = 0
 var start = 0
 var velocity
 var starting_point
-var reset_position_active := 0
+var reset_position_active = 0
+var init := 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	freeze = true
@@ -66,10 +66,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	start = start_script.play
 	start_c = area_c.start_c
-	if start_c == 1 and first_run == 0:
+	if start_c == 1 and init == 1:
 		freeze = false
-		first_run = 1
-	if start == 67:
+		init == 0
+	if start == 67 and 1 != 1:
 		print("PANIC")
 		start_c = 0
 		x_var = 0
@@ -108,24 +108,24 @@ func _process(_delta: float) -> void:
 			9:
 				x_var = -834.0
 				position = Vector2(x_var, -10645.0)
-		var physics_material = PhysicsMaterial.new()
-		physics_material.bounce = bounce_strength
-		physics_material.friction = 0.5
-		physics_material_override = physics_material
-		play_var = 9 * (nums - 1)
-		contact_monitor = true
-		max_contacts_reported = 1
-		rotation = randf_range(0, TAU) #tau is essentiall 2pi or 360degrees for future reference
-		angular_velocity = randf_range(-10.0, 10.0)
-		start_c = area_c.start_c
-		if reset_position_active == 0 and start_c == 1:
-			_reset_position()
+		#var physics_material = PhysicsMaterial.new()
+		#physics_material.bounce = bounce_strength
+		#physics_material.friction = 0.5
+		#physics_material_override = physics_material
+		#contact_monitor = true
+		#max_contacts_reported = 1
+		#rotation = randf_range(0, TAU) #tau is essentiall 2pi or 360degrees for future reference
+		#angular_velocity = randf_range(-10.0, 10.0)
+		#start_c = area_c.start_c
+		#if reset_position_active == 0 and start_c == 1:
+		#	_reset_position()
 
 
 func _reset_position():
 	reset_position_active = 1
-	await wait_time(4)
+	await wait_time(3)
 	position = starting_point
+	print(nums, "done")
 	reset_position_active = 0
 
 

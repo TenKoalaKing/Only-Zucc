@@ -41,7 +41,11 @@ extends CharacterBody2D
 @onready var skiing_area_2d = get_node(skiing_area_2d_p)
 #@export var health_bar_path:NodePath
 #@onready var health_bar_script = get_node(health_bar_path)
-
+@export var gravity = 900.0 #start of skiing code
+@export var base_forward_speed = 200.0
+@export var acceleration = 500.0
+@export var friction = 0.99 #will set up closer to 1 faster you go
+@export var jump_force = -400.0
 const SPEED = 720.0
 const JUMP_VELOCITY = -767.0 #used to be -550.0 676767
 var start_variable = 1
@@ -79,15 +83,39 @@ func _process(_delta: float) -> void:
 	if camera_start_sequence == 0:
 		no_repeats = 0
 		$begin_music.play()
-	if animated_sprite.animation == "jumping2" or animated_sprite.animation == "default2":
+	if animated_sprite.animation == "jumping2" or animated_sprite.animation == "default2" or animated_sprite.animation == "running2":
 		if animated_sprite.animation == "running2":
 			animated_sprite.scale = Vector2(0.5, 0.5)
 		else:
 			animated_sprite.scale = Vector2(0.3, 0.3)
 	else:
-		animated_sprite.scale = Vector2(1,1)
-func _physics_process(delta: float) -> void:
+		if animated_sprite.animation == "running":
+			animated_sprite.scale = Vector2(0.5, 0.5)
+		if animated_sprite.animation == "default" or animated_sprite.animation == "jumping" or animated_sprite.animation == "fighting":
+			animated_sprite.scale = Vector2(0.25, 0.25)
+		if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
+			Vector2(0.15, 0.15)
+	if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
+		animated_sprite.scale = Vector2(0.2, 0.2)
+func _physics_process(delta: float) -> void: #start out with making skiing code then add exceptions afterward!!!! JUST ADD EXCEPTIONS NOW
 	changed = gym_script.changed
+	if skiing == 1:
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		if is_on_floor():
+			var floor_normal = get_floor_normal()
+			var slope_direction = floor_normal.rotated(deg_to_rad(90))
+			velocity += slope_direction * acceleration * delta
+			if velocity.length() < base_forward_speed:
+				velocity = velocity.lerp(slope_direction * base_forward_speed, 0.1)
+				velocity *= friction
+				rotation = lerp_angle(rotation, floor_normal.angle() + PI/2, 0.1)
+			else:
+				rotation = lerp_angle(rotation, 0, 0.05)
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = jump_force
+		if Input.is_action_just_pressed("move_right") and is_on_floor():
+			velocity += get_floor_normal().rotated(PI/2) * 150.0
 	if is_instance_valid(edward_script):
 		health = edward_script.zuck_health #health not updating
 	else:
@@ -260,4 +288,4 @@ func _on_hit_range_right_body_exited(_body: Node2D) -> void:
 func _in_contact_with_senate():
 	if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1 or lazer1.hit == 1 or lazer2.hit == 1:
 		#death so go back to respawn point will figure out later!
-		print("will fufil")
+		print("dead - will fufil rest code")

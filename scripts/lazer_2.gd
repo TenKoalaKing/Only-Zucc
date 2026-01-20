@@ -3,8 +3,11 @@ var zuck_in_zone := 0
 var senate_in_zone := 0
 var prev_senate_in_zone := 0
 var hit := 0
+#				x_var = 108
+#				position = Vector2(x_var, -4622.0)
 func _ready() -> void:
 	self.visible = false
+	position = Vector2(108, -3622.0)
 func _process(_delta: float) -> void:
 	if senate_in_zone == 1 and prev_senate_in_zone == 0:
 		prev_senate_in_zone = 1

@@ -59,13 +59,15 @@ func _process(_delta: float) -> void:
 		start_b = area_b.start_b
 
 func _stop_physics_func():
-	await wait_time(4.67)
+	await wait_time(.67)
 	while $AudioStreamPlayer.playing == true:
 		$CollisionShape2D.disabled = false
 	$CollisionShape2D.disabled = true
 	
 
-func _on_body_entered(_body: Node) -> void:
+func _on_body_entered(body: Node) -> void:
+	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
+		$CollisionShape2D.disabled = true
 	if start_b == 1:
 		#print("not working22")
 		var velocity = linear_velocity.length()

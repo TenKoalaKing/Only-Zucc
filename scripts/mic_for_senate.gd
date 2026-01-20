@@ -16,7 +16,7 @@ func _ready() -> void:
 	start_c = 0
 func _process(_delta: float) -> void:
 	dialogNumber = dia.dialogNumber
-	if dialogNumber == 4:
+	if dialogNumber == 1:
 		deploy = 1
 	if dialogNumber == 4:
 		done = 1

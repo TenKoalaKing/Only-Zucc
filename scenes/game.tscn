@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=87 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -61,6 +61,12 @@
 [ext_resource type="PackedScene" uid="uid://da2ydeagt2vl3" path="res://scenes/joe_rogan_main.tscn" id="58_66xif"]
 [ext_resource type="PackedScene" uid="uid://3m1eos1n11iq" path="res://scenes/mic_main.tscn" id="59_bnuda"]
 [ext_resource type="PackedScene" uid="uid://c67lgorfojuf4" path="res://scenes/ending_of_game_zone.tscn" id="61_66xif"]
+[ext_resource type="PackedScene" uid="uid://dlrui5m8s3sxq" path="res://scenes/mic_for_senate.tscn" id="62_mmvbu"]
+[ext_resource type="PackedScene" uid="uid://dxkcjpu4m1ids" path="res://scenes/static_senate.tscn" id="63_weeiq"]
+[ext_resource type="PackedScene" uid="uid://yd8sqntytqo1" path="res://scenes/lazer_1.tscn" id="64_uxocx"]
+[ext_resource type="PackedScene" uid="uid://o7kvqgyoxixy" path="res://scenes/lazer_2.tscn" id="65_7nv0b"]
+[ext_resource type="PackedScene" uid="uid://cmdoqw8brlglo" path="res://scenes/skiing.tscn" id="66_o8oq8"]
+[ext_resource type="PackedScene" uid="uid://dqq7tyt8ecr2b" path="res://scenes/senate_part_1.tscn" id="67_sxt1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -1591,6 +1597,18 @@ edward_path = NodePath("../Edward Sulivan")
 main_camera = NodePath("../Camera2D")
 cloud_area_initial_path = NodePath("../sound_areas_folder/cloud_sound_initial")
 gym_path = NodePath("../gym")
+onep = NodePath("../senate_part1/1")
+twop = NodePath("../senate_part1/2")
+threep = NodePath("../senate_part1/3")
+fourp = NodePath("../senate_part1/4")
+fivep = NodePath("../senate_part1/5")
+sixp = NodePath("../senate_part1/6")
+sevenp = NodePath("../senate_part1/7")
+eightp = NodePath("../senate_part1/8")
+ninep = NodePath("../senate_part1/9")
+lazer1p = NodePath("../lazer_1")
+lazer2p = NodePath("../lazer2")
+skiing_area_2d_p = NodePath("../skiing")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zuck Stage 1"]
 position = Vector2(-4, 73)
@@ -1632,7 +1650,7 @@ position = Vector2(1492, -5919)
 scale = Vector2(0.5, 0.5)
 
 [node name="reference" parent="." instance=ExtResource("7_gee14")]
-position = Vector2(-834, -10599)
+position = Vector2(-834, -11082)
 scale = Vector2(0.5, 0.5)
 
 [node name="Platform Cloud 3" parent="." instance=ExtResource("7_gee14")]
@@ -2158,3 +2176,76 @@ start_path = NodePath("../start_node")
 
 [node name="ending_of_game_zone" parent="." instance=ExtResource("61_66xif")]
 position = Vector2(-2159.875, -15159.25)
+
+[node name="mic_for_senate" parent="." instance=ExtResource("62_mmvbu")]
+position = Vector2(1432, -3053)
+start_path = NodePath("../start_node")
+
+[node name="static_senate" parent="." instance=ExtResource("63_weeiq")]
+position = Vector2(678, -4873)
+mic_for_senate_path = NodePath("../mic_for_senate")
+
+[node name="lazer_1" parent="." instance=ExtResource("64_uxocx")]
+position = Vector2(-10730, -4749)
+
+[node name="lazer2" parent="." instance=ExtResource("65_7nv0b")]
+position = Vector2(-10592, -5545)
+
+[node name="skiing" parent="." instance=ExtResource("66_o8oq8")]
+position = Vector2(-3321, -10601)
+
+[node name="senate_part1" type="Node" parent="."]
+
+[node name="1" parent="senate_part1" instance=ExtResource("67_sxt1d")]
+position = Vector2(-14092, -9252)
+start_path = NodePath("../../start_node")
+area_c_path = NodePath("../../mic_for_senate")
+nums = 1
+
+[node name="2" parent="senate_part1" instance=ExtResource("67_sxt1d")]
+position = Vector2(-14092, -9252)
+start_path = NodePath("../../start_node")
+area_c_path = NodePath("../../mic_for_senate")
+nums = 2
+
+[node name="3" parent="senate_part1" instance=ExtResource("67_sxt1d")]
+position = Vector2(-14092, -9252)
+start_path = NodePath("../../start_node")
+area_c_path = NodePath("../../mic_for_senate")
+nums = 3
+
+[node name="4" parent="senate_part1" instance=ExtResource("67_sxt1d")]
+position = Vector2(-14092, -9252)
+start_path = NodePath("../../start_node")
+area_c_path = NodePath("../../mic_for_senate")
+nums = 4
+
+[node name="5" parent="senate_part1" instance=ExtResource("67_sxt1d")]
+position = Vector2(-14102, -9250)
+start_path = NodePath("../../start_node")
+area_c_path = NodePath("../../mic_for_senate")
+nums = 5
+
+[node name="6" parent="senate_part1" instance=ExtResource("67_sxt1d")]
+position = Vector2(-14143, -9266)
+start_path = NodePath("../../start_node")
+area_c_path = NodePath("../../mic_for_senate")
+nums = 6
+
+[node name="7" parent="senate_part1" instance=ExtResource("67_sxt1d")]
+position = Vector2(-14275, -9236)
+start_path = NodePath("../../start_node")
+area_c_path = NodePath("../../mic_for_senate")
+nums = 7
+
+[node name="8" parent="senate_part1" instance=ExtResource("67_sxt1d")]
+position = Vector2(-14133, -9239)
+start_path = NodePath("../../start_node")
+area_c_path = NodePath("../../mic_for_senate")
+nums = 8
+
+[node name="9" parent="senate_part1" instance=ExtResource("67_sxt1d")]
+position = Vector2(-14092, -9252)
+start_path = NodePath("../../start_node")
+area_c_path = NodePath("../../mic_for_senate")
+nums = 9

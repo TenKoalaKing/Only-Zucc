@@ -94,6 +94,7 @@ sprite_frames = SubResource("SpriteFrames_u21d0")
 animation = &"9"
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 

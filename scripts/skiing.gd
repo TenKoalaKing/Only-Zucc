@@ -1,8 +1,9 @@
 extends Area2D
 var entered := 0
-
+#				x_var = 913
+#				position = Vector2(x_var, -4622.0)
 func _ready() -> void:
-	pass
+	position = Vector2(913, -3622.0)
 
 
 func _process(_delta: float) -> void:

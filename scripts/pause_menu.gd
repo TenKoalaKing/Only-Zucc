@@ -43,10 +43,12 @@ func _main_func():
 			await wait_time(1.3)
 			current_func = 0
 			reset = 0
+			restart_level()
 		await wait_time(.1)
 func _process(_delta):
 	global_position = camera.get_screen_center_position()
-
+func restart_level():
+	get_tree().reload_current_scene()
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()
 	timer.wait_time = seconds
