@@ -10,7 +10,7 @@ func _process(_delta: float) -> void:
 	if senate_in_zone == 1 and prev_senate_in_zone == 0:
 		prev_senate_in_zone = 1
 		self.visible = true
-	else:
+	elif senate_in_zone == 0:
 		prev_senate_in_zone = 0
 		self.visible = false
 	#if senate_in_zone == 1 and zuck_in_zone == 1:

@@ -20,7 +20,6 @@ position = Vector2(-10, 17)
 texture = ExtResource("1_rw5ti")
 
 [node name="DialogIndicator" type="TextureRect" parent="."]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 24)
 offset_left = -2.0
 offset_top = -111.399994
@@ -35,7 +34,7 @@ shape = SubResource("RectangleShape2D_rw5ti")
 
 [node name="Dialog" parent="." instance=ExtResource("4_p2jv0")]
 unique_name_in_owner = true
-strings = Array[String](["Welcome to the JRE!", "Wait, so your saying the FBI came for a vibe check and not for any evidence?", "So you don't use social media because your too busy running the platform where everyone wastes their time?", "Are you blinking or are your eyes just recalibrating to the light of the room?", "Uhhhh.... Well good luck!!!"])
+strings = Array[String](["Welcome to the JRE!", "Wait, so your saying the FBI came for a vibe check and not for any evidence?", "Are you blinking or are your eyes just recalibrating to the light of the room?", "Uhhhh.... Well good luck!!!"])
 
 [node name="talk_range" type="Area2D" parent="."]
 collision_layer = 0

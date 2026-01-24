@@ -14,14 +14,14 @@ func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 1
 	rotation = randf_range(0, TAU) #tau is essentiall 2pi or 360degrees for future reference
-	angular_velocity = randf_range(-10.0, 10.0)
+	angular_velocity = randf_range(-1, 1)
 	$CollisionShape2D.disabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	deploy = mic_for_senate.deploy
-	done = mic_for_senate.done
+	done = mic_for_senate.finished
 	if deploy == 0:
 		position = Vector2(678.0, -4873.0)
-	if done == 1:
+	if done:
 		$CollisionShape2D.disabled = true

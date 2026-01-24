@@ -142,7 +142,9 @@ func _process(_delta: float) -> void:
 	if camera_start_sequence == 0:
 		no_repeats = 0
 		$begin_music.play()
-	if animated_sprite.animation == "jumping2" or animated_sprite.animation == "default2" or animated_sprite.animation == "running2" or animated_sprite.animation == "idle_party":
+	if animated_sprite.animation == "jumping2" or animated_sprite.animation == "default2" or animated_sprite.animation == "running2":
+		if animated_sprite.animation == "idle_party":
+			animated_sprite.scale = Vector2(1.1, 1.1)
 		if animated_sprite.animation == "running2" and random_wait_var == 0:
 			animated_sprite.scale = Vector2(0.5, 0.5)
 		elif random_wait_var == 0:
@@ -155,7 +157,7 @@ func _process(_delta: float) -> void:
 		if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
 			Vector2(0.15, 0.15)
 		if animated_sprite.animation == "fighting":
-			Vector2(3, 3)
+			Vector2(6, 6)
 	if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
 		animated_sprite.scale = Vector2(0.2, 0.2)
 func _physics_process(delta: float) -> void: #start out with making skiing code then add exceptions afterward!!!! JUST ADD EXCEPTIONS NOW
@@ -224,7 +226,9 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 	if reset == 1:
 		_reset()
 	if start_variable == 1 and first_init == 0 and start_sequence_done == 1:
-		$backround_music.play()
+		if skiing == 0:
+			if not $backround_music.playing:
+				$backround_music.play()
 		first_init = 1 #end of init
 	# Add the gravity.
 

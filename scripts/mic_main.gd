@@ -3,7 +3,7 @@ extends Node2D
 @onready var start_script = get_node(start_path)
 @onready var dialog := %Dialog
 #@onready var dia = $Dialog
-@onready var dialog_indicator: TextureRect = %DialogIndicator
+@onready var dialog_indicator: TextureRect = $DialogIndicator
 
 var dialog_inTalkRange
 var mic_in_dialog = 0

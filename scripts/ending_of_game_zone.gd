@@ -4,7 +4,7 @@ extends Area2D
 var in_area = 0
 var zuck_walking = 0
 var previous_zuck_walking = 0
-var finished = 1
+var finished := 0
 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -16,6 +16,7 @@ var inTalkRange := false  # Is player in range to talk?
 var character_speaking: Tween  # Tween for text animation
 var textLoaded = true  # Has current text finished loading?
 var dialogNumber := 0
+
 func step_dialog():
 	dialogNumber += 1
 	await get_tree().process_frame
@@ -62,8 +63,8 @@ func _next_dialog():
 	dialogNumber += 1
 	#print(dialogNumber)
 	if dialogNumber >= strings.size():  # Fixed: Added >= for safety
-		_quit_dialog()
 		finished = 1
+		_quit_dialog()
 	else:
 		_start_dialog()
 	await get_tree().process_frame
@@ -114,7 +115,8 @@ func _dialog_animation():
 
 func _process(_delta: float) -> void:
 	slime = slime_script.slime
-
+	if slime == 2 and finished == 1:
+		inTalkRange = false
 
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()

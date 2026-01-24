@@ -9,7 +9,7 @@
 size = Vector2(395, 1023)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jqll"]
-size = Vector2(1083, 1067.75)
+size = Vector2(1044, 1067.75)
 
 [node name="mic_for_senate" type="CharacterBody2D"]
 light_mask = 3
@@ -42,7 +42,7 @@ shape = SubResource("RectangleShape2D_ue0p8")
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="talk_range"]
-position = Vector2(527.5, 33.875)
+position = Vector2(508, 33.875)
 shape = SubResource("RectangleShape2D_5jqll")
 
 [connection signal="body_entered" from="talk_range" to="." method="_on_talk_range_body_entered"]
