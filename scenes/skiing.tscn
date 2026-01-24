@@ -1,17 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmdoqw8brlglo"]
+[gd_scene load_steps=4 format=3 uid="uid://cmdoqw8brlglo"]
 
 [ext_resource type="Script" uid="uid://dp6t64o7r2ica" path="res://scripts/skiing.gd" id="1_q4otu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4x810"]
-size = Vector2(96, 231)
+size = Vector2(1980, 1106.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4otu"]
+size = Vector2(952, 1731)
 
 [node name="skiing" type="Area2D"]
+collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_q4otu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(49, 113)
+position = Vector2(991, 548.25)
 shape = SubResource("RectangleShape2D_4x810")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2961, 536)
+shape = SubResource("RectangleShape2D_4x810")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(2958, 155.625)
+shape = SubResource("RectangleShape2D_4x810")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(4166, -729.5)
+shape = SubResource("RectangleShape2D_q4otu")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(3422, -6)
+shape = SubResource("RectangleShape2D_q4otu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

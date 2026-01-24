@@ -107,6 +107,7 @@ func _physics_process(delta: float) -> void:
 	fight = dialog.finished
 	health = zuck.edward_health
 	if fight == 1:
+		Vector2(1.5, 1.5)
 		if punch == 1:
 			punch = 0
 			animated_sprite.play("fighting")
@@ -120,6 +121,7 @@ func _physics_process(delta: float) -> void:
 		if health <= 0 or zuck_health <= 0:
 			self.visible = false
 			fight = 0
+			await wait_time(.25)
 			queue_free()
 	# Handle jump.
 		if is_on_floor() and random == 7:

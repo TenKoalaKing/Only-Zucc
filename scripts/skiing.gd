@@ -1,14 +1,13 @@
-extends Area2D
+extends Area2D #make big for code to be less complicated
 var entered := 0
 var rando := 0
 #				x_var = 913
 #				position = Vector2(x_var, -4622.0)
 func _ready() -> void:
-	position = Vector2(913, -3622.0)
-
-
-func _process(_delta: float) -> void:
+	#position = Vector2(913, -3622.0)
 	pass
+
+
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -18,11 +17,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-		if rando == 0:
-			rando = 1
-			await wait_time(.25)
-			entered = 0
-			rando = 0
+		entered = 0
 
 
 func wait_time(seconds: float) -> void:

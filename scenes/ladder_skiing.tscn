@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://i8dtfoxahrm4"]
+
+[ext_resource type="Script" uid="uid://bf5mg5wox2ptx" path="res://ladder_skiing.gd" id="1_eq8yo"]
+[ext_resource type="Texture2D" uid="uid://dc7gi0rfr2jvn" path="res://assets/rando/done/ladder.png" id="2_fmt3w"]
+[ext_resource type="AudioStream" uid="uid://cpbayuoc14xwn" path="res://music_and_sounds/ladder-82581.mp3" id="3_lxv7k"]
+
+[node name="ladder_skiing" type="Node2D"]
+script = ExtResource("1_eq8yo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(481, 952)
+texture = ExtResource("2_fmt3w")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(451, 1883, 449, -14, 623, -18, 708, 1891, 680, 1908, 481, 1909)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lxv7k")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

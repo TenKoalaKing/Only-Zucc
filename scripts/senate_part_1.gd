@@ -116,7 +116,7 @@ func _reset_position() -> void:
 	reset_position_active = true
 	await wait_time(2.0)
 	position = starting_point
-	print(nums, " reset complete")
+	#print(nums, " reset complete")
 	reset_position_active = false
 
 

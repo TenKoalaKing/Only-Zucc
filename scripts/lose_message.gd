@@ -37,5 +37,5 @@ func _wait_thingy():
 	health = zuck.health
 	start = start_script.play
 	count = 1
-	wait_time(2)
+	await wait_time(.2)
 	count = 0

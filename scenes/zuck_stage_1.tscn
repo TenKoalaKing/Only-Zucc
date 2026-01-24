@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b40horegir4v2"]
+[gd_scene load_steps=51 format=3 uid="uid://b40horegir4v2"]
 
 [ext_resource type="Script" uid="uid://dghlbqs685ud0" path="res://scripts/zuck_stage_1.gd" id="1_dyxwv"]
 [ext_resource type="Texture2D" uid="uid://d34glyy1sast8" path="res://assets/rando/drew_and_imported/idle sick state1 .png" id="2_6p0ec"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cw3ciqij063gh" path="res://assets/third_drawings/zuckskijump.png" id="10_c6gli"]
 [ext_resource type="AudioStream" uid="uid://cy4mf8tuich67" path="res://music_and_sounds/use for after fight ----- slow-cloud-26789.mp3" id="11_kes7w"]
 [ext_resource type="AudioStream" uid="uid://xrpibrf5uwis" path="res://music_and_sounds/Bloom 12-01-2026 08-06 start music.wav" id="16_poyrr"]
+[ext_resource type="AudioStream" uid="uid://cdpjdltjownfd" path="res://music_and_sounds/ow-sound-38502.mp3" id="19_ruv5h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6gli"]
 atlas = ExtResource("2_6p0ec")
@@ -281,7 +282,7 @@ script = ExtResource("1_dyxwv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l3m0j")
-animation = &"ski_jump"
+animation = &"running"
 script = ExtResource("6_kes7w")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -322,6 +323,9 @@ stream = ExtResource("11_kes7w")
 
 [node name="begin_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_poyrr")
+
+[node name="ow_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_ruv5h")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_changed"]
 [connection signal="body_entered" from="hit_range_left" to="." method="_on_hit_range_left_body_entered"]

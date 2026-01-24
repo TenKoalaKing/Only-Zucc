@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlvctnkpkqb3q"]
+[gd_scene load_steps=5 format=3 uid="uid://dlvctnkpkqb3q"]
 
 [ext_resource type="Script" uid="uid://bi7k6ridrdq12" path="res://scripts/gym.gd" id="1_4duur"]
 [ext_resource type="Texture2D" uid="uid://eo7o0hd46uyv" path="res://assets/second_batch_drawing/gymmbox.png" id="2_5hyia"]
+[ext_resource type="AudioStream" uid="uid://dq6e7nuud7ley" path="res://music_and_sounds/surprised-male-wow-reaction-352683.mp3" id="3_8el2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0md2f"]
 size = Vector2(102, 153)
@@ -18,5 +19,8 @@ shape = SubResource("RectangleShape2D_0md2f")
 position = Vector2(-0.062489986, -0.8749819)
 scale = Vector2(0.050062492, 0.055062506)
 texture = ExtResource("2_5hyia")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8el2m")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

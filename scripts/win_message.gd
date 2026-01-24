@@ -1,6 +1,6 @@
 extends Node2D
-@export var edward_path:NodePath
-@onready var edward_script = get_node(edward_path)
+#@export var edward_path:NodePath
+#@onready var edward_script = get_node(edward_path)
 @onready var zuck = %"Zuck Stage 1"
 @export var start_path:NodePath
 @onready var start_script = get_node(start_path)
@@ -39,5 +39,5 @@ func _wait_thingy():
 	fight = zuck.fight
 	zuck_win = zuck.zuck_win
 	start = start_script.play
-	wait_time(2)
+	await wait_time(.2)
 	count = 0

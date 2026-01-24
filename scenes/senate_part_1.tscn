@@ -91,9 +91,12 @@ radius = 216.0
 height = 636.0
 
 [node name="senate_part_1" type="RigidBody2D"]
+mass = 0.22
+gravity_scale = 0.272
 script = ExtResource("1_ldvfy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_u21d0")
 animation = &"9"
 
@@ -102,7 +105,8 @@ collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(17, -31)
+position = Vector2(3, -14)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_ldvfy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -15,6 +15,11 @@ extends CharacterBody2D
 @export var gym_path:NodePath
 @onready var gym_script = get_node(gym_path)
 
+@export var ladder_p:NodePath
+@onready var ladder = get_node(ladder_p)
+@export var ladder2_p:NodePath
+@onready var ladder2 = get_node(ladder2_p)
+
 @export var onep:NodePath
 @onready var one = get_node(onep)
 @export var twop:NodePath
@@ -70,22 +75,53 @@ var camera_start_sequence = 0
 var no_repeats = 0
 var skiing := 0
 var jump_sense_for_skiing := 0
+var oneq := 0
+var twoq := 0
+var threeq := 0
+var fourq := 0
+var fiveq := 0
+var sixq := 0
+var sevenq := 0
+var eightq := 0
+var nineq := 0
 var direction := Input.get_axis("move_left", "move_right")
 var teset67 := 0
+var lazer1_var := 0
+var lazer2_var := 0
+@export var ladder_speed := 200.0
+var on_ladder := false
+var zuck_on_ladder := 0
+var zuck_on_ladder2 := 0
+var prev_ladder := 0
+var my_position := position
+var random_wait_var := 0
 func _ready() -> void:
 	add_to_group("player")
 	$AnimatedSprite2D.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 func _process(_delta: float) -> void:
+	if changed == 0:
+		skiing = 0
 	#teset67 = one.teset67
 	#print(teset67)
 	direction = Input.get_axis("move_left", "move_right")
 	#if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1 or lazer1.hit == 1 or lazer2.hit == 1:
 		#death so go back to respawn point will figure out later!
 		#print("dead - will fufil rest code")
-	print(one.in_area, two.in_area, three.in_area, four.in_area, five.in_area, six.in_area)
-	_in_contact_with_senate()
-	if skiing_area_2d.entered == 1:
-		skiing = 1
+	#print(one.in_area, two.in_area, three.in_area, four.in_area, five.in_area, six.in_area)
+	oneq = one.in_area
+	twoq = two.in_area
+	threeq = three.in_area
+	fourq = four.in_area
+	fiveq = five.in_area
+	sixq = six.in_area
+	sevenq = seven.in_area
+	eightq = eight.in_area
+	nineq = nine.in_area
+	lazer1_var = lazer1.zuck_in_zone
+	lazer2_var = lazer2.zuck_in_zone
+	if random_wait_var == 0:
+		_in_contact_with_senate()
+	skiing = skiing_area_2d.entered
 	camera_start_sequence = camera1.start_sequence_start
 	if camera_start_sequence == 1 and no_repeats == 0:
 		no_repeats = 1
@@ -104,13 +140,25 @@ func _process(_delta: float) -> void:
 			animated_sprite.scale = Vector2(0.25, 0.25)
 		if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
 			Vector2(0.15, 0.15)
+		if animated_sprite.animation == "fighting":
+			Vector2(2, 2)
 	if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
 		animated_sprite.scale = Vector2(0.2, 0.2)
 func _physics_process(delta: float) -> void: #start out with making skiing code then add exceptions afterward!!!! JUST ADD EXCEPTIONS NOW
 	#direction = Input.get_axis("move_left", "move_right") #tried without colon
 	#print(direction)
+	zuck_on_ladder = ladder.zuck_on_ladder
+	zuck_on_ladder2 = ladder2.zuck_on_ladder
+	if zuck_on_ladder == 1 or zuck_on_ladder2 == 1:
+		on_ladder = true
+		velocity.y = -ladder_speed  # moves up
+		# optional: allow down movement
+		if Input.is_action_pressed("move_down"):
+			velocity.y = ladder_speed
+	else:
+		on_ladder = false
 	changed = gym_script.changed
-	if skiing == 1:
+	if skiing == 1 and not on_ladder:
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		else:
@@ -121,6 +169,10 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 			rotation = lerp_angle(rotation, floor_normal.angle() + PI/2, 0.1)
 			if Input.is_action_just_pressed("jump"):
 				velocity.y = jump_force
+				if facing == -1:
+					velocity.x += jump_force * 1.5
+				else:
+					velocity.x += jump_force * -1.5
 		#if Input.is_action_just_pressed("move_right") and is_on_floor():
 			#velocity += get_floor_normal().rotated(PI/2) * 150.0
 	elif start_variable != 0:
@@ -137,7 +189,8 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 	if is_instance_valid(edward_script):
 		health = edward_script.zuck_health #health not updating
 	else:
-		health = 0
+		health = 3
+		edward_health = 0
 	#print(health)
 	if fight == 1:
 		if health <= 0:
@@ -171,7 +224,7 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 		$fight_music.stop()
 		$backround_music.play(30)
 		prev_fight_var = 0.5
-	else:
+	elif not on_ladder:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			jump_sense_for_skiing = 1
 			velocity.y = JUMP_VELOCITY
@@ -302,6 +355,19 @@ func _on_hit_range_right_body_exited(_body: Node2D) -> void:
 	edward_in_hitbox = 0
 
 func _in_contact_with_senate():
-	if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1 or lazer1.zuck_in_zone == 1 or lazer2.zuck_in_zone == 1:
+	if oneq == 1 or twoq == 1 or threeq == 1 or fourq == 1 or fiveq == 1 or sixq == 1 or sevenq == 1 or eightq == 1 or nineq == 1 or lazer1_var == 1 or lazer2_var == 1:
 		#death so go back to respawn point will figure out later!
-		print("dead - will fufil rest code")
+		#print("dead - will fufil rest code")
+		random_wait_var = 1
+		$ow_sound.play()
+		await wait_time(1.24)
+		position = Vector2(2821.0, -2847.0)
+		random_wait_var = 0
+
+
+func _ladder_stuff():
+	prev_ladder = 1
+	while zuck_on_ladder == 1:
+		position.y += 200  # consider smaller value for smoother movement
+		await get_tree().create_timer(0.25).timeout
+	prev_ladder = 0
