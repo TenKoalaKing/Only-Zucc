@@ -26,34 +26,43 @@ func _ready() -> void:
 		1:
 			x_var = 913
 			starting_point = Vector2(x_var, -4622.0)
+			$AnimatedSprite2D.play("1")
 		2:
 			x_var = 108
 			starting_point = Vector2(x_var, -4622.0)
+			$AnimatedSprite2D.play("2")
 		3:
 			x_var = 1278
 			starting_point = Vector2(x_var, -4622.0)
+			$AnimatedSprite2D.play("3")
 		4:
 			x_var = -3339.97
 			starting_point = Vector2(x_var, -7939.0)
+			$AnimatedSprite2D.play("4")
 		5:
 			x_var = -1440.0
 			starting_point = Vector2(x_var, -7939.0)
+			$AnimatedSprite2D.play("5")
 		6:
 			x_var = 688.0
 			starting_point = Vector2(x_var, -7939.0)
+			$AnimatedSprite2D.play("6")
 		7:
 			x_var = -293.0
 			starting_point = Vector2(x_var, -10645.0)
+			$AnimatedSprite2D.play("7")
 		8:
 			x_var = 1922
 			starting_point = Vector2(x_var, -9159.0)
+			$AnimatedSprite2D.play("8")
 		9:
 			x_var = -834.0
 			starting_point = Vector2(x_var, -10645.0)
+			$AnimatedSprite2D.play("9")
 	position = starting_point
 	var physics_material = PhysicsMaterial.new()
 	physics_material.bounce = bounce_strength
-	physics_material.friction = 0.5
+	physics_material.friction = 0.3
 	physics_material_override = physics_material
 	play_var = 9 * (nums - 1)
 	contact_monitor = true
@@ -69,6 +78,8 @@ func _process(_delta: float) -> void:
 	if start_c == 1 and init == 1:
 		freeze = false
 		init = 0
+	if reset_position_active == 0:
+		_reset_position()
 	if start == 67 and 1 != 1:
 		print("PANIC")
 		start_c = 0
@@ -123,7 +134,7 @@ func _process(_delta: float) -> void:
 
 func _reset_position():
 	reset_position_active = 1
-	await wait_time(3)
+	await wait_time(2)
 	position = starting_point
 	print(nums, "done")
 	reset_position_active = 0

@@ -41,9 +41,10 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="Health Bar" type="Node2D"]
+[node name="Health Bar" type="CanvasLayer"]
 script = ExtResource("1_neijr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(499, 51)
 sprite_frames = SubResource("SpriteFrames_5aafc")
 animation = &"3"

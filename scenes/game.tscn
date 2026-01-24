@@ -1872,6 +1872,14 @@ slime_path = NodePath("../Slime at start of game")
 position = Vector2(-4, 3)
 scale = Vector2(0.01, 0.01)
 
+[node name="game_manager_fight" parent="Camera2D" instance=ExtResource("40_m4url")]
+unique_name_in_owner = true
+position = Vector2(-6620, -5139)
+fight_path = NodePath("../../Fight Area")
+zuck_path = NodePath("../../Zuck Stage 1")
+edward_sulivan_path = NodePath("../../Edward Sulivan")
+start_path = NodePath("../../start_node")
+
 [node name="door_blocker" parent="." instance=ExtResource("29_suyxu")]
 position = Vector2(107, -119)
 scale = Vector2(3, 3)
@@ -2068,13 +2076,6 @@ start_path = NodePath("../start_node")
 unique_name_in_owner = true
 position = Vector2(9068, -66)
 collision_mask = 3
-start_path = NodePath("../start_node")
-
-[node name="game_manager_fight" parent="." instance=ExtResource("40_m4url")]
-position = Vector2(837.5496, 95.3963)
-fight_path = NodePath("../Fight Area")
-zuck_path = NodePath("../Zuck Stage 1")
-edward_sulivan_path = NodePath("../Edward Sulivan")
 start_path = NodePath("../start_node")
 
 [node name="win_message" parent="." instance=ExtResource("41_pr1ej")]

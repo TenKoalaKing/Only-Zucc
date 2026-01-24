@@ -15,7 +15,8 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	start_c = 0
 func _process(_delta: float) -> void:
-	dialogNumber = dia.dialogNumber
+	dialogNumber = dialog.dialogNumber
+	print(dialogNumber)
 	if dialogNumber == 1:
 		deploy = 1
 	if dialogNumber == 4:

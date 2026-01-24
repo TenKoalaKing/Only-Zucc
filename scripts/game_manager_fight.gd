@@ -13,10 +13,13 @@ var battle_status = 0
 var previous_bt = 0
 var start = 0
 var health = 0
+var prev_fight = 0
 func _ready() -> void:
 	var canvas_layer = CanvasLayer.new()
 	add_child(canvas_layer)
 	var hud_instance = hud_scene.instantiate()
+	hud_instance.zuck_script = self #not actually zuck script just for fillin purposes
+	add_child(hud_instance)
 
 	
 	while 1 == 1:
@@ -42,7 +45,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	health = zuck_script.health
 	fight = zuck_script.fight
-
+	if fight == 0 and prev_fight == 0:
+		self.visible = false
+	elif fight == 1 and prev_fight == 0:
+		self.visible = true
+	if fight == 0 and prev_fight == 1:
+		self.visible = false
+	prev_fight = fight
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()
 	timer.wait_time = seconds

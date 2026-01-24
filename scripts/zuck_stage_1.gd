@@ -70,10 +70,12 @@ var camera_start_sequence = 0
 var no_repeats = 0
 var skiing := 0
 var jump_sense_for_skiing := 0
+var direction := Input.get_axis("move_left", "move_right")
 func _ready() -> void:
 	add_to_group("player")
 	$AnimatedSprite2D.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 func _process(_delta: float) -> void:
+	direction = Input.get_axis("move_left", "move_right")
 	_in_contact_with_senate()
 	if skiing_area_2d.entered == 1:
 		skiing = 1
@@ -98,7 +100,8 @@ func _process(_delta: float) -> void:
 	if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
 		animated_sprite.scale = Vector2(0.2, 0.2)
 func _physics_process(delta: float) -> void: #start out with making skiing code then add exceptions afterward!!!! JUST ADD EXCEPTIONS NOW
-	var direction := Input.get_axis("move_left", "move_right")
+	#direction = Input.get_axis("move_left", "move_right") #tried without colon
+	#print(direction)
 	changed = gym_script.changed
 	if skiing == 1:
 		if not is_on_floor():
@@ -149,106 +152,108 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 		first_init = 1 #end of init
 	# Add the gravity.
 
-		if is_instance_valid(edward_script):
-			fight = edward_script.fight
+	if is_instance_valid(edward_script):
+		fight = edward_script.fight
+	else:
+		fight = 0
+	if fight == 1 and prev_fight_var == 0:
+		$backround_music.stop()
+		$fight_music.play()
+		prev_fight_var = 1
+	if fight == 0 and prev_fight_var == 1:
+		$fight_music.stop()
+		$backround_music.play(30)
+		prev_fight_var = 0.5
+	else:
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			jump_sense_for_skiing = 1
+			velocity.y = JUMP_VELOCITY
 		else:
-			fight = 0
-		if fight == 1 and prev_fight_var == 0:
+			jump_sense_for_skiing = 0
+	if prev_fight_var == 0.5:
+		cloud_area_initial_in_area = cloud_area_initial.in_area
+		if cloud_area_initial_in_area == 1:
 			$backround_music.stop()
-			$fight_music.play()
-			prev_fight_var = 1
-		if fight == 0 and prev_fight_var == 1:
-			$fight_music.stop()
-			$backround_music.play(30)
-			prev_fight_var = 0.5
-		else:
-			if Input.is_action_just_pressed("jump") and is_on_floor():
-				jump_sense_for_skiing = 1
-				velocity.y = JUMP_VELOCITY
+		prev_fight_var = 0
+	if Input.is_action_just_pressed("punch") and fight == 1:
+		punch = 1
+		if animated_sprite.animation != "running":
+			animated_sprite.play("fighting")
+		if edward_in_hitbox == 1 and facing == facing_range:
+			edward_health -= 1
+			$ding.play()
+			print ("edwardo hit")
+		await get_tree().create_timer(0.5).timeout
+		punch = 0
+	#put fight cond in here
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	#gets input direction -1,0,1
+	#flip sprite
+	theoretical_direction = direction
+	if punch == 1 and direction != 1:
+		theoretical_direction = -1 * direction
+		#print("switched for punch")
+		#print(direction)
+		#print("theoretical")
+		#print(theoretical_direction)
+	if theoretical_direction > 0:
+		animated_sprite.flip_h = true
+		facing = 1
+	elif theoretical_direction <= 0:
+		animated_sprite.flip_h = false
+		facing = -1
+	if punch == 1:
+		await wait_time(.5)
+		punch = 0
+
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+#play animations
+	if changed == 1:
+		if is_on_floor():
+		#if punch == 1:
+			#animated_sprite.play("fighting")
+			if direction == 0:
+				if animated_sprite.animation != "default2":
+					animated_sprite.play("default2")
+				moving = 0
 			else:
-				jump_sense_for_skiing = 0
-		if prev_fight_var == 0.5:
-			cloud_area_initial_in_area = cloud_area_initial.in_area
-			if cloud_area_initial_in_area == 1:
-				$backround_music.stop()
-			prev_fight_var = 0
-		if Input.is_action_just_pressed("punch") and fight == 1:
-			punch = 1
-			if animated_sprite.animation != "running":
-				animated_sprite.play("fighting")
-			if edward_in_hitbox == 1 and facing == facing_range:
-				edward_health -= 1
-				$ding.play()
-				print ("edwardo hit")
-			await get_tree().create_timer(0.5).timeout
-			punch = 0
-		#put fight cond in here
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		#gets input direction -1,0,1
-		#flip sprite
-		theoretical_direction = direction
-		if punch == 1 and direction != 1:
-			theoretical_direction = -1 * direction
-			#print("switched for punch")
-			#print(direction)
-			#print("theoretical")
-			#print(theoretical_direction)
-		if theoretical_direction > 0:
-			animated_sprite.flip_h = true
-			facing = 1
-		elif theoretical_direction <= 0:
-			animated_sprite.flip_h = false
-			facing = -1
-		if punch == 1:
-			await wait_time(.5)
-			punch = 0
-	
-	#play animations
-		if changed == 1:
-			if is_on_floor():
+				if animated_sprite.animation != "running2":
+					animated_sprite.play("running2")
+				moving = 1
+		else:
+			if animated_sprite.animation != "jumping2":
+				animated_sprite.play("jumping2")
+			moving = 0
+	if changed == 0:
+		if is_on_floor():
 			#if punch == 1:
 				#animated_sprite.play("fighting")
-				if direction == 0:
-					if animated_sprite.animation != "default2":
-						animated_sprite.play("default2")
-					moving = 0
-				else:
-					if animated_sprite.animation != "running2":
-						animated_sprite.play("running2")
-					moving = 1
-			else:
-				if animated_sprite.animation != "jumping2":
-					animated_sprite.play("jumping2")
+			if direction == 0:
+				if animated_sprite.animation != "default":
+					animated_sprite.play("default")
 				moving = 0
-		if changed != 1:
-			if is_on_floor():
-				#if punch == 1:
-					#animated_sprite.play("fighting")
-				if direction == 0:
-					if animated_sprite.animation != "default":
-						animated_sprite.play("default")
-					moving = 0
-				else:
-					if animated_sprite.animation != "running":
-						animated_sprite.play("running")
-					moving = 1
-			else:
-				if animated_sprite.animation != "jumping":
-					animated_sprite.play("jumping")
-				moving = 0
-		if skiing == 1:
-			if animated_sprite.animation != "ski_jump" and jump_sense_for_skiing == 1:
-				animated_sprite.play("ski_jump")
-			if animated_sprite.animation != "ski":
-				animated_sprite.play("ski")
-	
-		if direction:
-			velocity.x = direction * SPEED
+			if direction != 0:
+				#print("semi_working")
+				if animated_sprite.animation != "running":
+					#print("working2")
+					animated_sprite.play("running")
+				moving = 1
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-	else:
-		pass
+			if animated_sprite.animation != "jumping":
+				animated_sprite.play("jumping")
+			moving = 0
+	if skiing == 1:
+		#print("skiing = 1")
+		if animated_sprite.animation != "ski_jump" and jump_sense_for_skiing == 1:
+			animated_sprite.play("ski_jump")
+		elif animated_sprite.animation != "ski":
+			animated_sprite.play("ski")
+#	else:
+#		pass
 func _reset():
 	position = Vector2(-1263, 916)
 	start_variable = 1
