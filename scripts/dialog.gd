@@ -14,7 +14,11 @@ extends Node
 var inTalkRange := false  # Is player in range to talk?
 var character_speaking: Tween  # Tween for text animation
 var textLoaded = true  # Has current text finished loading?
-var dialogNumber = 0  # Current dialogue index
+var dialogNumber: int = 0:
+	set(value):
+		dialogNumber = value
+		dialog_stepped.emit(dialogNumber)
+  # Current dialogue index
 var finished = 0 # for parent functions
 
 func _ready() -> void:
@@ -92,6 +96,7 @@ func _dialog_animation():
 	await character_speaking.finished
 	textLoaded = true
 
+signal dialog_stepped(dialogNumber: int)
 
 
 func wait_time(seconds: float) -> void:

@@ -17,6 +17,7 @@ var velocity
 var starting_point
 var reset_position_active = 0
 var init := 1
+var teset67 := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	freeze = true
@@ -27,6 +28,7 @@ func _ready() -> void:
 			x_var = 913
 			starting_point = Vector2(x_var, -4622.0)
 			$AnimatedSprite2D.play("1")
+			teset67 = 67
 		2:
 			x_var = 108
 			starting_point = Vector2(x_var, -4622.0)
@@ -80,7 +82,7 @@ func _process(_delta: float) -> void:
 		init = 0
 	if reset_position_active == 0:
 		_reset_position()
-	if start == 67 and 1 != 1:
+	if start == 67:
 		print("PANIC")
 		start_c = 0
 		x_var = 0
@@ -155,11 +157,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Body entered: ", body.name) 
 	
 	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-		in_area = 1
+		if in_area == 0:
+			_in_body()
 	else:
 		# DEBUG PRINT: This proves the logic failed
 		print("Body entered but logic failed. Groups: ", body.get_groups())
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-		in_area = 0
+func _in_body():
+	in_area = 1
+	await wait_time(.5)
+	in_area = 0
+#func _on_area_2d_body_exited(body: Node2D) -> void:
+#	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
+#		in_area = 0

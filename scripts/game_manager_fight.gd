@@ -19,8 +19,13 @@ func _ready() -> void:
 	add_child(canvas_layer)
 	var hud_instance = hud_scene.instantiate()
 	hud_instance.zuck_script = self #not actually zuck script just for fillin purposes
-	add_child(hud_instance)
-
+	#add_child(hud_instance)
+	#var hud_instance = hud_scene.instantiate()
+	var canvas = get_node_or_null("health_bar")
+	if canvas:
+		canvas.add_child(hud_instance)
+	else:
+		add_child(hud_instance)
 	
 	while 1 == 1:
 		await wait_time(.25)
@@ -29,19 +34,19 @@ func _ready() -> void:
 		else:
 			fight = 0
 		battle_status = fight_area_script.in_fight_area
-		if battle_status == 1 and previous_bt == 0 and fight == 1:
-			canvas_layer.add_child(hud_instance)
-			previous_bt = 1
-		if battle_status == 0 and previous_bt == 1 and fight == 0:
-			canvas_layer.remove_child(hud_instance)
-			previous_bt = 0
+#		if battle_status == 1 and previous_bt == 0 and fight == 1:
+#			#canvas_layer.add_child(hud_instance)
+#			self.visible = true
+#			previous_bt = 1
+#		if battle_status == 0 and previous_bt == 1 and fight == 0:
+#			#canvas_layer.remove_child(hud_instance)
+#			self.visible = false
+#			previous_bt = 0
 		start = start_script.play
 		if start == 67:
 			fight = 0
 			battle_status = 0
 			previous_bt = 0
-		else:
-			pass
 func _process(_delta: float) -> void:
 	health = zuck_script.health
 	fight = zuck_script.fight

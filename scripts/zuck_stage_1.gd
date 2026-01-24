@@ -71,11 +71,18 @@ var no_repeats = 0
 var skiing := 0
 var jump_sense_for_skiing := 0
 var direction := Input.get_axis("move_left", "move_right")
+var teset67 := 0
 func _ready() -> void:
 	add_to_group("player")
 	$AnimatedSprite2D.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 func _process(_delta: float) -> void:
+	#teset67 = one.teset67
+	#print(teset67)
 	direction = Input.get_axis("move_left", "move_right")
+	#if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1 or lazer1.hit == 1 or lazer2.hit == 1:
+		#death so go back to respawn point will figure out later!
+		#print("dead - will fufil rest code")
+	print(one.in_area, two.in_area, three.in_area, four.in_area, five.in_area, six.in_area)
 	_in_contact_with_senate()
 	if skiing_area_2d.entered == 1:
 		skiing = 1
@@ -295,6 +302,8 @@ func _on_hit_range_right_body_exited(_body: Node2D) -> void:
 	edward_in_hitbox = 0
 
 func _in_contact_with_senate():
-	if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1 or lazer1.hit == 1 or lazer2.hit == 1:
+	if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1 or lazer1.zuck_in_zone == 1 or lazer2.zuck_in_zone == 1:
 		#death so go back to respawn point will figure out later!
 		print("dead - will fufil rest code")
+	else:
+		pass

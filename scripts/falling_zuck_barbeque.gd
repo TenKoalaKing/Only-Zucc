@@ -59,12 +59,15 @@ func _process(_delta: float) -> void:
 		start_b = area_b.start_b
 
 func _stop_physics_func():
+	_stop_backup()
 	await wait_time(.67)
 	while $AudioStreamPlayer.playing == true:
 		$CollisionShape2D.disabled = false
 	$CollisionShape2D.disabled = true
 	
-
+func _stop_backup(): #still lags for LONGER than 3 seconds FIX!
+	await wait_time(3)
+	$AudioStreamPlayer.stop()
 #func _on_body_entered(body: Node) -> void:
 #	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
 #		$CollisionShape2D.disabled = true
@@ -86,9 +89,9 @@ func wait_time(seconds: float) -> void:
 	timer.queue_free()
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-		$CollisionShape2D.disabled = true
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	#if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
+	#	$CollisionShape2D.disabled = true
 	if start_b == 1:
 		#print("not working22")
 		var velocity = linear_velocity.length()

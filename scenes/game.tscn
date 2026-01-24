@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=88 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -67,6 +67,7 @@
 [ext_resource type="PackedScene" uid="uid://o7kvqgyoxixy" path="res://scenes/lazer_2.tscn" id="65_7nv0b"]
 [ext_resource type="PackedScene" uid="uid://cmdoqw8brlglo" path="res://scenes/skiing.tscn" id="66_o8oq8"]
 [ext_resource type="PackedScene" uid="uid://dqq7tyt8ecr2b" path="res://scenes/senate_part_1.tscn" id="67_sxt1d"]
+[ext_resource type="PackedScene" uid="uid://dbi41k83w78y" path="res://scenes/skiing_course.tscn" id="67_weeiq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -1650,11 +1651,11 @@ position = Vector2(1492, -5919)
 scale = Vector2(0.5, 0.5)
 
 [node name="reference" parent="." instance=ExtResource("7_gee14")]
-position = Vector2(-312, -11271)
+position = Vector2(-3768, -9431)
 scale = Vector2(0.5, 0.5)
 
 [node name="Platform Cloud 3" parent="." instance=ExtResource("7_gee14")]
-position = Vector2(2505, -14653)
+position = Vector2(2307, -15081)
 scale = Vector2(0.5, 0.5)
 
 [node name="Coin2" parent="." instance=ExtResource("6_u5sy4")]
@@ -2194,6 +2195,9 @@ position = Vector2(-10592, -5545)
 
 [node name="skiing" parent="." instance=ExtResource("66_o8oq8")]
 position = Vector2(-3321, -653)
+
+[node name="skiing_course" parent="." instance=ExtResource("67_weeiq")]
+position = Vector2(-4212, -15745)
 
 [node name="senate_part1" type="Node" parent="."]
 

@@ -11,8 +11,13 @@ size = Vector2(395, 1023)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jqll"]
 size = Vector2(1083, 1067.75)
 
-[node name="mic_for_senate" type="Node2D"]
+[node name="mic_for_senate" type="CharacterBody2D"]
+light_mask = 3
 script = ExtResource("1_jyk00")
+
+[node name="Dialog" parent="." instance=ExtResource("3_kyqa7")]
+unique_name_in_owner = true
+strings = Array[String](["AHHHHHH!", "Welcome to the hearing.", "Do your best to avoid us...", "and from seeing eye to eye.", "Adios!"])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(215, 200.00005)
@@ -32,10 +37,6 @@ expand_mode = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(210.5, -86.5)
 shape = SubResource("RectangleShape2D_ue0p8")
-
-[node name="Dialog" parent="." instance=ExtResource("3_kyqa7")]
-unique_name_in_owner = true
-strings = Array[String](["AHHHHHH!", "Welcome to the hearing.", "Do your best to avoid us...", "and from seeing eye to eye.", "Adios!"])
 
 [node name="talk_range" type="Area2D" parent="."]
 collision_mask = 3
