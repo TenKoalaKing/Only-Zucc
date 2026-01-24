@@ -98,24 +98,32 @@ func _process(_delta: float) -> void:
 	if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
 		animated_sprite.scale = Vector2(0.2, 0.2)
 func _physics_process(delta: float) -> void: #start out with making skiing code then add exceptions afterward!!!! JUST ADD EXCEPTIONS NOW
+	var direction := Input.get_axis("move_left", "move_right")
 	changed = gym_script.changed
 	if skiing == 1:
 		if not is_on_floor():
 			velocity.y += gravity * delta
-		if is_on_floor():
+		else:
 			var floor_normal = get_floor_normal()
 			var slope_direction = floor_normal.rotated(deg_to_rad(90))
 			velocity += slope_direction * acceleration * delta
-			if velocity.length() < base_forward_speed:
-				velocity = velocity.lerp(slope_direction * base_forward_speed, 0.1)
-				velocity *= friction
-				rotation = lerp_angle(rotation, floor_normal.angle() + PI/2, 0.1)
-			else:
-				rotation = lerp_angle(rotation, 0, 0.05)
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			velocity.y = jump_force
-		if Input.is_action_just_pressed("move_right") and is_on_floor():
-			velocity += get_floor_normal().rotated(PI/2) * 150.0
+			velocity *= friction
+			rotation = lerp_angle(rotation, floor_normal.angle() + PI/2, 0.1)
+			if Input.is_action_just_pressed("jump"):
+				velocity.y = jump_force
+		#if Input.is_action_just_pressed("move_right") and is_on_floor():
+			#velocity += get_floor_normal().rotated(PI/2) * 150.0
+	elif start_variable != 0:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+		else:
+			if Input.is_action_just_pressed("jump"):
+				velocity.y = JUMP_VELOCITY
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+	move_and_slide()
 	if is_instance_valid(edward_script):
 		health = edward_script.zuck_health #health not updating
 	else:
@@ -140,9 +148,7 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 		$backround_music.play()
 		first_init = 1 #end of init
 	# Add the gravity.
-	if start_variable != 0:
-		if not is_on_floor():
-			velocity += get_gravity() * delta
+
 		if is_instance_valid(edward_script):
 			fight = edward_script.fight
 		else:
@@ -180,7 +186,6 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		#gets input direction -1,0,1
-		var direction := Input.get_axis("move_left", "move_right")
 		#flip sprite
 		theoretical_direction = direction
 		if punch == 1 and direction != 1:
@@ -242,7 +247,6 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-		move_and_slide()
 	else:
 		pass
 func _reset():

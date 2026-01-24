@@ -10,6 +10,8 @@ func _on_body_entered(_body: Node2D) -> void:
 		self.visible = false
 		count = 1
 		$AudioStreamPlayer.play()
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 func _process(_delta: float) -> void:
 	start = start_script.play
 	if start == 67:

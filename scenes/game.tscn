@@ -1650,7 +1650,7 @@ position = Vector2(1492, -5919)
 scale = Vector2(0.5, 0.5)
 
 [node name="reference" parent="." instance=ExtResource("7_gee14")]
-position = Vector2(-834, -11082)
+position = Vector2(-312, -11271)
 scale = Vector2(0.5, 0.5)
 
 [node name="Platform Cloud 3" parent="." instance=ExtResource("7_gee14")]
@@ -2192,7 +2192,7 @@ position = Vector2(-10730, -4749)
 position = Vector2(-10592, -5545)
 
 [node name="skiing" parent="." instance=ExtResource("66_o8oq8")]
-position = Vector2(-3321, -10601)
+position = Vector2(-3321, -653)
 
 [node name="senate_part1" type="Node" parent="."]
 

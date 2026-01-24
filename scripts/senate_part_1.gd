@@ -68,7 +68,7 @@ func _process(_delta: float) -> void:
 	start_c = area_c.start_c
 	if start_c == 1 and init == 1:
 		freeze = false
-		init == 0
+		init = 0
 	if start == 67 and 1 != 1:
 		print("PANIC")
 		start_c = 0

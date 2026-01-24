@@ -2,8 +2,8 @@ extends Node2D #script to attach to camera 2d and fetch health status from playe
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var edward_script = %"Edward Sulivan"
 var health = 3
-var previous_health = 3
-	
+var previous_health = 4
+var fight := 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -13,7 +13,16 @@ func _ready() -> void:
 	animated_sprite.play("3")
 	self.visible = false
 func _process(_delta: float) -> void:
+	if is_instance_valid(edward_script):
+		fight = edward_script.fight
+	else:
+		fight = 0
 	health = edward_script.health
+	if fight == 1:
+		self.visible = true
+	else:
+		self.visible = false
+	
 	if health != previous_health:
 		update_health_ui(health)
 		previous_health = health

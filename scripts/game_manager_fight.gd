@@ -12,6 +12,7 @@ var hud_scene = preload("res://scenes/health_bar.tscn")
 var battle_status = 0
 var previous_bt = 0
 var start = 0
+var health = 0
 func _ready() -> void:
 	var canvas_layer = CanvasLayer.new()
 	add_child(canvas_layer)
@@ -38,7 +39,9 @@ func _ready() -> void:
 			previous_bt = 0
 		else:
 			pass
-
+func _process(_delta: float) -> void:
+	health = zuck_script.health
+	fight = zuck_script.fight
 
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()

@@ -53,7 +53,7 @@ func _process(_delta: float) -> void:
 		play_var = 9 * (nums - 1)
 		contact_monitor = true
 		max_contacts_reported = 1
-		body_entered.connect(_on_body_entered)
+		#body_entered.connect(_on_body_entered)
 		rotation = randf_range(0, TAU) #tau is essentiall 2pi or 360degrees for future reference
 		angular_velocity = randf_range(-10.0, 10.0)
 		start_b = area_b.start_b
@@ -65,16 +65,16 @@ func _stop_physics_func():
 	$CollisionShape2D.disabled = true
 	
 
-func _on_body_entered(body: Node) -> void:
-	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-		$CollisionShape2D.disabled = true
-	if start_b == 1:
-		#print("not working22")
-		var velocity = linear_velocity.length()
-		if velocity > 30:
-			random_audio_pitch = randf_range(0.9, 1.1)
-			impact_audio.pitch_scale = random_audio_pitch
-			impact_audio.play(play_var)
+#func _on_body_entered(body: Node) -> void:
+#	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
+#		$CollisionShape2D.disabled = true
+#	if start_b == 1:
+#		#print("not working22")
+#		var velocity = linear_velocity.length()
+#		if velocity > 30:
+#			random_audio_pitch = randf_range(0.9, 1.1)
+#			impact_audio.pitch_scale = random_audio_pitch
+#			impact_audio.play(play_var)
 
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()
@@ -84,3 +84,15 @@ func wait_time(seconds: float) -> void:
 	timer.start()
 	await timer.timeout
 	timer.queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
+		$CollisionShape2D.disabled = true
+	if start_b == 1:
+		#print("not working22")
+		var velocity = linear_velocity.length()
+		if velocity > 30:
+			random_audio_pitch = randf_range(0.9, 1.1)
+			impact_audio.pitch_scale = random_audio_pitch
+			impact_audio.play(play_var)
