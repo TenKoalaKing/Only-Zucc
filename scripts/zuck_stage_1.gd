@@ -20,6 +20,9 @@ extends CharacterBody2D
 @export var ladder2_p:NodePath
 @onready var ladder2 = get_node(ladder2_p)
 
+@export var end_area_p:NodePath
+@onready var end_area = get_node(end_area_p)
+
 @export var onep:NodePath
 @onready var one = get_node(onep)
 @export var twop:NodePath
@@ -95,10 +98,21 @@ var zuck_on_ladder2 := 0
 var prev_ladder := 0
 var my_position := position
 var random_wait_var := 0
+var stop_music_skiing := 0
+var end := 0
+var dead := 0
 func _ready() -> void:
 	add_to_group("player")
 	$AnimatedSprite2D.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	#position = Vector2(-2066.0, -12000) #for getting up to the ski platform
 func _process(_delta: float) -> void:
+	end = end_area.finished
+	stop_music_skiing = skiing_area_2d.stop_music
+	if stop_music_skiing == 1:
+		if $after_fight_music.playing:
+			$after_fight_music.stop()
+		if $backround_music.playing:
+			$backround_music.stop()
 	if changed == 0:
 		skiing = 0
 	#teset67 = one.teset67
@@ -128,20 +142,20 @@ func _process(_delta: float) -> void:
 	if camera_start_sequence == 0:
 		no_repeats = 0
 		$begin_music.play()
-	if animated_sprite.animation == "jumping2" or animated_sprite.animation == "default2" or animated_sprite.animation == "running2":
-		if animated_sprite.animation == "running2":
+	if animated_sprite.animation == "jumping2" or animated_sprite.animation == "default2" or animated_sprite.animation == "running2" or animated_sprite.animation == "idle_party":
+		if animated_sprite.animation == "running2" and random_wait_var == 0:
 			animated_sprite.scale = Vector2(0.5, 0.5)
-		else:
+		elif random_wait_var == 0:
 			animated_sprite.scale = Vector2(0.3, 0.3)
-	else:
+	elif random_wait_var == 0:
 		if animated_sprite.animation == "running":
 			animated_sprite.scale = Vector2(0.5, 0.5)
-		if animated_sprite.animation == "default" or animated_sprite.animation == "jumping" or animated_sprite.animation == "fighting":
+		if animated_sprite.animation == "default" or animated_sprite.animation == "jumping" or animated_sprite.animation == "fighting" or animated_sprite.animation == "dead":
 			animated_sprite.scale = Vector2(0.25, 0.25)
 		if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
 			Vector2(0.15, 0.15)
 		if animated_sprite.animation == "fighting":
-			Vector2(2, 2)
+			Vector2(3, 3)
 	if animated_sprite.animation == "ski" or animated_sprite.animation == "ski_jump":
 		animated_sprite.scale = Vector2(0.2, 0.2)
 func _physics_process(delta: float) -> void: #start out with making skiing code then add exceptions afterward!!!! JUST ADD EXCEPTIONS NOW
@@ -161,6 +175,8 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 	if skiing == 1 and not on_ladder:
 		if not is_on_floor():
 			velocity.y += gravity * delta
+			if Input.is_action_just_pressed("jump"):
+				velocity.y = -ladder_speed
 		else:
 			var floor_normal = get_floor_normal()
 			var slope_direction = floor_normal.rotated(deg_to_rad(90))
@@ -169,10 +185,10 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 			rotation = lerp_angle(rotation, floor_normal.angle() + PI/2, 0.1)
 			if Input.is_action_just_pressed("jump"):
 				velocity.y = jump_force
-				if facing == -1:
-					velocity.x += jump_force * 1.5
+				if facing == 1:
+					velocity.x = -ladder_speed
 				else:
-					velocity.x += jump_force * -1.5
+					velocity.x = ladder_speed
 		#if Input.is_action_just_pressed("move_right") and is_on_floor():
 			#velocity += get_floor_normal().rotated(PI/2) * 150.0
 	elif start_variable != 0:
@@ -238,6 +254,7 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 	if Input.is_action_just_pressed("punch") and fight == 1:
 		punch = 1
 		if animated_sprite.animation != "running":
+			Vector2(3,3)
 			animated_sprite.play("fighting")
 		if edward_in_hitbox == 1 and facing == facing_range:
 			edward_health -= 1
@@ -277,8 +294,12 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 		#if punch == 1:
 			#animated_sprite.play("fighting")
 			if direction == 0:
-				if animated_sprite.animation != "default2":
-					animated_sprite.play("default2")
+				if end == 0:
+					if animated_sprite.animation != "default2":
+						animated_sprite.play("default2")
+				else:
+					if animated_sprite.animation != "idle_party":
+						animated_sprite.play("idle_party")
 				moving = 0
 			else:
 				if animated_sprite.animation != "running2":
@@ -312,6 +333,8 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 			animated_sprite.play("ski_jump")
 		elif animated_sprite.animation != "ski":
 			animated_sprite.play("ski")
+	if dead == 1:
+		animated_sprite.play("dead")
 #	else:
 #		pass
 func _reset():
@@ -359,8 +382,12 @@ func _in_contact_with_senate():
 		#death so go back to respawn point will figure out later!
 		#print("dead - will fufil rest code")
 		random_wait_var = 1
+		animated_sprite.stop()
 		$ow_sound.play()
+		#animated_sprite.play("dead")
+		dead = 1
 		await wait_time(1.24)
+		dead = 0
 		position = Vector2(2821.0, -2847.0)
 		random_wait_var = 0
 

@@ -18,6 +18,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_34qc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oinyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_34qc6")
 }],
 "loop": true,
 "name": &"default",
@@ -33,11 +39,11 @@ script = ExtResource("1_ygbrp")
 
 [node name="Dialog" parent="." instance=ExtResource("2_yljgh")]
 unique_name_in_owner = true
-strings = Array[String](["Hello", "I see your name is Mark.", "Well, hello Mark!", "You probably want to collect coins!", "Collecting coins will open up the way to go up (;", "Good Luck!!!!"])
+strings = Array[String](["Hello", "I see your name is Mark.", "Well, hello Mark!", "You probably want to collect coins!", "Collecting coins will open up the way to go up!", "Good Luck!!!!"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ygbrp")
-frame_progress = 0.05136311
+frame_progress = 0.9944833
 
 [node name="DialogIndicator" type="TextureRect" parent="."]
 unique_name_in_owner = true

@@ -98,7 +98,7 @@ shape = SubResource("RectangleShape2D_0p530")
 
 [node name="Dialog" parent="." instance=ExtResource("5_bqfuf")]
 unique_name_in_owner = true
-strings = Array[String](["Y u steal money foo", "I'm goign to sue", "good luc fam"])
+strings = Array[String](["Y u take my half of the company?", "I'm goign to sue...", "You are gonna pay );"])
 
 [node name="TalkRange" type="Area2D" parent="."]
 collision_mask = 3

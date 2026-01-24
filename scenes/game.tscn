@@ -1586,7 +1586,8 @@ position = Vector2(-1512, -14986)
 scale = Vector2(0.34199482, 1.0634378)
 texture = ExtResource("9_yd4ix")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="table"]
+[node name="sixseventable" type="CollisionShape2D" parent="table"]
+unique_name_in_owner = true
 position = Vector2(-1395.8749, -14990.25)
 shape = SubResource("RectangleShape2D_0rmfi")
 
@@ -1601,6 +1602,7 @@ cloud_area_initial_path = NodePath("../sound_areas_folder/cloud_sound_initial")
 gym_path = NodePath("../gym")
 ladder_p = NodePath("../ladder_skiing")
 ladder2_p = NodePath("../ladder_skiing2")
+end_area_p = NodePath("../ending_of_game_zone")
 onep = NodePath("../senate_part1/1")
 twop = NodePath("../senate_part1/2")
 threep = NodePath("../senate_part1/3")
@@ -2012,7 +2014,7 @@ position = Vector2(7106, -2716)
 scale = Vector2(0.3, 0.3)
 
 [node name="vr_headset_cloud46" parent="headset_clouds" instance=ExtResource("32_v2yb1")]
-position = Vector2(6488, -2797)
+position = Vector2(6575, -2735)
 scale = Vector2(0.3, 0.3)
 
 [node name="vr_headset_cloud47" parent="headset_clouds" instance=ExtResource("32_v2yb1")]
@@ -2020,7 +2022,7 @@ position = Vector2(6755, -2720)
 scale = Vector2(0.3, 0.3)
 
 [node name="vr_headset_cloud48" parent="headset_clouds" instance=ExtResource("32_v2yb1")]
-position = Vector2(6094, -2714)
+position = Vector2(6173.0005, -2678)
 scale = Vector2(0.3, 0.3)
 
 [node name="vr_headset_cloud40" parent="headset_clouds" instance=ExtResource("32_v2yb1")]
@@ -2161,7 +2163,7 @@ position = Vector2(8810, -311)
 scale = Vector2(8.5, 5)
 
 [node name="rock-concrete_area3" parent="sound_areas_folder" instance=ExtResource("45_oaba0")]
-position = Vector2(-1105.8749, -14970.252)
+position = Vector2(-1105.8749, -14961.252)
 scale = Vector2(12, 7.059)
 
 [node name="cloud_sound_initial" parent="sound_areas_folder" instance=ExtResource("46_458eo")]

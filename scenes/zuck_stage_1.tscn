@@ -1,7 +1,8 @@
-[gd_scene load_steps=51 format=3 uid="uid://b40horegir4v2"]
+[gd_scene load_steps=53 format=3 uid="uid://b40horegir4v2"]
 
 [ext_resource type="Script" uid="uid://dghlbqs685ud0" path="res://scripts/zuck_stage_1.gd" id="1_dyxwv"]
 [ext_resource type="Texture2D" uid="uid://d34glyy1sast8" path="res://assets/rando/drew_and_imported/idle sick state1 .png" id="2_6p0ec"]
+[ext_resource type="Texture2D" uid="uid://dcpwq7ijaidr7" path="res://assets/third_drawings/dead zuck.png" id="2_qffl2"]
 [ext_resource type="Texture2D" uid="uid://bfatmh7jkjhm8" path="res://assets/rando/drew_and_imported/zuck2idelibg.png" id="3_oo4jk"]
 [ext_resource type="Texture2D" uid="uid://dppky7tsh01du" path="res://assets/rando/done/zuck_fighting-removebg-preview.png" id="3_thiek"]
 [ext_resource type="Texture2D" uid="uid://b36g4olhutiy1" path="res://assets/rando/drew_and_imported/zuck jump no bkrg.png" id="4_6p0ec"]
@@ -9,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://0s0sfm43vudk" path="res://music_and_sounds/ding-126626.mp3" id="6_6rr0j"]
 [ext_resource type="Script" uid="uid://cxisojavsvuws" path="res://scenes/animated_sprite_2d_for_zuck.gd" id="6_kes7w"]
 [ext_resource type="Texture2D" uid="uid://dhoaiy57dkp4p" path="res://assets/rando/drew_and_imported/zuck jump 2.png" id="6_poyrr"]
+[ext_resource type="Texture2D" uid="uid://chdqwb1wa2u0x" path="res://assets/third_drawings/idle party hat.png" id="6_rj1mt"]
 [ext_resource type="AudioStream" uid="uid://cc66d2mfqjx47" path="res://music_and_sounds/yay-6326.mp3" id="7_br8in"]
 [ext_resource type="Texture2D" uid="uid://26tt5v5aqik3" path="res://assets/rando/drew_and_imported/zuck2walking.png" id="8_mjdqp"]
 [ext_resource type="AudioStream" uid="uid://dxta6j4akg5cg" path="res://music_and_sounds/boo-6377.mp3" id="8_pp2oa"]
@@ -136,6 +138,14 @@ region = Rect2(512, 512, 512, 512)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_qffl2")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_c6gli")
 }, {
 "duration": 1.0,
@@ -184,6 +194,14 @@ animations = [{
 "loop": true,
 "name": &"fighting",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_rj1mt")
+}],
+"loop": true,
+"name": &"idle_party",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -282,7 +300,7 @@ script = ExtResource("1_dyxwv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l3m0j")
-animation = &"running"
+animation = &"idle_party"
 script = ExtResource("6_kes7w")
 
 [node name="Hitbox" type="Area2D" parent="."]

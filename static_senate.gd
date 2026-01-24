@@ -6,6 +6,7 @@ var done := 0
 @export var bounce_strength: float = 0.8
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	var physics_material = PhysicsMaterial.new()
 	physics_material.bounce = bounce_strength
 	physics_material.friction = 0.5

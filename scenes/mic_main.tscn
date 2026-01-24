@@ -38,6 +38,7 @@ unique_name_in_owner = true
 strings = Array[String](["Welcome to the JRE!", "Wait, so your saying the FBI came for a vibe check and not for any evidence?", "So you don't use social media because your too busy running the platform where everyone wastes their time?", "Are you blinking or are your eyes just recalibrating to the light of the room?", "Uhhhh.... Well good luck!!!"])
 
 [node name="talk_range" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="talk_range"]

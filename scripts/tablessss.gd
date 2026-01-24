@@ -1,5 +1,5 @@
 extends Node2D
-@onready var collision = $CollisionShape2D
+@onready var collision = $sixseventable
 @export var mic_main_path:NodePath
 @onready var mic_main_script = get_node(mic_main_path)
 var done = 0

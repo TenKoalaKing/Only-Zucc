@@ -8,9 +8,11 @@ var dialog_inTalkRange
 var slime_in_dialog = 0
 var dialogNumber = 0
 var camera_focus = 0
+var slime = 1
 func _ready() -> void:	
 	dialog_indicator.hide()
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	$AnimatedSprite2D.play("default")
 func _process(_delta: float) -> void:
 	dialogNumber = dia.dialogNumber
 	#print("heartbeat")    fix later if time for camera shifts during dialog

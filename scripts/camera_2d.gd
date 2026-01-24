@@ -131,7 +131,7 @@ func update_target() -> void:
 		8:
 			target = get_node_or_null("../invisible_tracker_coin")
 func _contingency():
-	await wait_time(6.3)
+	await wait_time(4.7) #67
 	target = get_node_or_null("../Zuck Stage 1")
 	selected = 3
 	await wait_time(.1)

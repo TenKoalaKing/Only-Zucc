@@ -18,11 +18,9 @@ func _process(_delta: float) -> void:
 		if count == 0:
 			_wait_thingy()
 
-		if zuck_win == 1: #fight == 0 and 
-			self.visible = true
-			stuff = 1
-		elif fight == 0:
-			stuff = 1
+		if edward_health <= 0:
+			if health >= edward_health:
+				self.visible = true
 		if start == 67:
 			self.visible = false
 			zuck_win = 0
@@ -38,6 +36,8 @@ func _wait_thingy():
 	count = 1
 	fight = zuck.fight
 	zuck_win = zuck.zuck_win
+	health = zuck.health
+	edward_health = zuck.edward_health
 	start = start_script.play
 	await wait_time(.2)
 	count = 0

@@ -8,6 +8,8 @@ var mic_in_dialog = 0
 var done := 0
 var deploy := 0
 var start_c := 0
+var finished := 0
+var slime := 0
 func _ready() -> void:	
 	#print(dialog_node)
 	#print(dialog_node.get_path())
@@ -23,20 +25,23 @@ func _on_dialog_stepped(number: int) -> void:
 		1:
 			deploy = 1
 			$CollisionShape2D.disabled = true
+			finished = 1
 		4:
 			done = 1
 			start_c = 1
 func _on_talk_range_body_entered(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
-		dialog_indicator.show()
-		mic_in_dialog = 1
-		dialog_node.inTalkRange = true
-			#print(dialogNumber)
+		if finished == 0:
+			dialog_indicator.show()
+			mic_in_dialog = 1
+			dialog_node.inTalkRange = true
+				#print(dialogNumber)
 
 func _on_talk_range_body_exited(body: Node2D) -> void:
 	if body.name.contains("Zuck") or body.is_in_group("player"):
-		dialog_indicator.hide()
-		dialog_node.inTalkRange = false
+		if finished == 0:
+			dialog_indicator.hide()
+			dialog_node.inTalkRange = false
 
 
 func wait_time(seconds: float) -> void:

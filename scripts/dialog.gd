@@ -6,11 +6,12 @@ signal dialog_stepped(number: int)
 # UI references
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var label: Label = %Label
-@onready var slime_script = get_parent()
+@onready var slime_script: Node = get_parent()
 #var slime = 0
 #var camera_focus = 0
 
 # Dialogue state variables
+var slime = 0
 var inTalkRange := false  # Is player in range to talk?
 var character_speaking: Tween  # Tween for text animation
 var textLoaded = true  # Has current text finished loading?
@@ -48,8 +49,11 @@ func _dialog_input():
 	# Handle input when dialogue is active
 	if Input.is_action_just_pressed("ui_accept"):
 		if textLoaded:
-			_next_dialog()  # Go to next dialogue line
-			step_dialog()
+			if slime == 1:
+				_next_dialog()  # Go to next dialogue line
+			else:
+				_next_dialog()
+				#step_dialog()
 		else:
 			_fast_show()  # Skip text animation
 
@@ -62,6 +66,9 @@ func _next_dialog():
 		finished = 1
 	else:
 		_start_dialog()
+	await get_tree().process_frame
+	emit_signal("dialog_stepped", dialogNumber)
+	print("Emitting", dialogNumber)
 
 func _quit_dialog():
 	# Exit dialogue system
@@ -105,7 +112,8 @@ func _dialog_animation():
 	await character_speaking.finished
 	textLoaded = true
 
-
+func _process(_delta: float) -> void:
+	slime = slime_script.slime
 
 
 func wait_time(seconds: float) -> void:

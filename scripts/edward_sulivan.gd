@@ -29,7 +29,7 @@ var zuck_in_hitbox = 0
 var edward_health = 3
 var facing = 0
 var facing_range = 0
-
+var slime = 0
 #testing script that is in slime script:
 
 #func _on_talk_range_body_entered(body: Node2D) -> void:

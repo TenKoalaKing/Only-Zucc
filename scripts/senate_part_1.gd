@@ -59,6 +59,9 @@ func _ready() -> void:
 			x_var = 1922
 			starting_point = Vector2(x_var, -9159)
 			$AnimatedSprite2D.play("8")
+			$Area2D/CollisionShape2D.shape.radius *= 0.3
+			$Area2D/CollisionShape2D.shape.height *= 0.3
+			$AnimatedSprite2D.scale = Vector2(0.3, 0.3)
 		9:
 			x_var = -834
 			starting_point = Vector2(x_var, -10645)

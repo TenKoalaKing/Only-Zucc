@@ -5,6 +5,7 @@ var prev_senate_in_zone := 0
 var hit := 0
 func _ready() -> void:
 	self.visible = false
+	position = Vector2(913, -4000)
 func _process(_delta: float) -> void:
 	if senate_in_zone == 1 and prev_senate_in_zone == 0:
 		prev_senate_in_zone = 1

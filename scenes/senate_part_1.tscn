@@ -92,13 +92,13 @@ height = 636.0
 
 [node name="senate_part_1" type="RigidBody2D"]
 mass = 0.22
-gravity_scale = 0.272
+gravity_scale = 0.117
 script = ExtResource("1_ldvfy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_u21d0")
-animation = &"9"
+animation = &"8"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
