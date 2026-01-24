@@ -137,7 +137,7 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 	if is_instance_valid(edward_script):
 		health = edward_script.zuck_health #health not updating
 	else:
-		health = 3
+		health = 0
 	#print(health)
 	if fight == 1:
 		if health <= 0:
@@ -305,5 +305,3 @@ func _in_contact_with_senate():
 	if one.in_area == 1 or two.in_area == 1 or three.in_area == 1 or four.in_area == 1 or five.in_area == 1 or six.in_area == 1 or seven.in_area == 1 or eight.in_area == 1 or nine.in_area == 1 or lazer1.zuck_in_zone == 1 or lazer2.zuck_in_zone == 1:
 		#death so go back to respawn point will figure out later!
 		print("dead - will fufil rest code")
-	else:
-		pass

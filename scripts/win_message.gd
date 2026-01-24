@@ -5,24 +5,27 @@ extends Node2D
 @export var start_path:NodePath
 @onready var start_script = get_node(start_path)
 var health = 3
-var count = 0
 var edward_health = 3
 var fight = 0
 var start = 0
 var zuck_win = 0
+var count := 0
+var stuff := 0
 func _ready() -> void:
 	self.visible = false
 func _process(_delta: float) -> void:
-	fight = zuck.fight
-	zuck_win = zuck.zuck_win
-	if fight == 1 and zuck_win == 1:
-		self.visible = true
-		count = 2
-	start = start_script.play
-	if start == 67:
-		self.visible = false
-		count = 0
-		zuck_win = 0
+	if stuff == 0:
+		if count == 0:
+			_wait_thingy()
+
+		if zuck_win == 1: #fight == 0 and 
+			self.visible = true
+			stuff = 1
+		elif fight == 0:
+			stuff = 1
+		if start == 67:
+			self.visible = false
+			zuck_win = 0
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()
 	timer.wait_time = seconds
@@ -31,3 +34,10 @@ func wait_time(seconds: float) -> void:
 	timer.start()
 	await timer.timeout
 	timer.queue_free()
+func _wait_thingy():
+	count = 1
+	fight = zuck.fight
+	zuck_win = zuck.zuck_win
+	start = start_script.play
+	wait_time(2)
+	count = 0

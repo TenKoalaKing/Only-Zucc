@@ -2,7 +2,7 @@ extends Node
 
 # Array of dialogue strings to display
 @export_multiline var strings: Array[String] = []
-
+signal dialog_stepped(number: int)
 # UI references
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var label: Label = %Label
@@ -14,10 +14,18 @@ extends Node
 var inTalkRange := false  # Is player in range to talk?
 var character_speaking: Tween  # Tween for text animation
 var textLoaded = true  # Has current text finished loading?
-var dialogNumber: int = 0:
-	set(value):
-		dialogNumber = value
-		dialog_stepped.emit(dialogNumber)
+var dialogNumber := 0
+func step_dialog():
+	dialogNumber += 1
+	await get_tree().process_frame
+	emit_signal("dialog_stepped", dialogNumber)
+	print("Emitting", dialogNumber)
+
+ #int = 0:
+#	set(value):
+#		dialogNumber = value
+#		await get_tree().process_frame
+#		dialog_stepped.emit(dialogNumber)
   # Current dialogue index
 var finished = 0 # for parent functions
 
@@ -41,6 +49,7 @@ func _dialog_input():
 	if Input.is_action_just_pressed("ui_accept"):
 		if textLoaded:
 			_next_dialog()  # Go to next dialogue line
+			step_dialog()
 		else:
 			_fast_show()  # Skip text animation
 
@@ -96,7 +105,7 @@ func _dialog_animation():
 	await character_speaking.finished
 	textLoaded = true
 
-signal dialog_stepped(dialogNumber: int)
+
 
 
 func wait_time(seconds: float) -> void:

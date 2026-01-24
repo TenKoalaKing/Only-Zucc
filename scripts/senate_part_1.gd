@@ -1,171 +1,131 @@
-extends RigidBody2D #if death dosn't trigger in zuck, make script in process to create a var that stays changed for wait_time(.25)
-@export var start_path:NodePath
+extends RigidBody2D
+
+@export var start_path: NodePath
 @onready var start_script = get_node(start_path)
-@export var area_c_path:NodePath
+
+@export var area_c_path: NodePath
 @onready var area_c = get_node(area_c_path)
-@export var nums:int #numbers 1 - 9
+
+@export var nums: int
 @export var bounce_strength: float = 0.8
-var start_c = 0
-var x_var = 0
+
+var start_c := 0
+var x_var := 0
 var in_area := 0
-#play_var not used in anything just left in
-var play_var = 0
-var random_audio_pitch = 1
-var first_run = 0
-var start = 0
-var velocity
-var starting_point
-var reset_position_active = 0
-var init := 1
-var teset67 := 0
-# Called when the node enters the scene tree for the first time.
+var play_var := 0
+var random_audio_pitch := 1.0
+var first_run := 0
+var start := 0
+var starting_point: Vector2
+var reset_position_active := false
+var init := true
+
+
+
 func _ready() -> void:
-	freeze = true
-	#x_var = 5661 - (500 * nums)
-	#position = Vector2(x_var, -4306.0)
+
+	sleeping = true
+
 	match nums:
 		1:
 			x_var = 913
-			starting_point = Vector2(x_var, -4622.0)
+			starting_point = Vector2(x_var, -4622)
 			$AnimatedSprite2D.play("1")
-			teset67 = 67
 		2:
 			x_var = 108
-			starting_point = Vector2(x_var, -4622.0)
+			starting_point = Vector2(x_var, -4622)
 			$AnimatedSprite2D.play("2")
 		3:
 			x_var = 1278
-			starting_point = Vector2(x_var, -4622.0)
+			starting_point = Vector2(x_var, -4622)
 			$AnimatedSprite2D.play("3")
 		4:
-			x_var = -3339.97
-			starting_point = Vector2(x_var, -7939.0)
+			x_var = -3340
+			starting_point = Vector2(x_var, -7939)
 			$AnimatedSprite2D.play("4")
 		5:
-			x_var = -1440.0
-			starting_point = Vector2(x_var, -7939.0)
+			x_var = -1440
+			starting_point = Vector2(x_var, -7939)
 			$AnimatedSprite2D.play("5")
 		6:
-			x_var = 688.0
-			starting_point = Vector2(x_var, -7939.0)
+			x_var = 688
+			starting_point = Vector2(x_var, -7939)
 			$AnimatedSprite2D.play("6")
 		7:
-			x_var = -293.0
-			starting_point = Vector2(x_var, -10645.0)
+			x_var = -293
+			starting_point = Vector2(x_var, -10645)
 			$AnimatedSprite2D.play("7")
 		8:
 			x_var = 1922
-			starting_point = Vector2(x_var, -9159.0)
+			starting_point = Vector2(x_var, -9159)
 			$AnimatedSprite2D.play("8")
 		9:
-			x_var = -834.0
-			starting_point = Vector2(x_var, -10645.0)
+			x_var = -834
+			starting_point = Vector2(x_var, -10645)
 			$AnimatedSprite2D.play("9")
-	position = starting_point
-	var physics_material = PhysicsMaterial.new()
-	physics_material.bounce = bounce_strength
-	physics_material.friction = 0.3
-	physics_material_override = physics_material
-	play_var = 9 * (nums - 1)
-	contact_monitor = true
-	max_contacts_reported = 1
-	rotation = randf_range(0, TAU) #tau is essentiall 2pi or 360degrees for future reference
-	angular_velocity = randf_range(-10.0, 10.0)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#1 and 4 should be able to have lazer function through additional area2D
+	position = starting_point
+
+
+
+	print("READY — waiting for player")
+	
+
+
+
 func _process(_delta: float) -> void:
 	start = start_script.play
 	start_c = area_c.start_c
-	if start_c == 1 and init == 1:
-		freeze = false
-		init = 0
-	if reset_position_active == 0:
+	if start_c == 0:
+		position = starting_point
+	elif start_c == 1 and init:
+		var physics_material := PhysicsMaterial.new()
+		physics_material.bounce = bounce_strength
+		physics_material.friction = 0.3
+		physics_material_override = physics_material
+		
+		contact_monitor = true
+		max_contacts_reported = 1
+
+		rotation = randf_range(0.0, TAU)
+		angular_velocity = randf_range(-10.0, 10.0)
+		sleeping = false
+		init = false
+	if not reset_position_active:
 		_reset_position()
-	if start == 67:
-		print("PANIC")
-		start_c = 0
-		x_var = 0
-		play_var = 0
-		random_audio_pitch = 1
-		first_run = 0
-		# Called when the node enters the scene tree for the first time.
-		freeze = true
-		#x_var = 5661 - (500 * nums)
-		#position = Vector2(x_var, -4306.0)
-		match nums:
-			1:
-				x_var = 913
-				position = Vector2(x_var, -4622.0)
-			2:
-				x_var = 108
-				position = Vector2(x_var, -4622.0)
-			3:
-				x_var = 1278
-				position = Vector2(x_var, -4622.0)
-			4:
-				x_var = -3339.97
-				position = Vector2(x_var, -7939.0)
-			5:
-				x_var = -1440.0
-				position = Vector2(x_var, -7939.0)
-			6:
-				x_var = 688.0
-				position = Vector2(x_var, -7939.0)
-			7:
-				x_var = -293.0
-				position = Vector2(x_var, -10645.0)
-			8:
-				x_var = 1922
-				position = Vector2(x_var, -9159.0)
-			9:
-				x_var = -834.0
-				position = Vector2(x_var, -10645.0)
-		#var physics_material = PhysicsMaterial.new()
-		#physics_material.bounce = bounce_strength
-		#physics_material.friction = 0.5
-		#physics_material_override = physics_material
-		#contact_monitor = true
-		#max_contacts_reported = 1
-		#rotation = randf_range(0, TAU) #tau is essentiall 2pi or 360degrees for future reference
-		#angular_velocity = randf_range(-10.0, 10.0)
-		#start_c = area_c.start_c
-		#if reset_position_active == 0 and start_c == 1:
-		#	_reset_position()
 
 
-func _reset_position():
-	reset_position_active = 1
-	await wait_time(2)
+
+func _on_area_2d_body_entered(body: Node) -> void:
+	print("BODY ENTERED:", body.name, " GROUPS:", body.get_groups())
+
+	if body.is_in_group("player") and in_area == 0:
+		_in_body()
+
+
+
+func _in_body() -> void:
+	in_area = 1
+	print("PLAYER CONFIRMED IN AREA")
+	await wait_time(0.5)
+	in_area = 0
+
+
+
+func _reset_position() -> void:
+	reset_position_active = true
+	await wait_time(2.0)
 	position = starting_point
-	print(nums, "done")
-	reset_position_active = 0
+	print(nums, " reset complete")
+	reset_position_active = false
+
 
 
 func wait_time(seconds: float) -> void:
-	var timer = Timer.new()
-	timer.wait_time = seconds
+	var timer := Timer.new()
 	timer.one_shot = true
+	timer.wait_time = seconds
 	add_child(timer)
 	timer.start()
 	await timer.timeout
 	timer.queue_free()
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	# DEBUG PRINT: This proves the signal is working
-	print("Body entered: ", body.name) 
-	
-	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-		if in_area == 0:
-			_in_body()
-	else:
-		# DEBUG PRINT: This proves the logic failed
-		print("Body entered but logic failed. Groups: ", body.get_groups())
-func _in_body():
-	in_area = 1
-	await wait_time(.5)
-	in_area = 0
-#func _on_area_2d_body_exited(body: Node2D) -> void:
-#	if (body.name == "zuck_stage_1") or body.is_in_group("player") or (body.name == "Zuck Stage 1"):
-#		in_area = 0
