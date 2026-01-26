@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+#var gravity := ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var start_path:NodePath
 @onready var start_script = get_node(start_path)
 
@@ -51,13 +51,14 @@ extends CharacterBody2D
 #@onready var health_bar_script = get_node(health_bar_path)
 @export var gravity = 900.0 #start of skiing code
 @export var base_forward_speed = 200.0
-@export var acceleration = 500.0
+@export var acceleration: float = 500.0
 @export var friction = 0.99 #will set up closer to 1 faster you go
 @export var jump_force = -400.0
 const SPEED = 720.0
 const JUMP_VELOCITY = -767.0 #used to be -550.0 676767
 var start_variable = 1
 @onready var animated_sprite = $AnimatedSprite2D
+var gravity1 = 900.0
 var health = 3
 var edward_health = 3
 var punch = 0
@@ -101,11 +102,13 @@ var random_wait_var := 0
 var stop_music_skiing := 0
 var end := 0
 var dead := 0
+var sdajfksdfl_camera_start_sequence_done := 0
 func _ready() -> void:
 	add_to_group("player")
 	$AnimatedSprite2D.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	#position = Vector2(-2066.0, -12000) #for getting up to the ski platform
 func _process(_delta: float) -> void:
+	sdajfksdfl_camera_start_sequence_done = camera1.start_sequence_done
 	end = end_area.finished
 	stop_music_skiing = skiing_area_2d.stop_music
 	if stop_music_skiing == 1:
@@ -169,19 +172,23 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 		on_ladder = true
 		velocity.y = -ladder_speed  # moves up
 		# optional: allow down movement
-		if Input.is_action_pressed("move_down"):
+		if Input.is_action_pressed("ui_down"):
 			velocity.y = ladder_speed
 	else:
 		on_ladder = false
 	changed = gym_script.changed
 	if skiing == 1 and not on_ladder:
 		if not is_on_floor():
-			velocity.y += gravity * delta
+			gravity1 = get_gravity()
+			velocity.y += gravity1 * delta
 			if Input.is_action_just_pressed("jump"):
 				velocity.y = -ladder_speed
 		else:
 			var floor_normal = get_floor_normal()
 			var slope_direction = floor_normal.rotated(deg_to_rad(90))
+			print("slope_firection", slope_direction)
+			print("acceleration", acceleration)
+			print("delta", delta)
 			velocity += slope_direction * acceleration * delta
 			velocity *= friction
 			rotation = lerp_angle(rotation, floor_normal.angle() + PI/2, 0.1)

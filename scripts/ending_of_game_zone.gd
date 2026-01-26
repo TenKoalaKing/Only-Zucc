@@ -24,5 +24,6 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _process(_delta: float) -> void:
 	if finished == 1:
+		$kazoo.play()
 		if not $AudioStreamPlayer.playing:
 			$AudioStreamPlayer.play()

@@ -23,7 +23,6 @@ var target_menu_outro := 1
 
 var slime_focus := 0
 var previous_slime_focus := -1
-
 var default_zoom := Vector2(0.5, 0.5)
 var zoomed_in := Vector2(0.8, 0.8)
 var dialog_zoom := false

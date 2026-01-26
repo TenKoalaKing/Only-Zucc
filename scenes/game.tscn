@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=90 format=3 uid="uid://cejc3s5qfhawh"]
 
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://dqq7tyt8ecr2b" path="res://scenes/senate_part_1.tscn" id="67_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://dbi41k83w78y" path="res://scenes/skiing_course.tscn" id="67_weeiq"]
 [ext_resource type="PackedScene" uid="uid://i8dtfoxahrm4" path="res://scenes/ladder_skiing.tscn" id="68_uxocx"]
+[ext_resource type="Script" uid="uid://bd4bbbkpbdn8v" path="res://scripts/color_rect.gd" id="70_7nv0b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("2_iywne")
@@ -2298,3 +2299,23 @@ position = Vector2(-14092, -9252)
 start_path = NodePath("../../start_node")
 area_c_path = NodePath("../../mic_for_senate")
 nums = 9
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -143.0
+offset_right = -72.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8890923, 0, 0, 1)
+script = ExtResource("70_7nv0b")
+zuck_script = NodePath("../../Zuck Stage 1")
+mic_for_senate_script = NodePath("../../mic_for_senate")
+ladder1_script = NodePath("../../ladder_skiing")
+start_script_path = NodePath("../../start_node")
