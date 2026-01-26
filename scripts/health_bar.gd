@@ -1,5 +1,5 @@
 extends CanvasLayer #script to attach to camera 2d and fetch health status from player and have the variable for when dead
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite = %"anim"
 #var zuck_script: Node = null #not actually zuck script but potential workaround
 #@onready var zuck_script = %"Zuck Stage 1"
 var health := 3
@@ -14,7 +14,6 @@ var zuck_script
 
 func _ready() -> void:
 	animated_sprite.play("3")
-	
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		zuck_script = players[0]
@@ -40,6 +39,7 @@ func _process(_delta: float) -> void:
 #		#zuck_script = get_tree().get_first_node_in_group("player")
 #		self.visible = false
 #		first_run = 1
+	animated_sprite.scale = Vector2(0.6, 0.6)
 	health = zuck_script.health
 	fight = zuck_script.fight
 	if fight == 1:
