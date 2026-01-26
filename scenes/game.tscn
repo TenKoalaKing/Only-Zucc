@@ -1,5 +1,6 @@
-[gd_scene load_steps=93 format=3 uid="uid://cejc3s5qfhawh"]
+[gd_scene load_steps=94 format=3 uid="uid://cejc3s5qfhawh"]
 
+[ext_resource type="Script" uid="uid://cc6ax4q40yx65" path="res://scripts/color_rect2.gd" id="1_2iuns"]
 [ext_resource type="Shader" uid="uid://cu8i8s2sofxq1" path="res://scripts/game.gdshader" id="1_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://b40horegir4v2" path="res://scenes/zuck_stage_1.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://v5jipr41wqjw" path="res://assets/all backround assets - - - - -MorningAdventuresV2/MorningSheet.png" id="2_iywne"]
@@ -1567,6 +1568,23 @@ animations = [{
 
 [node name="Game" type="Node2D"]
 position = Vector2(-72, -143)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="ColorRects" type="ColorRect" parent="CanvasLayer2"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -143.0
+offset_right = -72.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8890923, 0, 0, 1)
+script = ExtResource("1_2iuns")
 
 [node name="TileMap" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_7gkqi")

@@ -33,6 +33,7 @@ func _ready() -> void:
 	change_r = color_blue.r
 	change_g = color_blue.g
 	change_b = color_blue.b
+	#get_node("/root/Game/CanvasLayer2/ColorRects").flash() # for testing
 
 func _process(_delta: float) -> void:
 	start_sequence_done = zuck.sdajfksdfl_camera_start_sequence_done
@@ -66,6 +67,7 @@ func _micthingy() -> void:
 		await wait_time(0.07)
 		_update_colors()
 	flashing_red = 1
+	_flash_red()
 
 func _climbthingy() -> void:
 	flashing_red = 0
@@ -96,16 +98,21 @@ func _change_to_skiing():
 	#color_blue = Color(0.618, 0.802, 0.991, 1.0)
 
 func _change_to_blue():
-	while color.r >= 0.2 or color.g >= 0.584 or color.b <= 0.93:
+	while color.r >= 0.2 or color.g >= 0.584 or color.b >= 0.93:
 		change_r -= 0.02
 		change_g -= 0.01
 		change_b -= 0.005
-		await wait_time(0.07)
+		await wait_time(0.08)
 	test_skiing = 0
 	#color_blue = Color(0.195, 0.584, 0.93, 1.0)
 
 func _update_colors() -> void:
 	color = Color(change_r, change_g, change_b, 1.0)
+
+func _flash_red():
+	while flashing_red == 1:
+		await wait_time(.3)
+		get_node("/root/Game/CanvasLayer2/ColorRects").flash()
 
 func wait_time(seconds: float) -> void:
 	var timer := Timer.new()

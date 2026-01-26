@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 	flashing_red = color_rect_script.flashing_red
 	if flashing_red == 1 and current_in_func == 0:
 		current_in_func = 1
-		_pre_flash()
+	_pre_flash()
 
 func _pre_flash():
 	random_int = randi_range(3, 10)
@@ -27,7 +27,7 @@ func flash_tilemap():
 	var mat = material
 	mat.set_shader_parameter("flash_color", Color(1,0,0,1))
 	tween.tween_property(mat, "shader_parameter/flash_modifier", 1.0, 0.1)
-	tween.tween_property(mat, "shader_parameter/flash_modifier", 0.0, 0.1)
+	#tween.tween_property(mat, "shader_parameter/flash_modifier", 0.0, 0.1)
 
 
 func wait_time(seconds: float) -> void:

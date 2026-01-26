@@ -9,54 +9,77 @@ extends Node2D
 @onready var start_script = get_node(start_path)
 var fight = 0
 var hud_scene = preload("res://scenes/health_bar.tscn")
+var hud_scene2 = preload("res://scenes/edward_health_bar.tscn")
 var battle_status = 0
 var previous_bt = 0
 var start = 0
 var health = 0
 var prev_fight = 0
+var hud_instance: Node = null
+var hud_instance2: Node = null
+
 func _ready() -> void:
 	var canvas_layer = CanvasLayer.new()
 	add_child(canvas_layer)
-	var hud_instance = hud_scene.instantiate()
+	hud_instance = hud_scene.instantiate()
+	hud_instance2 = hud_scene2.instantiate()
 	#hud_instance.zuck_script = self #not actually zuck script just for fillin purposes
 	#add_child(hud_instance)
 	#var hud_instance = hud_scene.instantiate()
-	var canvas = get_node_or_null("health_bar")
-	if canvas:
-		canvas.add_child(hud_instance)
-	else:
-		add_child(hud_instance)
-	
-	while 1 == 1:
-		await wait_time(.25)
+	canvas_layer.add_child(hud_instance)
+	canvas_layer.add_child(hud_instance2)
+
+	# Hide them initially
+	hud_instance.visible = false
+	hud_instance2.visible = false
+
+	# Start the async loop for checking fight status
+	start_fight_loop()
+
+
+func start_fight_loop() -> void:
+	while true:
+		await wait_time(0.25)
+
+		# Check Edward's fight status
 		if is_instance_valid(edward_sulivan_script):
 			fight = edward_sulivan_script.fight
 		else:
 			fight = 0
+
+		# Check if player is in the fight area
 		battle_status = fight_area_script.in_fight_area
-#		if battle_status == 1 and previous_bt == 0 and fight == 1:
-#			#canvas_layer.add_child(hud_instance)
-#			self.visible = true
-#			previous_bt = 1
-#		if battle_status == 0 and previous_bt == 1 and fight == 0:
-#			#canvas_layer.remove_child(hud_instance)
-#			self.visible = false
-#			previous_bt = 0
+
+		# Reset conditions if the game has restarted
 		start = start_script.play
 		if start == 67:
 			fight = 0
 			battle_status = 0
 			previous_bt = 0
+
+		# Update HUD visibility
+		if battle_status == 1 and fight == 1:
+			hud_instance.visible = true
+			hud_instance2.visible = true
+		else:
+			hud_instance.visible = false
+			hud_instance2.visible = false
+
+
 func _process(_delta: float) -> void:
-	health = zuck_script.health
-	fight = zuck_script.fight
-	if fight == 0 and prev_fight == 0:
-		self.visible = false
-	elif fight == 1 and prev_fight == 0:
-		self.visible = true
-	if fight == 0 and prev_fight == 1:
-		self.visible = false
+	# Keep health and fight status updated
+	if is_instance_valid(zuck_script):
+		health = zuck_script.health
+		fight = zuck_script.fight
+
+	# Simple visibility toggle in case fight ends
+	if fight == 0:
+		hud_instance.visible = false
+		hud_instance2.visible = false
+
 	prev_fight = fight
+
+
 func wait_time(seconds: float) -> void:
 	var timer = Timer.new()
 	timer.wait_time = seconds
