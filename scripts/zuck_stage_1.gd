@@ -179,7 +179,7 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 	changed = gym_script.changed
 	if skiing == 1 and not on_ladder:
 		if not is_on_floor():
-			gravity1 = get_gravity()
+			#gravity1 = get_gravity()
 			velocity.y += gravity1 * delta
 			if Input.is_action_just_pressed("jump"):
 				velocity.y = -ladder_speed
@@ -202,7 +202,7 @@ func _physics_process(delta: float) -> void: #start out with making skiing code 
 			#velocity += get_floor_normal().rotated(PI/2) * 150.0
 	elif start_variable != 0:
 		if not is_on_floor():
-			velocity += get_gravity() * delta
+			velocity.y += gravity * delta
 		else:
 			if Input.is_action_just_pressed("jump"):
 				velocity.y = JUMP_VELOCITY

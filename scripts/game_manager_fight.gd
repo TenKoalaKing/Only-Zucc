@@ -18,7 +18,7 @@ func _ready() -> void:
 	var canvas_layer = CanvasLayer.new()
 	add_child(canvas_layer)
 	var hud_instance = hud_scene.instantiate()
-	hud_instance.zuck_script = self #not actually zuck script just for fillin purposes
+	#hud_instance.zuck_script = self #not actually zuck script just for fillin purposes
 	#add_child(hud_instance)
 	#var hud_instance = hud_scene.instantiate()
 	var canvas = get_node_or_null("health_bar")

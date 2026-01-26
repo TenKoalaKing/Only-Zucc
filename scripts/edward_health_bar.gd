@@ -1,22 +1,25 @@
 extends Node2D #script to attach to camera 2d and fetch health status from player and have the variable for when dead
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var edward_script = %"Edward Sulivan"
+#@onready var edward_script = %"Edward Sulivan"
 var health = 3
 var previous_health = 4
 var fight := 0
-
+var edward_script
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
 func _ready() -> void:
 	animated_sprite.play("3")
+	var players = get_tree().get_nodes_in_group("edward")
+	if players.size() > 0:
+		edward_script = players[0]
+		print("found_player")
+	else:
+		print("player not found")
 	self.visible = false
 func _process(_delta: float) -> void:
-	if is_instance_valid(edward_script):
-		fight = edward_script.fight
-	else:
-		fight = 0
+	fight = edward_script.fight
 	health = edward_script.health
 	if fight == 1:
 		self.visible = true

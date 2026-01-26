@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjfbo3xi5qaj"]
+[gd_scene load_steps=8 format=3 uid="uid://bjfbo3xi5qaj"]
 
 [ext_resource type="Script" uid="uid://twg6fc7evuni" path="res://scripts/edward_health_bar.gd" id="1_t63wa"]
 [ext_resource type="Texture2D" uid="uid://dbyqixgyb8xbd" path="res://assets/rando/done/health_0.png" id="2_cu4db"]
+[ext_resource type="Script" uid="uid://dje7x7w7pysjs" path="res://scripts/control_edward_healthbar.gd" id="2_t33lw"]
 [ext_resource type="Texture2D" uid="uid://psa3adccj7ef" path="res://assets/rando/done/health_1.png" id="3_t33lw"]
 [ext_resource type="Texture2D" uid="uid://cq3yu0iuyk4vb" path="res://assets/rando/done/health_2.png" id="4_igkhx"]
 [ext_resource type="Texture2D" uid="uid://cqv64r27nfh0k" path="res://assets/rando/done/health_3.png" id="5_affpo"]
@@ -44,6 +45,13 @@ animations = [{
 [node name="Health Bar" type="Node2D"]
 script = ExtResource("1_t63wa")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_t33lw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
 sprite_frames = SubResource("SpriteFrames_5aafc")
 animation = &"3"

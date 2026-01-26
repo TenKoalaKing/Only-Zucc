@@ -46,6 +46,7 @@ var slime = 0
 
 
 func _ready() -> void:	
+	add_to_group("edward")
 	dialog_indicator.hide()
 func _process(_delta: float) -> void:
 	dialogNumber = dialog.dialogNumber

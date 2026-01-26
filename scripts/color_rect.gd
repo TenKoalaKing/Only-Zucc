@@ -25,6 +25,7 @@ var first_run := 0
 var skiing := 0
 var prev_skiing := 0
 var test_skiing := 0
+var flashing_red := 0
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	color = Color(0.386, 0.386, 0.386, 1.0)
@@ -64,8 +65,11 @@ func _micthingy() -> void:
 		change_b -= 0.01
 		await wait_time(0.07)
 		_update_colors()
+	flashing_red = 1
 
 func _climbthingy() -> void:
+	flashing_red = 0
+	
 	while color.r >= 0.2:
 		change_r -= 0.03
 		await wait_time(0.07)
@@ -88,6 +92,7 @@ func _change_to_skiing():
 		change_b += 0.005
 		await wait_time(0.07)
 		_update_colors()
+	test_skiing = 0
 	#color_blue = Color(0.618, 0.802, 0.991, 1.0)
 
 func _change_to_blue():
@@ -96,6 +101,7 @@ func _change_to_blue():
 		change_g -= 0.01
 		change_b -= 0.005
 		await wait_time(0.07)
+	test_skiing = 0
 	#color_blue = Color(0.195, 0.584, 0.93, 1.0)
 
 func _update_colors() -> void:

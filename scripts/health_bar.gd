@@ -1,18 +1,27 @@
 extends CanvasLayer #script to attach to camera 2d and fetch health status from player and have the variable for when dead
 @onready var animated_sprite = $AnimatedSprite2D
-var zuck_script: Node = null #not actually zuck script but potential workaround
+#var zuck_script: Node = null #not actually zuck script but potential workaround
 #@onready var zuck_script = %"Zuck Stage 1"
 var health := 3
 var previous_health := 4
 var fight := 0
 var prev_fight := 0
 var first_run := 0
+var zuck_script
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
 
 func _ready() -> void:
 	animated_sprite.play("3")
+	
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		zuck_script = players[0]
+		print("found_player")
+	else:
+		print("player not found")
+		self.visible = false
 	#var zuck_script = get_tree().get_first_node_in_group("player")
 	if zuck_script:
 		print("found zucccy")
@@ -26,12 +35,13 @@ func _ready() -> void:
 
 	health = zuck_script.health
 func _process(_delta: float) -> void:
-	if first_run == 0:
-		#zuck_script = get_tree().get_first_node_in_group("player")
-		self.visible = false
-		first_run = 1
-	#health = zuck_script.health
-	#fight = zuck_script.fight
+	#print(fight)
+#	if first_run == 0:
+#		#zuck_script = get_tree().get_first_node_in_group("player")
+#		self.visible = false
+#		first_run = 1
+	health = zuck_script.health
+	fight = zuck_script.fight
 	if fight == 1:
 		self.visible = true
 	elif fight == 0:
